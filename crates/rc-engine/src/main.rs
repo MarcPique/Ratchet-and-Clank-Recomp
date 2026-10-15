@@ -41,6 +41,7 @@ mod audio_out;
 mod determinism;
 mod display;
 mod display_blend;
+mod dlss5;
 mod disc_source;
 mod fly_cam;
 mod fx_draw;
@@ -172,8 +173,16 @@ fn run() -> anyhow::Result<()> {
         })
     } else { None };
     let mut app = App::new();
+    let dlss5 = dlss5::Bridge::discover();
+    let mut wgpu = bevy::render::settings::WgpuSettings::default();
+    if dlss5.requires_vulkan() {
+        // The external ReShade DXGI proxy crashes while wgpu enumerates DX12 adapters.
+        // Its Vulkan transport was verified to render and feed the neural pass.
+        wgpu.backends = Some(bevy::render::settings::Backends::VULKAN);
+    }
     app.add_plugins(
         DefaultPlugins
+            .set(bevy::render::RenderPlugin { render_creation: wgpu.into(), ..default() })
             .set(WindowPlugin {
                 // 4:3, as the TV showed the 512x416 GS draw buffer (crate::display; docs/plan/render_pipeline.md).
                 primary_window: Some(Window { title: "Ratchet & Clank".into(), resolution: test_window.unwrap_or((1024, 768)).into(), mode: display::initial_window_mode(), visible: !hidden_test, ..default() }),
@@ -191,6 +200,7 @@ fn run() -> anyhow::Result<()> {
                 },
             }),
     )
+    .insert_resource(dlss5)
     // The game frame every camera renders into and its presentation in the window (before anything spawns a camera,
     // and before the capture, which captures the frame).
     .add_plugins(display::DisplayPlugin)

@@ -173,6 +173,14 @@ pub mod text {
     pub const XBOX_SERIES: i32 = -0x1d2;
     pub const XBOX_ONE: i32 = -0x1d3;
     pub const XBOX_360: i32 = -0x1d4;
+    pub const DLSS5: i32 = -0x1d5;
+    pub const UNAVAILABLE: i32 = -0x1d6;
+    pub const DLSS5_PRESET: i32 = -0x1d7;
+    pub const CNN_E: i32 = -0x1d8;
+    pub const CNN_F: i32 = -0x1d9;
+    pub const TRANSFORMER_J: i32 = -0x1da;
+    pub const TRANSFORMER_K: i32 = -0x1db;
+    pub const ENABLE_DLSS5: i32 = -0x1dc;
     /// The game's own "on" / "off" (20314 / 20315, the Subtitles / HelpDesk toggle values).
     pub const ON: i32 = 20314;
     pub const OFF: i32 = 20315;
@@ -250,6 +258,10 @@ pub mod text {
             DUALSENSE => b"DualSense", DUALSHOCK4 => b"DualShock 4", DUALSHOCK3 => b"DualShock 3",
             HUD_HIGH_RES => b"High resolution",
             XBOX_SERIES => b"Xbox Series", XBOX_ONE => b"Xbox One", XBOX_360 => b"Xbox 360",
+            DLSS5 => b"DLSS 5", UNAVAILABLE => b"Unavailable",
+            DLSS5_PRESET => b"DLSS 5 preset", CNN_E => b"CNN E", CNN_F => b"CNN F",
+            TRANSFORMER_J => b"Transformer J", TRANSFORMER_K => b"Transformer K",
+            ENABLE_DLSS5 => b"Enable DLSS 5",
             _ => return None,
         })
     }
@@ -263,6 +275,7 @@ pub mod text {
             (2, PRESET) => b"Profil", (2, ORIGINAL) => b"Original", (2, ENHANCED) => b"Ameliore", (2, CUSTOM) => b"Personnalise",
             (2, ANTI_ALIASING) => b"Anticrenelage", (2, SHADOWS) => b"Ombres", (2, RESOLUTION) => b"Resolution",
             (2, BUTTON_PROMPTS) => b"Icones manette",
+            (2, DLSS5_PRESET) => b"Profil DLSS 5", (2, ENABLE_DLSS5) => b"Activer DLSS 5",
             (2, RES_WINDOW) => b"Fenetre", (2, FULLSCREEN) => b"Plein ecran", (2, VSYNC) => b"Synchro V",
             (2, RENDER_SCALE) => b"Echelle de rendu",
             (2, MONITOR) => b"Moniteur", (2, SCREEN_CURRENT) => b"Actuel", (2, WINDOWED) => b"Fenetre",
@@ -282,6 +295,7 @@ pub mod text {
             (3, ENTRY) => b"Erw. Optionen", (3, TITLE) => b"Erweiterte Optionen",
             (3, DESCRIPTION) => b"Zusaetzliche PC-Einstellungen",
             (3, BUTTON_PROMPTS) => b"Controller-Symbole",
+            (3, DLSS5_PRESET) => b"DLSS 5 Profil", (3, ENABLE_DLSS5) => b"DLSS 5 aktivieren",
             (3, PRESET) => b"Profil", (3, ORIGINAL) => b"Original", (3, ENHANCED) => b"Verbessert", (3, CUSTOM) => b"Benutzerdef.",
             (3, ANTI_ALIASING) => b"Kantenglaettung", (3, SHADOWS) => b"Schatten", (3, RESOLUTION) => b"Aufloesung",
             (3, RES_WINDOW) => b"Fenster", (3, FULLSCREEN) => b"Vollbild", (3, VSYNC) => b"V-Sync",
@@ -325,9 +339,13 @@ pub mod text {
             (4, CAMERA_SHAKE) => b"Sacudida camara", (4, SLOW) => b"Lenta", (4, NORMAL) => b"Normal",
             (4, LARGE) => b"Grande", (4, EXTRA_LARGE) => b"Muy grande", (4, HALF) => b"Media",
             (4, BUTTON_PROMPTS) => b"Iconos del mando",
+            (4, UNAVAILABLE) => b"No disponible",
             (4, AUTO) => b"Automatico",
+            (4, DLSS5_PRESET) => b"Perfil DLSS 5",
+            (4, ENABLE_DLSS5) => b"Activa DLSS 5",
             (5, ENTRY) => b"Opz. avanzate", (5, TITLE) => b"Opzioni avanzate",
             (5, BUTTON_PROMPTS) => b"Icone controller",
+            (5, DLSS5_PRESET) => b"Profilo DLSS 5", (5, ENABLE_DLSS5) => b"Attiva DLSS 5",
             (5, DESCRIPTION) => b"Impostazioni aggiuntive del port PC",
             (5, PRESET) => b"Profilo", (5, ORIGINAL) => b"Originale", (5, ENHANCED) => b"Migliorato", (5, CUSTOM) => b"Personalizzato",
             (5, ANTI_ALIASING) => b"Antialiasing", (5, SHADOWS) => b"Ombre", (5, RESOLUTION) => b"Risoluzione",
@@ -378,6 +396,8 @@ pub enum Setting {
     Vsync,
     FpsLimit,
     Performance,
+    Dlss5,
+    Dlss5Preset,
     Language,
     ButtonPrompts,
     CameraSensitivity,
@@ -425,6 +445,8 @@ pub const ENTRIES: &[Entry] = &[
     Entry { setting: Setting::Vsync, label: text::VSYNC, values: &[text::ON, text::OFF] },
     Entry { setting: Setting::FpsLimit, label: text::FPS_LIMIT, values: &[text::FPS_30, text::FPS_60, text::FPS_120, text::FPS_144, text::FPS_165, text::FPS_240, text::FPS_UNLIMITED] },
     Entry { setting: Setting::Performance, label: text::PERFORMANCE, values: &[text::OFF, text::ON] },
+    Entry { setting: Setting::Dlss5, label: text::DLSS5, values: &[text::OFF, text::ON, text::UNAVAILABLE] },
+    Entry { setting: Setting::Dlss5Preset, label: text::DLSS5_PRESET, values: &[text::AUTO, text::CNN_E, text::CNN_F, text::TRANSFORMER_J, text::TRANSFORMER_K, text::ENABLE_DLSS5] },
     Entry { setting: Setting::Language, label: text::LANGUAGE, values: &[text::ENGLISH, text::FRENCH, text::GERMAN, text::SPANISH, text::ITALIAN] },
     Entry { setting: Setting::ButtonPrompts, label: text::BUTTON_PROMPTS, values: &[text::AUTO, text::DUALSENSE, text::DUALSHOCK4, text::DUALSHOCK3, text::XBOX_SERIES, text::XBOX_ONE, text::XBOX_360, text::NINTENDO, text::PLAYSTATION, text::XBOX] },
     Entry { setting: Setting::CameraSensitivity, label: text::CAMERA_SENSITIVITY, values: &[text::SLOW, text::NORMAL, text::HIGH] },
@@ -477,6 +499,8 @@ fn description(setting: Setting, lang: u32) -> &'static [u8] {
         (4, Setting::Monitor) => b"Seleccionar pantalla", (4, Setting::RefreshRate) => b"Solo en modo exclusivo",
         (4, Setting::FpsLimit) => b"Frecuencia maxima de imagen", (4, Setting::Language) => b"Idioma de texto y voces",
         (4, Setting::Performance) => b"FPS y tiempo por imagen",
+        (4, Setting::Dlss5) => b"Efecto neural opcional (complemento externo)",
+        (4, Setting::Dlss5Preset) => b"Reconstruccion temporal del complemento",
         (4, Setting::CameraSensitivity) => b"Velocidad del giro de camara", (4, Setting::StickDeadzone) => b"Filtrar movimientos peque\xa9os",
         (4, Setting::SubtitleSize) => b"Aumentar tama\xa9o de subtitulos", (4, Setting::SubtitleContrast) => b"Mejorar lectura de subtitulos",
         (4, Setting::CameraShake) => b"Reducir movimiento de camara",
@@ -518,6 +542,8 @@ fn description_english(setting: Setting) -> &'static [u8] {
         Setting::Vsync => b"Sync to the display",
         Setting::FpsLimit => b"Maximum render rate",
         Setting::Performance => b"FPS and frame time overlay",
+        Setting::Dlss5 => b"Optional neural effect (external add-on)",
+        Setting::Dlss5Preset => b"External add-on temporal reconstruction preset",
         Setting::Language => b"Text and voice language",
         Setting::CameraSensitivity => b"Camera turn speed",
         Setting::StickDeadzone => b"Ignore small stick movements",
@@ -729,6 +755,9 @@ pub fn update(m: &mut PageMenu, w: u32, inp: &MenuInput, out: &mut MenuOut) -> i
     }
     if inp.pressed_u & button::CROSS != 0 {
         let choices = p.choices.get(r).copied().unwrap_or(u32::MAX);
+        if ENTRIES.get(r).is_some_and(|e| e.setting == Setting::Dlss5Preset) && choices == 0b10_0001 {
+            return 0;
+        }
         if let (Some(e), Some(v)) = (ENTRIES.get(r), p.values.get_mut(r)) {
             *v = next_choice(*v, e.values.len(), choices);
             out.sounds.push(MenuSound::Confirm);

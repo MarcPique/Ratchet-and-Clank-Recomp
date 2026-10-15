@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 BASE_MENU = (
@@ -31,10 +32,12 @@ CASES = (
     ("graficos-resolucion-4k", "menu", "dualsense", 10),
     ("graficos-pantalla-4k", "menu", "dualsense", 14),
     ("graficos-rendimiento-4k", "menu", "dualsense", 18),
-    ("mandos-dualsense-4k", "menu", "dualsense", 20),
-    ("mandos-xbox-series-4k", "menu", "xboxseries", 20),
-    ("mandos-switch-4k", "menu", "nintendo", 20),
-    ("accesibilidad-4k", "menu", "dualsense", 24),
+    ("dlss5-4k", "menu", "dualsense", 19),
+    ("dlss5-perfiles-4k", "menu", "dualsense", 20),
+    ("mandos-dualsense-4k", "menu", "dualsense", 22),
+    ("mandos-xbox-series-4k", "menu", "xboxseries", 22),
+    ("mandos-switch-4k", "menu", "nintendo", 22),
+    ("accesibilidad-4k", "menu", "dualsense", 26),
     ("iconos-dualsense-4k", "prompts", "dualsense", 0),
     ("iconos-dualshock4-4k", "prompts", "dualshock4", 0),
     ("iconos-dualshock3-4k", "prompts", "dualshock3", 0),
@@ -45,6 +48,21 @@ CASES = (
     ("iconos-playstation-generico-4k", "prompts", "playstation", 0),
     ("iconos-xbox-generico-4k", "prompts", "xbox", 0),
 )
+
+
+def logical_test_window() -> str:
+    """Bevy's hidden Window size is logical pixels; Windows scales it by monitor DPI."""
+    if sys.platform == "win32":
+        import ctypes
+
+        try:
+            ctypes.windll.shcore.SetProcessDpiAwareness(2)
+            dpi = ctypes.windll.user32.GetDpiForSystem()
+            if dpi >= 96:
+                return f"{round(3840 * 96 / dpi)}x{round(2160 * 96 / dpi)}"
+        except (AttributeError, OSError):
+            pass
+    return "3840x2160"
 
 
 def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
@@ -62,7 +80,7 @@ def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
     env = os.environ.copy()
     env.update({
         "RC_TEST_HIDDEN": "1",
-        "RC_TEST_WINDOW": "3840x2160",
+        "RC_TEST_WINDOW": logical_test_window(),
         "RC_SETTINGS_FILE": str(settings),
         "RC_SAVE_DIR": "0",
         "RC_LEVEL": "1",
@@ -76,8 +94,12 @@ def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
         env.pop(key, None)
     if kind == "menu":
         steps = BASE_MENU + [f"{420 + 18 * i}:press DOWN" for i in range(row)]
+        if name == "dlss5-4k":
+            steps.append("790:press X")
+        if name == "dlss5-perfiles-4k":
+            steps.append("800:press X")
         env["RC_PLAY_SCRIPT"] = ",".join(steps)
-        env["RC_SCREENSHOT_FRAME"] = str(max(430, 420 + 18 * (row - 1) + 28))
+        env["RC_SCREENSHOT_FRAME"] = str(900 if name.startswith("dlss5-") else max(430, 420 + 18 * (row - 1) + 28))
     else:
         # Original in-game prompt control codes, rendered through the game's HUD.
         env["RC_HUD_TEXT"] = "  ".join(chr(i) for i in range(0x10, 0x1A))
@@ -90,7 +112,7 @@ def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
         capture_output=True,
         text=True,
         errors="replace",
-        timeout=120,
+        timeout=240 if name.startswith("dlss5-") else 120,
     )
     (folder / "stdout.log").write_text(result.stdout, encoding="utf-8")
     (folder / "stderr.log").write_text(result.stderr, encoding="utf-8")

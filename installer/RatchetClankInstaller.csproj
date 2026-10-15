@@ -10,7 +10,7 @@
     <ApplicationIcon>RatchetAndClank.ico</ApplicationIcon>
     <Product>Ratchet &amp; Clank Recomp</Product>
     <FileDescription>Instalador de Ratchet &amp; Clank Recomp</FileDescription>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <PublishSingleFile>true</PublishSingleFile>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <SelfContained>true</SelfContained>

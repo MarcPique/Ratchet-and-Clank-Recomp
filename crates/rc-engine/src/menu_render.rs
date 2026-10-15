@@ -166,6 +166,7 @@ pub struct MenuMode {
 
 #[derive(Resource)]
 struct MenuRt {
+    dlss5: crate::dlss5::Bridge,
     assets: MenuAssets,
     qs: Option<QuickSelect>,
     menu: Option<PageMenu>,
@@ -278,6 +279,7 @@ fn setup(
     generation: Res<crate::level_switch::LevelGeneration>,
     mut commands: Commands,
     level: Res<crate::Level>,
+    dlss5: Res<crate::dlss5::Bridge>,
     frame: Res<crate::display::GameFrame>,
     mut meshes: ResMut<Assets<Mesh>>,
     mut images: ResMut<Assets<Image>>,
@@ -413,6 +415,7 @@ fn setup(
     // The global `all_text` in the game's language (the Help Log page's message table, `MenuTextLoad`).
     assets.all_text = load_all_text(&root, lh.lang);
     commands.insert_resource(MenuRt {
+        dlss5: dlss5.clone(),
         assets,
         qs,
         menu,
@@ -823,6 +826,7 @@ fn menu_frame(
                 menu.set_port_value(Setting::Vsync, !display.vsync as u8);
                 menu.set_port_value(Setting::FpsLimit, display.frame_limit.index());
                 menu.set_port_value(Setting::Performance, display.show_stats as u8);
+                rt.dlss5.sync_menu(menu);
                 menu.set_port_value(Setting::Language, rc_game::menus::pause::port::language_index(crate::hud_render::language()));
                 sync_player_rows(menu, &input_settings, &access, &prompts);
                 menu.set_port_confirmation(pending_display.seconds_left());
@@ -842,6 +846,7 @@ fn menu_frame(
                     }
                 }
                 read_graphics_rows(menu, &mut gfx, &gfx_before, frame);
+                rt.dlss5.apply_menu(menu);
                 read_player_rows(menu, &mut input_settings, &mut access, &mut prompts);
                 let display_decision = menu.take_port_confirmation();
                 if let Some(keep) = display_decision {
@@ -1541,6 +1546,7 @@ fn front_end_frame(
                 menu.set_port_value(Setting::Vsync, !display.vsync as u8);
                 menu.set_port_value(Setting::FpsLimit, display.frame_limit.index());
                 menu.set_port_value(Setting::Performance, display.show_stats as u8);
+                rt.dlss5.sync_menu(menu);
                 menu.set_port_value(Setting::Language, rc_game::menus::pause::port::language_index(fe.lang));
                 sync_player_rows(menu, input_settings, access, prompts);
                 menu.set_port_confirmation(pending_display.seconds_left());
@@ -1554,6 +1560,7 @@ fn front_end_frame(
                     if s.enabled != (v == 0) { s.enabled = v == 0; s.save(); }
                 }
                 read_graphics_rows(menu, gfx, &gfx_before, frame);
+                rt.dlss5.apply_menu(menu);
                 read_player_rows(menu, input_settings, access, prompts);
                 let display_decision = menu.take_port_confirmation();
                 if let Some(keep) = display_decision {

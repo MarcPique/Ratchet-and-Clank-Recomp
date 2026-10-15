@@ -18,6 +18,8 @@ Las capturas de los menús y mandos son fotogramas reales del juego. Salvo la in
 ## Ajustes gráficos y accesibilidad
 
 - [Perfil gráfico](graficos-perfil-4k.png)
+- [DLSS 5 activado desde Opciones avanzadas](dlss5-4k.png)
+- [Perfiles de DLSS 5 en Opciones avanzadas](dlss5-perfiles-4k.png)
 - [Antialiasing](graficos-antialiasing-4k.png)
 - [Texturas y HUD](graficos-texturas-4k.png)
 - [Formato y resolución](graficos-resolucion-4k.png)
