@@ -28,13 +28,21 @@ La descarga **no contiene la ISO ni datos del juego**. Todo el contenido del jue
 
 ## Capturas reales
 
-| Menú principal · 4K | Opciones · 4K |
-| --- | --- |
-| ![Menú principal](screenshots/menu-principal-4k.png) | ![Opciones](screenshots/menu-opciones-4k.png) |
+Capturas del juego a 3840 × 2160, tomadas en segundo plano. La [galería completa](screenshots/README.md) incluye las secciones principales de los ajustes gráficos y los nueve estilos de iconos de mando.
 
-| Opciones avanzadas · 4K | Opciones avanzadas · 720p |
+| Menú principal | Opciones avanzadas |
 | --- | --- |
-| ![Opciones avanzadas a 4K](screenshots/opciones-avanzadas-4k.png) | ![Opciones avanzadas a 720p](screenshots/opciones-avanzadas-720p.png) |
+| ![Menú principal a 4K](screenshots/menu-principal-4k.png) | ![Opciones avanzadas a 4K](screenshots/graficos-perfil-4k.png) |
+
+| Resolución y formato | Iconos DualSense |
+| --- | --- |
+| ![Resolución a 4K](screenshots/graficos-resolucion-4k.png) | ![Iconos DualSense a 4K](screenshots/iconos-dualsense-4k.png) |
+
+### Todos los estilos de iconos
+
+![Comparativa de los nueve estilos de iconos HD](screenshots/iconos-hd-comparativa.png)
+
+También hay capturas dentro del juego para [DualSense](screenshots/iconos-dualsense-4k.png), [Xbox Series](screenshots/iconos-xbox-series-4k.png) y [Nintendo Switch](screenshots/iconos-switch-4k.png). La [galería completa](screenshots/README.md) reúne las nueve familias.
 
 ## Código fuente
 
