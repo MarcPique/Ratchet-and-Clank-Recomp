@@ -1,0 +1,17 @@
+# Dev loop: `cargo dev` = run the engine with Bevy dynamically linked (fast relink).
+# Release/profiling builds use plain `cargo run --release -p rc-engine`.
+[alias]
+dev = "run -p rc-engine --features dev"
+dev-build = "build -p rc-engine --features dev"
+# Workspace checks with the same Bevy feature set as `cargo dev` (dynamic_linking), so they reuse its Bevy build
+# instead of compiling a second, static Bevy. rc-engine is the only crate that depends on Bevy; the other members add
+# no Bevy-graph features (verified with `cargo tree -e features`).
+# Tests have no alias: run them only through `cargo xtask test-quick | test-job | test-full` (docs/workflows/testing.md).
+# check and clippy share one Bevy check (metadata) build; it cannot be shared with the test/dev build (codegen).
+check-all = "check --workspace --all-targets --features rc-engine/dev"
+clippy-all = "clippy --workspace --all-targets --features rc-engine/dev"
+xtask = "run -q -p xtask --"
+
+[build]
+# Cap parallelism a little below core count so the machine stays responsive during big builds.
+jobs = 8

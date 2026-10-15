@@ -1,0 +1,23 @@
+# cargo-nextest settings (docs/workflows/testing.md §8). `cargo xtask test-quick | test-job | test-full` use nextest
+# when it is installed (`cargo nextest run --workspace --features rc-engine/dev ...`, so the dev Bevy build is shared);
+# never run nextest by hand. Nextest runs each test in its own process and does not run doctests (the workspace has none).
+
+[profile.default]
+# Run everything and report every failure (the whole suite is the point of a full run).
+fail-fast = false
+# Flag a test as SLOW after 30 s, again every 30 s; never kill it (the 19-level scans legitimately take a while).
+slow-timeout = { period = "30s" }
+# The same cap as the build's `jobs = 8` (.cargo/config.toml): the laptop runs hot at full core count.
+test-threads = 8
+# List the slow and failed tests again at the end of the run.
+final-status-level = "slow"
+
+[test-groups]
+# The rc-formats golden tests share one file, crates/rc-formats/data/loader_snapshots.tsv: with RC_SNAPSHOT_WRITE=1
+# each rewrites its rows (read, merge, write). Under `cargo test` a mutex in tests/formats/snapshot serialises
+# them; nextest's one process per test defeats it, so they run one at a time here.
+loader-snapshots = { max-threads = 1 }
+
+[[profile.default.overrides]]
+filter = 'binary_id(rc-formats::formats) & test(/^golden::/)'
+test-group = 'loader-snapshots'

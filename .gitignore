@@ -1,0 +1,17 @@
+/target/
+/dist/
+/work/
+/installer/bin/
+/installer/obj/
+/installer/payload/*.zip
+/iso/
+/extracted/
+/out/
+/config.local.json
+.env
+.DS_Store
+.cache/
+.vscode/
+.idea/
+__pycache__/
+*.pyc

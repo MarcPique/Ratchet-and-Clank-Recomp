@@ -1,0 +1,12 @@
+[package]
+name = "rc-game"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Gameplay logic of Ratchet & Clank (PS2), ported from the game's code. First module: collision queries (docs/plan/collision_queries.md)."
+
+# Dependency-free apart from rc-formats: the kernels run on PS2 float bit patterns
+# (rc_formats::tfrag_light::ps2), so no vector-math crate is needed.
+[dependencies]
+rc-formats = { path = "../rc-formats" }

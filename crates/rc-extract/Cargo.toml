@@ -1,0 +1,21 @@
+[package]
+name = "rc-extract"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "ratchet_clank-extract: identifies the user's Ratchet & Clank disc image, extracts the Tier 0 archive and prepares the Tier 1 engine cache (docs/plan/launcher_contract.md)."
+
+# Dependency-free by decision (docs/plan/decisions.md): only the workspace's own format readers.
+[dependencies]
+rc-formats = { path = "../rc-formats" }
+# The Tier 1 engine cache code, shared with the engine (`prepare`).
+rc-data = { path = "../rc-data" }
+
+[lib]
+name = "rc_extract"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ratchet_clank-extract"
+path = "src/main.rs"

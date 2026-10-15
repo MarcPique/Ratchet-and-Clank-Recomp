@@ -1,0 +1,19 @@
+[package]
+name = "rc-trace"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Dev tool (never ships). Ground-truth harness: compares our reimplemented computations against PS2 EE memory from PCSX2 (savestates or PINE). Doc: docs/plan/trace_harness.md."
+
+# Pure-Rust decoders only, pinned to the versions/features Bevy already pulls in (Cargo.lock),
+# so adding this crate neither adds lock entries nor changes a feature set of the engine's graph.
+[dependencies]
+rc-formats = { path = "../../crates/rc-formats" }
+# The port's gameplay logic (pure Rust, no Bevy), for the spawn-state comparison (compare-novalis-spawn).
+rc-game = { path = "../../crates/rc-game" }
+# The extractor library, for the by-hand disc checks (`disc-check`: the size/SHA-1 table and a full extraction).
+rc-extract = { path = "../../crates/rc-extract" }
+anyhow.workspace = true
+ruzstd = "0.8"
+miniz_oxide = "0.8"

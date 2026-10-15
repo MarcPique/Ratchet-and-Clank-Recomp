@@ -1,0 +1,10 @@
+[package]
+name = "rc-video"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Native MPEG-2 video decoder and PSS movie player core for the game's FMVs (pure Rust, no external dependencies). Spec: docs/formats/pss.md."
+
+[dependencies]
+rc-formats = { path = "../rc-formats" }

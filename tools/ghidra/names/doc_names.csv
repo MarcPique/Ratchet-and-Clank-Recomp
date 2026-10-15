@@ -1,0 +1,1360 @@
+program,address,name,kind,source_doc,confidence,note
+boot,00100080,g_vu0_prog104691_chain,data,docs/plan/moby_skinning_lighting.md:16,suggested,passed to start_vif1_dma_transfer (= VU0_loadMicroProgram)
+boot,00100090,g_vuprog_104691,data,docs/plan/render_pipeline.md:9,verified,VU0 moby helper program chunk0 (header at 0x100080) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,00100af0,g_vuprog_436083,data,docs/plan/render_pipeline.md:9,verified,VU0 lighting program chunk0 (header at 0x100ae0) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,00101088,g_vuprog_221571,data,docs/plan/render_pipeline.md:14,verified,VU1 particles (header at 0x101080) | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_vu1_part_program (docs/plan/particles.md:17; inferred) | also docs/formats/vu_microprograms.md docs/plan/particles.md
+boot,00101768,g_vuprog_56467,data,docs/plan/render_pipeline.md:13,verified,VU1 shrub (header at 0x101760) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,001022e8,g_vuprog_912339,data,docs/plan/render_pipeline.md:13,verified,VU1 shrub clip list (header at 0x1022e0) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,00103578,g_vuprog_55907,data,docs/plan/render_pipeline.md:11,verified,VU1 tfrag main (header at 0x103570) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,00107028,g_vuprog_903379,data,docs/plan/render_pipeline.md:11,verified,VU1 tfrag fallback (header at 0x107020) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,00108e28,g_vuprog_13507,data,docs/plan/render_pipeline.md:12,verified,VU1 tie (header at 0x108e20) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,0010ad28,g_vuprog_224979,data,docs/plan/render_pipeline.md:12,verified,VU1 tie second program (header at 0x10ad20) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,0010e4c0,g_vu0_prog28259_chain,data,docs/plan/moby_skinning_lighting.md:9,suggested,DMA chain uploading VU0 28259 part
+boot,0010e4d0,g_vuprog_28259,data,docs/plan/render_pipeline.md:9,verified,VU0 patch chunk0 (header at 0x10e4c0) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,0010e7c0,g_vu0_stub_chain,data,docs/plan/moby_skinning_lighting.md:9,suggested,unreferenced VU0 stub chain
+boot,0010e818,g_vuprog_57843,data,docs/plan/render_pipeline.md:16,verified,VU1 sprite/billboard (header at 0x10e810) | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_vu1_sprite_program (docs/plan/hud_text.md:74; inferred) | also docs/formats/vu_microprograms.md docs/plan/hud_text.md
+boot,0010faa0,g_vu1_prog13859_ref,data,docs/plan/moby_skinning_lighting.md:16,suggested,VU1 program 13859 data ref
+boot,0010faa8,g_vuprog_13859,data,docs/plan/render_pipeline.md:15,verified,VU1 moby (header at 0x10faa0) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/formats/vu_microprograms.md
+boot,001160c8,srand,fn,docs/plan/particles.md:136,verified,doc's name; verified against disassembly (line 293) | alt set_global_state_slot (docs/plan/particles.md:136; inferred) | Lombyte name believed wrong: set_global_state_slot
+boot,001160d8,rand,fn,docs/plan/particles.md:135,verified,newlib rand; verified against disassembly (line 293)
+boot,00122330,sce_gs_set_def_load_image,fn,docs/plan/render_pipeline.md:41,verified,startup image load
+boot,00122658,sce_gs_exec_load_image,fn,docs/plan/render_pipeline.md:41,verified,startup image load
+boot,0012dc80,snd_flush_sound_commands,fn,docs/plan/audio.md:19,verified,doc name snd_FlushSoundCommands | 989snd RPC stub
+boot,0012e088,snd_bank_load_from_ee_cb,fn,docs/plan/audio.md:23,verified,doc name snd_BankLoadFromEE_CB | 989snd RPC stub
+boot,0012e6e0,snd_send_iop_command_no_wait,fn,docs/plan/audio.md:18,verified,doc name snd_SendIOPCommandNoWait | 989snd RPC stub
+boot,0012f1a0,doppler_pitch_mod,fn,docs/plan/audio.md:152,suggested,doc name DopplerPitchMod | coined: doppler pm scaling; maybe-mid-function
+boot,0012f2b8,load_disc_sectors_into_global_buffer,fn,docs/formats/disc_layout.md:247,verified,reads 6 sectors at LBA 1500; copies 0x2960-byte ToC
+boot,0012f4d8,g_rand_state,data,docs/plan/particles.md:136,inferred,newlib rand state u32 = *(0x12f76c)+0x58
+boot,0012f76c,g_impure_ptr,data,docs/plan/particles.md:135,suggested,coined: pointer whose +0x58 is the rand state (newlib reent)
+boot,00137b80,g_toc,data,docs/formats/disc_layout.md:247,verified,in-game copy of the disc table of contents (0x2960 bytes)
+boot,00139388,g_movie_table_ntsc,data,docs/plan/menus.md:256,inferred,movie lsn/size table NTSC
+boot,00139424,g_movie_table_pal,data,docs/plan/menus.md:256,inferred,movie lsn/size table PAL
+boot,0013a628,g_music_track_table,data,docs/plan/audio.md:186,verified,level music[15] sector table
+boot,0013a664,g_scene_sounds,data,docs/plan/audio.md:202,verified,scene sounds table
+boot,0013c940,g_pad,data,docs/plan/player_controller.md:28,verified,PAD struct (libpad2); boot .bss
+boot,0013ca48,g_pad_left_stick_x,data,docs/plan/player_controller.md:32,verified,PAD+0x108 left stick X
+boot,0013ca4c,g_pad_left_stick_y,data,docs/plan/player_controller.md:32,verified,PAD+0x10c left stick Y
+boot,0013cadc,g_pad_connected,data,docs/plan/menus.md:47,verified,0 = pad lost
+boot,0013cae0,g_pad_held,data,docs/plan/menus.md:4,verified,pad held mask
+boot,0013cae4,g_pad_pressed,data,docs/plan/menus.md:3,verified,pad pressed mask (PAD+0x1a4) | also docs/plan/moby_update_catalogue.md
+boot,0013caf8,g_pad_held2,data,docs/plan/menus.md:68,inferred,held mask tested for triangle hold-to-browse
+boot,0013cb04,g_pad_pressed2,data,docs/plan/menus.md:4,inferred,second pressed-style mask (PAD+0x1c4) used by vendor and quick-select; meaning unknown
+boot,0013cc90,g_fullscreen_sprite_packet,data,docs/plan/world_animation.md:253,suggested,coined: DIRECT packet for full-screen tint sprites; 0x13xxxx boot bss
+boot,0013cf10,g_gs_reset_regs_b,data,docs/plan/render_pipeline.md:37,verified,11-reg A+D block (FRAME/ZBUF/XYOFFSET/SCISSOR)
+boot,0013cf60,g_xyoffset_a,data,docs/plan/game_camera_fog.md:127,suggested,XYOFFSET field offset for interlace/AA
+boot,0013cf70,g_xyoffset_b,data,docs/plan/game_camera_fog.md:127,suggested,XYOFFSET field offset for interlace/AA
+boot,0013cfc0,g_gs_reset_regs_a,data,docs/plan/render_pipeline.md:37,verified,19-reg A+D block
+boot,0013d0f0,g_sky_gouraud_gs_block,data,docs/plan/sky_render_notes.md:37,verified,7-qw A+D block for gouraud shells
+boot,0013d160,g_sky_textured_gs_block,data,docs/plan/sky_render_notes.md:37,verified,7-qw A+D block for textured shells
+boot,0013d3d0,g_ship_story_flags,data,docs/plan/menus.md:230,inferred,flags 0x13d3d0..d3 guarding story scenes
+boot,0013d428,g_ammo,data,docs/plan/menus.md:164,verified,current ammo [id] | also docs/plan/roadmap.md
+boot,0013d4c0,g_items_owned,data,docs/plan/roadmap.md:98,inferred,owned flags | alt g_item_owned (docs/plan/menus.md:156; inferred) | also docs/plan/menus.md
+boot,0013d4db,g_opt_bolt_alert,data,docs/plan/hud_text.md:188,suggested,option flag for nearby-bolt alert [L]
+boot,0013d4e1,g_extra_614_flag,data,docs/formats/moby_rac1.md:67,suggested,flag spawning class 614; meaning unknown
+boot,0013d4e2,g_extra_618_flag,data,docs/formats/moby_rac1.md:67,suggested,flag spawning class 618; meaning unknown
+boot,0013d4e3,g_extra_407_flag,data,docs/formats/moby_rac1.md:67,suggested,flag spawning class 407; meaning unknown | alt g_discount_flag (docs/plan/menus.md:162; suggested) | also docs/plan/menus.md
+boot,0013d4e8,g_items_acquired,data,docs/plan/roadmap.md:98,inferred,acquired flags
+boot,0013dd40,g_planets,data,docs/plan/roadmap.md:98,inferred,planet unlock state
+boot,0013dd70,g_ammo_bought_stats,data,docs/plan/menus.md:195,verified,stats: ammo bought [id]
+boot,0013e050,g_ship_substate,data,docs/plan/menus.md:31,verified,mode 6 substate
+boot,0013e054,g_ship_substate_ticks,data,docs/plan/menus.md:31,verified,mode 6 tick counter
+boot,0013e056,g_ship_index,data,docs/plan/menus.md:227,verified,ship index
+boot,0013e060,g_ship_path_index,data,docs/plan/menus.md:242,verified,path index
+boot,0013e500,g_scissor_limits,data,docs/plan/render_pipeline.md:27,inferred,iRam0013e500/504 scissor clamp; shared bss range
+boot,0013e504,g_frame_size,data,docs/plan/menus.md:35,inferred,frame size global (<<11 = bytes) for snapshot
+boot,0013e5c0,g_sound_slots,data,docs/plan/audio.md:112,verified,30 sound slots x 0x70 (boot BSS)
+boot,0013f2e4,g_level_callback_list,data,docs/plan/moby_update_catalogue.md:36,suggested,stride 0x90; fn at +4; shared bss (doc says level01)
+boot,0013f350,g_hero,data,docs/plan/player_controller.md:51,inferred,hero global block; +0 = rotation matrix rows | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+boot,0013f3d0,g_hero_pos,data,docs/plan/player_controller.md:55,inferred,position (feet) | also docs/plan/moby_update_catalogue.md docs/plan/particles.md
+boot,0013f3e0,g_hero_rot,data,docs/plan/player_controller.md:56,inferred,Euler rotation
+boot,0013f3e8,g_hero_yaw,data,docs/plan/player_controller.md:56,inferred,yaw rad wrapped to +-pi | also docs/plan/moby_update_catalogue.md
+boot,0013f430,g_hero_vel,data,docs/plan/player_controller.md:57,inferred,velocity u/tick
+boot,0013f440,g_hero_platform_delta,data,docs/plan/player_controller.md:58,inferred,platform delta this tick | alt g_hero_velocity (docs/plan/moby_update_catalogue.md:239; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0013f450,g_hero_disp,data,docs/plan/player_controller.md:59,inferred,total displacement this tick | alt g_hero_velocity_b (docs/plan/moby_update_catalogue.md:239; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0013f460,g_hero_eff_vel,data,docs/plan/player_controller.md:60,inferred,effective velocity
+boot,0013f470,g_hero_eff_vel_z,data,docs/plan/player_controller.md:60,inferred,effective velocity vertical part
+boot,0013f480,g_hero_eff_vel_xy,data,docs/plan/player_controller.md:60,inferred,effective velocity horizontal part
+boot,0013f490,g_hero_platform_applied,data,docs/plan/player_controller.md:61,inferred,platform displacement applied (camera reads)
+boot,0013f49c,g_hero_platform_yaw,data,docs/plan/player_controller.md:61,inferred,platform yaw (camera reads)
+boot,0013f4a0,g_hero_momentum,data,docs/plan/player_controller.md:62,inferred,carried momentum
+boot,0013f4b0,g_hero_eff_len,data,docs/plan/player_controller.md:63,inferred,len(eff)
+boot,0013f4b4,g_hero_eff_len_xy,data,docs/plan/player_controller.md:63,inferred,len(eff.xy)
+boot,0013f4b8,g_hero_fwd_speed,data,docs/plan/player_controller.md:63,inferred,forward speed eff.facing
+boot,0013f4bc,g_hero_slope_ratio,data,docs/plan/player_controller.md:63,inferred,dz/len(eff.xy) clamped +-0.5
+boot,0013f4c0,g_hero_stick_world,data,docs/plan/player_controller.md:64,inferred,stick direction in world
+boot,0013f4d0,g_hero_target_yaw,data,docs/plan/player_controller.md:65,inferred,target yaw
+boot,0013f4d4,g_hero_yaw_vel,data,docs/plan/player_controller.md:65,inferred,yaw velocity
+boot,0013f4d8,g_hero_yaw_residual,data,docs/plan/player_controller.md:65,inferred,yaw residual
+boot,0013f4e0,g_hero_target_speed,data,docs/plan/player_controller.md:66,inferred,target speed u/tick
+boot,0013f4e4,g_hero_speed,data,docs/plan/player_controller.md:66,inferred,current speed u/tick
+boot,0013f4e8,g_hero_state_timer,data,docs/plan/player_controller.md:67,inferred,ticks in state
+boot,0013f51c,g_hero_no_vel_clamp,data,docs/plan/player_controller.md:216,suggested,velocity clamp skipped when set
+boot,0013f550,g_hero_contact_normal,data,docs/plan/player_controller.md:68,inferred,last capsule contact normal
+boot,0013f560,g_hero_contact_point,data,docs/plan/player_controller.md:68,inferred,last capsule contact point
+boot,0013f570,g_hero_capsule_top,data,docs/plan/player_controller.md:69,inferred,capsule top 0.8
+boot,0013f574,g_hero_capsule_bottom,data,docs/plan/player_controller.md:69,inferred,capsule bottom offset 0.7
+boot,0013f578,g_hero_capsule_top_target,data,docs/plan/player_controller.md:69,inferred,capsule top spring target
+boot,0013f57c,g_hero_capsule_bottom_target,data,docs/plan/player_controller.md:69,inferred,capsule bottom spring target
+boot,0013f580,g_hero_capsule_radius_target,data,docs/plan/player_controller.md:69,inferred,capsule radius spring target
+boot,0013f584,g_hero_capsule_radius,data,docs/plan/player_controller.md:69,inferred,capsule radius 0.45
+boot,0013f58c,g_hero_capsule_hit_moby,data,docs/plan/player_controller.md:70,inferred,moby hit by capsule
+boot,0013f5a7,g_hero_capsule_hit,data,docs/plan/player_controller.md:70,inferred,capsule hit this tick flag
+boot,0013f5c0,g_hero_ground_normal,data,docs/plan/player_controller.md:71,inferred,ground normal
+boot,0013f5e0,g_hero_gravity_dir,data,docs/plan/player_controller.md:71,inferred,gravity dir (0;0;-1); fog doc calls it presumably world up
+boot,0013f5f0,g_hero_ground_point,data,docs/plan/player_controller.md:71,inferred,ground point
+boot,0013f628,g_hero_ground_z,data,docs/plan/player_controller.md:72,inferred,ground z
+boot,0013f62c,g_hero_height_above_ground,data,docs/plan/player_controller.md:72,inferred,height above ground
+boot,0013f630,g_hero_slope_angle,data,docs/plan/player_controller.md:72,inferred,slope angle
+boot,0013f634,g_hero_ground_pitch,data,docs/plan/player_controller.md:73,inferred,ground pitch under hero
+boot,0013f638,g_hero_ground_roll,data,docs/plan/player_controller.md:73,inferred,ground roll under hero
+boot,0013f63c,g_hero_slope_yaw,data,docs/plan/player_controller.md:72,inferred,slope yaw
+boot,0013f640,g_water_height,data,docs/plan/audio.md:154,verified,water height | alt g_hero_water_level (docs/plan/collision_queries.md:83; inferred) | also docs/plan/collision_queries.md
+boot,0013f644,g_hero_surface_b_z,data,docs/plan/collision_queries.md:85,inferred,z of surface id 0xb
+boot,0013f64c,g_hero_ground_moby,data,docs/plan/player_controller.md:74,inferred,ground moby | alt g_hero_standing_on (docs/plan/moby_update_catalogue.md:240; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0013f650,g_hero_grounded_ticks,data,docs/plan/player_controller.md:74,inferred,grounded tick count
+boot,0013f65e,g_hero_air_ticks,data,docs/plan/player_controller.md:75,inferred,air ticks (0 = grounded)
+boot,0013f70e,g_hero_sharp_turn,data,docs/plan/player_controller.md:164,inferred,sharp-turn flag set by a flick
+boot,0013f748,g_hero_jump_descent_gravity,data,docs/plan/player_controller.md:187,suggested,x1.17 gravity once descending (7 only); exact role unclear
+boot,0013f750,g_hero_jump,data,docs/plan/player_controller.md:76,inferred,jump block start; +0 = first jump takeoff point (line 203)
+boot,0013f768,g_hero_landed_counter,data,docs/plan/player_controller.md:123,inferred,landed counter
+boot,0013f76e,g_hero_jump_descending,data,docs/plan/player_controller.md:124,inferred,descending flag
+boot,0013f770,g_hero_jump_takeoff_tick,data,docs/plan/player_controller.md:184,inferred,takeoff tick
+boot,0013f774,g_hero_jump_air_speed,data,docs/plan/player_controller.md:188,inferred,air stick speed scale
+boot,0013f798,g_hero_landing_anim_frames,data,docs/plan/player_controller.md:325,suggested,landing-anim frames
+boot,0013f7d0,g_hero_jump_windup_accel,data,docs/plan/player_controller.md:189,inferred,windup accel
+boot,0013f7d4,g_hero_jump_windup_decel,data,docs/plan/player_controller.md:189,inferred,windup decel
+boot,0013f7d8,g_hero_jump_hmin,data,docs/plan/player_controller.md:185,inferred,min jump height
+boot,0013f7dc,g_hero_jump_hmax,data,docs/plan/player_controller.md:185,inferred,max jump height
+boot,0013f7e8,g_hero_jump_ramp_ticks,data,docs/plan/player_controller.md:186,inferred,ticks to ramp min->max
+boot,0013f7ea,g_hero_jump_fall_ticks,data,docs/plan/player_controller.md:130,inferred,ticks before forcing fall 6 (80)
+boot,0013f7f0,g_hero_jump_gravity,data,docs/plan/player_controller.md:187,inferred,jump gravity
+boot,0013f7f4,g_hero_jump_blocked,data,docs/plan/player_controller.md:209,inferred,blocked flag caps air speed
+boot,0013f7ff,g_hero_double_jump_ok,data,docs/plan/player_controller.md:127,suggested,flag: state 7 or 9 (double jump allowed)
+boot,0013fc70,g_hero_push,data,docs/plan/player_controller.md:77,inferred,external push vector (knockback)
+boot,0013fc90,g_hero_group_gravity,data,docs/plan/player_controller.md:173,inferred,group gravity (24 dt^2 in fall)
+boot,0013fdd8,g_hero_moby_alt,data,docs/plan/moby_update_catalogue.md:227,suggested,second copy of hero moby pointer
+boot,0013fde0,g_hero_anim_speed,data,docs/plan/player_controller.md:78,inferred,anim playback speed | alt g_hero_anim_rate (docs/plan/moby_update_catalogue.md:237; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0013fde4,g_hero_anim_blend_rate,data,docs/plan/player_controller.md:78,inferred,anim blend rate / speed multiplier
+boot,0013fdf8,g_hero_anim_frame,data,docs/plan/player_controller.md:78,inferred,current anim frame (float)
+boot,0013fe10,g_hero_attach_matrices,data,docs/formats/moby_rac1.md:80,suggested,0x40 per attach list
+boot,001403e0,g_hero_item_slots,data,docs/formats/moby_rac1.md:79,suggested,0x50-byte item slot records
+boot,001404d0,g_pack_moby,data,docs/plan/moby_update_catalogue.md:243,suggested,back pack moby pointer
+boot,001404d4,g_clank_moby,data,docs/plan/moby_update_catalogue.md:243,suggested,Clank moby pointer
+boot,0014063d,g_hero_footstep_class,data,docs/plan/collision_queries.md:82,inferred,footstep class stored by ground probe (default 3)
+boot,00140e50,g_hero_pos_history,data,docs/plan/player_controller.md:79,inferred,32 x vec4 position history
+boot,00141070,g_hero_stick,data,docs/plan/player_controller.md:49,verified,hero stick vector (stick or d-pad fallback)
+boot,00141347,g_extra_479_count,data,docs/formats/moby_rac1.md:67,suggested,count of class 479 mobys (up to 8)
+boot,00141390,g_nearest_area,data,docs/plan/moby_update_catalogue.md:127,suggested,nearest area to hero chosen by class 605; shared bss
+boot,001413d0,g_ratchet_moby,data,docs/plan/player_controller.md:51,inferred,Ratchet's moby* | alt g_hero (docs/plan/audio.md:117; inferred); alt g_hero_moby (docs/plan/moby_update_catalogue.md:227; suggested) | also docs/plan/audio.md docs/plan/moby_update_catalogue.md
+boot,001413d4,g_hero_state,data,docs/plan/player_controller.md:80,inferred,hero state enum | also docs/plan/moby_update_catalogue.md
+boot,001413d8,g_hero_substate,data,docs/plan/player_controller.md:80,inferred,substate
+boot,001413dc,g_hero_move_group,data,docs/plan/player_controller.md:80,inferred,movement group | alt g_hero_substate (docs/plan/moby_update_catalogue.md:240; suggested) | also docs/plan/moby_update_catalogue.md
+boot,001413e0,g_hero_prev_state,data,docs/plan/player_controller.md:80,inferred,previous state
+boot,001413e4,g_hero_prev_group,data,docs/plan/player_controller.md:80,inferred,previous group
+boot,001413f4,g_hero_character,data,docs/plan/player_controller.md:81,inferred,character (0 = Ratchet) | alt g_hero_mode (docs/plan/moby_update_catalogue.md:230; suggested) | also docs/plan/moby_update_catalogue.md
+boot,00141403,g_hero_gravity_mode,data,docs/plan/player_controller.md:81,inferred,gravity mode (0 = normal Z)
+boot,00141424,g_temp_item,data,docs/formats/moby_rac1.md:79,suggested,temporary item id
+boot,00141430,g_equipped_pack,data,docs/plan/moby_update_catalogue.md:244,suggested,equipped pack item
+boot,001415ec,g_hero_stick_mag,data,docs/plan/player_controller.md:49,verified,min(|stick|;1)
+boot,001415f8,g_hero_health,data,docs/plan/player_controller.md:81,inferred,health | alt g_hero_hp (docs/plan/hud_text.md:185; inferred); alt g_hero_can_interact (docs/plan/moby_update_catalogue.md:240; suggested) | also docs/plan/hud_text.md docs/plan/moby_update_catalogue.md
+boot,00141624,g_quick_select_timer,data,docs/plan/menus.md:68,inferred,20-tick triangle press timer
+boot,00141628,g_hide_hero_items,data,docs/formats/moby_rac1.md:79,suggested,items hidden (mode|=0x41) while != 0
+boot,00141660,g_save_hand_item,data,docs/formats/moby_rac1.md:79,suggested,
+boot,00141664,g_save_feet_item,data,docs/formats/moby_rac1.md:79,suggested,
+boot,00141668,g_save_head_item,data,docs/formats/moby_rac1.md:79,suggested,
+boot,0014166c,g_save_back_item,data,docs/plan/moby_update_catalogue.md:244,suggested,saved back item id
+boot,00141968,g_help_shown_counters,data,docs/plan/hud_text.md:153,verified,per-slot shown counter (8 B each)
+boot,0014bec0,g_gold_bolts_collected,data,docs/plan/moby_update_catalogue.md:161,suggested,gold bolt collected flags; shared bss
+boot,0014c190,g_death_bits,data,docs/plan/moby_update_catalogue.md:218,suggested,save spawn-id/death bits; + level*0x100; shared bss
+boot,001516f2,g_music_req_track,data,docs/plan/audio.md:194,inferred,requested track | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,001516f3,g_music_req_stinger,data,docs/plan/audio.md:194,inferred,requested stinger | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,001516fc,g_music_timer,data,docs/plan/audio.md:195,verified,music change timer (420 ticks) | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00151704,g_music_player_main,data,docs/plan/audio.md:191,verified,main music player | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00151720,g_music_player_dialogue,data,docs/plan/audio.md:191,verified,dialogue player | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015173c,g_music_player_transition,data,docs/plan/audio.md:191,verified,transition player | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00151900,g_fs_aa_packet_0,data,docs/plan/render_pipeline.md:37,verified,pre-built AA/field resolve packet (38 regs) | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_aa_blit_regs (docs/plan/hud_text.md:95; inferred) | also docs/plan/hud_text.md
+boot,00151b60,g_fs_aa_packet_1,data,docs/plan/render_pipeline.md:37,verified,pre-built AA packet (41 regs) | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00151bc0,g_fs_aa_packet_2,data,docs/plan/render_pipeline.md:37,inferred,pre-built AA packet | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00151dc0,g_fs_aa_packet_3,data,docs/plan/render_pipeline.md:37,inferred,pre-built AA packet | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,00152040,g_fs_aa_packet_4,data,docs/plan/render_pipeline.md:37,verified,pre-built clear packet (21 regs) for append_gif_transfer_packet | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_clear_packet (docs/plan/game_camera_fog.md:134; verified) | also docs/plan/game_camera_fog.md
+boot,0015ed5c,g_sound_bank_handle,data,docs/plan/audio.md:69,verified,bank handle | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ed60,g_speed_scale,data,docs/plan/player_controller.md:17,verified,PAL speed scale 1.2 | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/plan/particles.md
+boot,0015ed64,g_speed_scale_sq,data,docs/plan/player_controller.md:17,verified,PAL speed scale squared 1.44 | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ed68,g_tick_scale,data,docs/plan/player_controller.md:16,verified,tick-count scale (1.0 NTSC; 0.8333 PAL) | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_rate_factor (docs/plan/hud_text.md:5; inferred); alt g_timer_scale (docs/plan/particles.md:94; inferred) | also docs/plan/hud_text.md docs/plan/particles.md
+boot,0015ed6c,g_dt,data,docs/plan/player_controller.md:14,verified,dt = 1/60 (NTSC) | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/plan/moby_update_catalogue.md docs/plan/particles.md | 2026-09-27 fix: verified: SetTimeBase writes 1/60 (NTSC) or 0x3ca3d70b = 0.02 (PAL); ~100 readers
+boot,0015ed70,g_dt_sq,data,docs/plan/player_controller.md:14,verified,dt^2 = 1/3600 | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_tick_scale (docs/plan/moby_update_catalogue.md:185; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/particles.md
+boot,0015ed7c,g_dt2,data,docs/plan/world_animation.md:6,verified,"second dt copy: SetTimeBase (boot 0x214970 / level01 0x276258) writes 1/60 NTSC, 0x3ca3d70a = 0.02 PAL; level01 reader only UvScrollerUpdate 0x30f208; the main dt is 0x15ed6c | was g_dt_60 (docs/plan/world_animation.md:6; inferred) | 2026-09-27 fix: boot label renamed g_dt_60 -> g_dt2 in Ghidra"
+boot,0015ed80,g_is_pal,data,docs/plan/render_pipeline.md:30,verified,"PAL flag: set_time_base 0x214970 writes 0 NTSC / 1 PAL; read by set_pal_mode 0x1f34e8, DrawWorld, HUD, InitOnce (docs/plan/game_state.md:75 PAL flag) | was g_tie_mirror_pass (docs/plan/render_pipeline.md:30; inferred) -- wrong: iGpffff8180 = gp-0x7e80 = 0x15ed80 is the PAL flag, so DrawTies_2 is the PAL variant, not a mirror pass | 2026-09-27 fix: boot label renamed g_tie_mirror_pass -> g_is_pal in Ghidra | retagged boot: address below overlay base 0x15ef00 (shared)"
+boot,0015ed84,g_current_level,data,docs/plan/sky_render_notes.md:83,verified,current level index | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/plan/menus.md docs/plan/particles.md
+boot,0015ed88,g_language,data,docs/plan/menus.md:143,verified,language 0 En 2 Fr 3 De 4 Es 5 It | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ed90,g_wrench_selected,data,docs/formats/moby_rac1.md:79,suggested,hand shows wrench while != 0 | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ed94,g_pack_alt_flag,data,docs/plan/moby_update_catalogue.md:244,suggested,pack = 3 (class 608) when set | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ed98,g_bolts,data,docs/plan/menus.md:164,verified,bolt count | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/plan/roadmap.md
+boot,0015eda0,g_max_hp,data,docs/plan/hud_text.md:185,inferred,max HP | retagged boot: address below overlay base 0x15ef00 (shared) | also docs/plan/roadmap.md
+boot,0015edb4,g_opt_mirror,data,docs/plan/player_controller.md:43,verified,"mirror option: negates lx/rx and swaps L/R | retagged boot: address below overlay base 0x15ef00 (shared) | 2026-09-27 fix: verified: cheat byte 4 of 0x15edb0; read by ProcessPadInput 0x27bd90 (negate sticks), CameraUpdate/0x2a2000 (cross product), StickTarget, map; distinct from 0x15edb5"
+boot,0015edb5,g_opt_mirror_anim,data,docs/plan/player_controller.md:256,verified,"mirror option (swaps anims); adjacent to 0x15edb4 also called mirror option | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_hero_anim_mirror (docs/plan/moby_update_catalogue.md:238; suggested) | also docs/plan/moby_update_catalogue.md | 2026-09-27 fix: verified separate flag (cheat byte 5): SetAnim 0x247a90 swaps 0x31<->0x32, SetState 0x23cf98 swaps 0x1c<->0x1d, HeroSyncMoby, HeroItemsAttach; not the pad mirror 0x15edb4"
+boot,0015edd0,g_vendor_stock,data,docs/plan/menus.md:154,verified,global stock [12] (save data) | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015eddc,g_opt_cam_invert_y,data,docs/plan/player_controller.md:278,verified,stick-up raises camera option | retagged boot: address below overlay base 0x15ef00 (shared) | alt g_options (docs/plan/roadmap.md:98; inferred) | also docs/plan/roadmap.md
+boot,0015ede0,g_opt_cam_invert_x,data,docs/plan/player_controller.md:277,verified,0 inverts right-stick yaw | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ede4,g_opt_cam_yaw_rate,data,docs/plan/player_controller.md:269,verified,camera yaw rate option index | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ede8,g_opt_mono,data,docs/plan/audio.md:167,verified,mono flag | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015edec,g_opt_music_volume,data,docs/plan/audio.md:164,verified,option music volume | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015edf0,g_opt_sfx_volume,data,docs/plan/audio.md:164,verified,option sfx volume | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ee74,g_gs_alloc_ptr,data,docs/plan/particles.md:162,inferred,GS memory byte address reset each frame; below overlay PT_LOAD so boot | alt g_sky_tex_tbp (docs/plan/sky_render_notes.md:129; inferred) | also docs/plan/sky_render_notes.md
+boot,0015ee84,g_frame_fbp,data,docs/plan/menus.md:35,inferred,frame buffer FBP used for snapshot | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015ee8c,g_level_texture_gs_base,data,docs/formats/tfrag_rac1.md:329,verified,DAT_0015ee8c; level texture area GS address (>>8 = blocks)
+boot,0015eea4,g_play_time,data,docs/plan/menus.md:17,verified,play time counter | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015eeb4,g_pad_removed_flag,data,docs/plan/menus.md:51,verified,bit 1 = pad removed | retagged boot: address below overlay base 0x15ef00 (shared)
+boot,0015f438,g_frame_counter,data,docs/plan/shrub_lighting.md:190,verified,gp-0x77c8
+boot,0015f484,g_level_fog,data,docs/plan/game_camera_fog.md:13,verified,level fog settings 0x15f484..0x15f494
+boot,0015f640,g_occl_grid,data,docs/plan/occlusion_culling.md:6,verified,boot = level01 0x15f600 + 0x40
+boot,0015fac0,g_light_const_vec,data,docs/plan/tfrag_lighting.md:21,verified,vf21 constant (1.0; 0.5; 1/3; 0.25); level01 0x15fb40
+boot,001609d0,g_tie_dma_templates,data,docs/formats/tie_rac1.md:244,verified,TieProc DMA templates (0x160a00; 0x160a10 inside)
+boot,00160b30,cf10,data,docs/plan/game_camera_fog.md:54,verified,fog slope * n (Q numerator)
+boot,00160e60,g_guard_band_scale,data,docs/formats/tfrag_rac1.md:654,verified,(0.25; 0.25) xy guard-band scale
+boot,00160ea0,g_tfrag_lod_dists,data,docs/formats/tfrag_rac1.md:533,verified,D0=6L; D1=4L; D2=2L
+boot,00160eb0,g_tfrag_lod_dists_raw,data,docs/formats/tfrag_rac1.md:541,verified,trunc(Di*1024) thresholds for TfragProc
+boot,00160ec0,g_tfrag_cull_dist,data,docs/plan/game_camera_fog.md:92,verified,distance culling 512000 | alt g_tfrag_far_cull (docs/formats/tfrag_rac1.md:654; verified) | also docs/formats/tfrag_rac1.md
+boot,00160f70,g_tie_draw_distance_cap,data,docs/plan/tie_lighting.md:69,verified,720.0 set by fun_001e9b10; gp-0x5c90 (tie_rac1.md:270)
+boot,001610c4,g_alt_fog,data,docs/plan/game_camera_fog.md:13,verified,alternate fog set
+boot,00165500,g_normal_lut,data,docs/plan/tfrag_lighting.md:20,verified,256 x (f32 cos; f32 sin); level01 0x166500 | alt g_moby_normal_trig_table (docs/plan/moby_skinning_lighting.md:18; suggested) | also docs/plan/moby_skinning_lighting.md
+boot,00166c00,_gp,data,docs/plan/moby_skinning_lighting.md:79,inferred,gp register value
+boot,001863dc,g_gadget_def_table,data,docs/formats/moby_rac1.md:56,suggested,boot copy; start later corrected by 4 bytes in level01
+boot,00186f40,g_view_rotation_only,data,docs/plan/sky_render_notes.md:67,verified,rotation-only view matrix | alt g_view_matrix (docs/plan/game_camera_fog.md:16; verified); alt g_view_matrix_a (docs/plan/trace_harness.md:178; inferred); alt g_view (docs/plan/moby_skinning_lighting.md:47; suggested) | also docs/plan/game_camera_fog.md docs/plan/moby_skinning_lighting.md docs/plan/trace_harness.md
+boot,00186f80,g_view_proj,data,docs/plan/game_camera_fog.md:16,verified,view*proj | alt g_view_matrix_b (docs/plan/trace_harness.md:178; inferred) | also docs/plan/moby_skinning_lighting.md docs/plan/trace_harness.md
+boot,00186fc0,g_guard_band_view_proj,data,docs/formats/tie_rac1.md:281,verified,guard-band view-projection (w = z/n); maybe inside 0x186f80 block | alt g_view_proj_guard (docs/plan/game_camera_fog.md:16; verified) | also docs/plan/game_camera_fog.md
+boot,00187000,g_view_proj_clip,data,docs/plan/game_camera_fog.md:16,verified,guard-band/clip variant 2
+boot,00187040,g_view_proj_clip2,data,docs/plan/game_camera_fog.md:16,verified,guard-band/clip variant 3 | alt g_sky_view_proj (docs/plan/sky_render_notes.md:60; verified) | also docs/plan/sky_render_notes.md
+boot,00187080,Camera,data,docs/plan/player_controller.md:25,verified,existing Lombyte name; level01 0x167240 | alt g_camera (docs/plan/trace_harness.md:178; inferred); alt g_view_camera_pos (docs/plan/moby_skinning_lighting.md:47; suggested) | also docs/plan/moby_skinning_lighting.md docs/plan/trace_harness.md
+boot,00187290,g_camera_rows,data,docs/plan/game_camera_fog.md:29,verified,Camera+0x210 rotation rows
+boot,001872d4,g_use_alt_fog,data,docs/plan/game_camera_fog.md:13,verified,alternate fog enable
+boot,0018c32c,g_camera_use_euler,data,docs/plan/game_camera_fog.md:30,verified,nonzero: build rows from Euler
+boot,0018cd00,g_vu1_moby_constants,data,docs/plan/moby_skinning_lighting.md:11,suggested,per-frame 6 qw VU1 constant block
+boot,0018cda0,g_view_near_params,data,docs/formats/tie_rac1.md:270,verified,vf19 near-plane cull constant (x 1/1024) | alt g_view_near (docs/plan/game_camera_fog.md:46; verified) | also docs/plan/game_camera_fog.md
+boot,0018cda4,g_view_far,data,docs/plan/game_camera_fog.md:46,verified,f = 745472.0
+boot,0018cdb0,g_view_tan_half_fov,data,docs/plan/player_controller.md:266,verified,tan(hfov/2) = 0.63 (tx); level01 0x16cf70 | alt g_frustum_side_tan (docs/formats/tie_rac1.md:270; verified) | also docs/formats/tie_rac1.md
+boot,0018cdc0,g_projection,data,docs/plan/game_camera_fog.md:12,verified,projection matrix | alt g_world_projection (docs/plan/sky_render_notes.md:69; verified) | also docs/plan/moby_skinning_lighting.md docs/plan/sky_render_notes.md docs/plan/trace_harness.md
+boot,0018cdec,g_fog_slope,data,docs/plan/game_camera_fog.md:105,verified,slope = cf10/n | alt g_view_vu_w_slope (docs/formats/tfrag_rac1.md:655; inferred) | also docs/formats/tfrag_rac1.md
+boot,0018ce00,g_projection_alt1,data,docs/plan/game_camera_fog.md:12,verified,projection variant | alt g_proj_w_over_n (docs/plan/sky_render_notes.md:68; verified) | also docs/plan/sky_render_notes.md
+boot,0018ce40,g_proj_screen_scaled,data,docs/plan/sky_render_notes.md:69,verified,0x18ce00 rows scaled by cf08/cf0c/Zs | alt g_projection_alt2 (docs/plan/game_camera_fog.md:12; verified) | also docs/plan/game_camera_fog.md
+boot,0018ce90,g_screen_scale,data,docs/plan/sky_render_notes.md:64,verified,vf26 (1024; 832; Zs; cf10)
+boot,0018cea0,g_screen_offset,data,docs/plan/sky_render_notes.md:64,verified,(2048; 2048; ...)
+boot,0018cee0,g_frustum_side_k,data,docs/formats/tie_rac1.md:270,verified,vf22 side-plane test constant
+boot,0018cef0,g_view_near_far,data,docs/formats/tfrag_rac1.md:654,inferred,n/f used by the wholly-inside test
+boot,0018cf00,g_screen_half_w,data,docs/plan/game_camera_fog.md:48,verified,W/2 = 256 | alt g_view_context (docs/plan/moby_skinning_lighting.md:152; suggested) | also docs/plan/moby_skinning_lighting.md
+boot,0018cf04,g_screen_half_h,data,docs/plan/game_camera_fog.md:48,verified,H/2 = 208
+boot,0018cf0c,g_sky_sprite_scale,data,docs/plan/particles.md:224,suggested,sky star Q scale (boot; med)
+boot,0018cf20,g_fog_params,data,docs/plan/tie_lighting.md:73,verified,vf18 (cf20; cf24; In; If) from UpdateViewContext; level01 row named g_fog_clamps
+boot,0018d040,g_sky_gif_paging_list,data,docs/plan/sky_render_notes.md:129,inferred,DoSkyGifPaging list
+boot,00193fc0,g_occl_mask,data,docs/plan/occlusion_culling.md:7,verified,0x80-byte frame occlusion mask (boot)
+boot,00194100,CollOutput,data,docs/plan/collision_queries.md:14,verified,existing Lombyte name
+boot,00197180,g_anim_snapshot_spheres,data,docs/plan/moby_animation.md:85,suggested,snapshot bounding spheres; 16 per slot
+boot,001983c0,g_coll_hit_log,data,docs/plan/collision_queries.md:109,verified,boot hit log; level01 0x178580
+boot,0019ae10,g_env_transitions,data,docs/plan/game_camera_fog.md:15,verified,env-transition records
+boot,0019bdc0,g_dir_light_bank,data,docs/plan/tie_lighting.md:16,verified,boot copy of level01 0x180340 | alt g_light_bank (docs/plan/moby_skinning_lighting.md:24; suggested) | also docs/plan/moby_skinning_lighting.md
+boot,0019c1c0,g_point_light_bank,data,docs/plan/tie_lighting.md:17,verified,boot copy of level01 0x180740
+boot,0019e540,g_shrub_default_billboard_texture,data,docs/plan/shrub_lighting.md:231,verified,default texture when no ShrubBillboardInfo
+boot,001a04c0,g_save_global_chunks,data,docs/plan/roadmap.md:98,inferred,47 global save-chunk descriptors (boot; identical in all overlays)
+boot,001a07c0,g_save_level_chunks,data,docs/plan/roadmap.md:98,inferred,11 per-level save-chunk descriptors x 20 (identical in all overlays)
+boot,001aabc0,g_anim_snapshot_frames,data,docs/plan/moby_animation.md:57,suggested,snapshot frames; slot*0x800
+boot,001b3580,g_moby_update_table,data,docs/plan/moby_animation.md:69,suggested,update fn table filled per level (catalogue uses level01 0x197b00)
+boot,001b76e0,g_moby_grid,data,docs/plan/collision_queries.md:109,verified,boot moby grid; level01 0x19bc60 | 2026-09-27 fix: verified in the boot line kernel 0x1efa68; level01 0x19bc60 = boot - 0x1ba80 (not the -0x1fe40 of CollOutput/hit log)
+boot,001d7f30,g_shrub_class_registry,data,docs/plan/shrub_lighting.md:212,verified,class registered here by class init
+boot,001d88b0,g_shrub_paging_table,data,docs/plan/shrub_lighting.md:224,verified,shrub texture paging table
+boot,001d8cb0,g_shrub_paging_distance,data,docs/plan/shrub_lighting.md:212,verified,trunc(mip_distance*1024) per class
+boot,001d92b0,g_shrub_class_textures,data,docs/plan/shrub_lighting.md:213,verified,16 texture bytes per class
+boot,001d96e0,g_sky_matrix,data,docs/plan/sky_render_notes.md:60,verified,SkyM 4x4
+boot,001d9b48,g_cam_mode_min_fov,data,docs/plan/game_camera_fog.md:59,verified,per-mode min tan(hfov/2)
+boot,001de380,g_moby_chain_preamble,data,docs/plan/moby_skinning_lighting.md:86,suggested,REF 4 qw VIF preamble
+boot,001de740,g_tfrag_vu_const_block,data,docs/formats/tfrag_rac1.md:553,verified,17 qw DMA block uploading VU qw 656..670 (qw666-669 at 0x1de7f0) | alt g_tfrag_vu_block (docs/plan/game_camera_fog.md:18; verified) | also docs/plan/game_camera_fog.md
+boot,001de750,g_tfrag_vu_consts,data,docs/plan/game_camera_fog.md:12,verified,tfrag VU constant block (VU qw 656..670) | alt g_tfrag_vu1_block (docs/plan/trace_harness.md:177; inferred) | also docs/plan/trace_harness.md
+boot,001de8e0,g_tie_strow_template,data,docs/formats/tie_rac1.md:287,verified,STROW 0x4b000000 x4 for tie palette unpack
+boot,001de9b0,g_shrub_vu1_constants,data,docs/formats/shrub_sky_rac1.md:223,verified,boot template of shrub VU1 constants vf31/vf30/vf29
+boot,001de9d8,g_shrub_vu1_fog_scale_offset,data,docs/plan/shrub_lighting.md:140,inferred,vf30.zw fog scale/offset from UpdateViewContext; program inferred from address range
+boot,001de9e0,g_shrub_vu1_fog_clamps,data,docs/plan/shrub_lighting.md:140,inferred,vf29.xy fog min/max; program inferred from address range
+boot,001dea80,g_shrub_opaque_test_block,data,docs/plan/shrub_lighting.md:261,verified,TEST_1 0x5320b block; sent at boot 0x228e24
+boot,001deab0,g_shrub_fade_test_block,data,docs/plan/shrub_lighting.md:261,verified,TEST_1 0x530cb block; sent at boot 0x2296dc
+boot,001deae0,g_shrub_billboard_pass2_gs,data,docs/plan/shrub_lighting.md:161,verified,boot copy of level01 0x1c3060
+boot,001deb10,g_shrub_billboard_gs_setup,data,docs/plan/shrub_lighting.md:157,verified,boot copy of level01 0x1c3090
+boot,001debb0,g_shrub_billboard_corner_table,data,docs/plan/shrub_lighting.md:160,verified,boot copy of level01 0x1c3130
+boot,001dedc0,g_moby_gs_state,data,docs/plan/moby_skinning_lighting.md:86,suggested,per-moby GS state (ALPHA_1; TEST_1; fog)
+boot,001dfdf0,g_shrub_sway_sin_table,data,docs/plan/shrub_lighting.md:188,verified,boot copy of level01 0x1c4370
+boot,001dfef0,g_shrub_sway_constants,data,docs/plan/shrub_lighting.md:189,verified,boot copy of level01 0x1c4470
+boot,001e0900,g_tfrag_texture_size_table,data,docs/formats/tfrag_rac1.md:361,verified,w = h = 1 << n table used by BuildTfragTextureDma
+boot,001e9ab8,transition_draw_sky,fn,docs/plan/sky_render_notes.md:14,inferred,sky draw: SetupSkyGifPaging; per-shell loop
+boot,001e9b10,level_init_read_settings,fn,docs/plan/game_camera_fog.md:14,suggested,doc name LevelInitReadSettings | coined: fun_001e9b10 level init reading level settings; calls UpdateFog | alt LevelLoadRenderInit (docs/plan/tie_lighting.md:14; suggested); alt FillLightBank (docs/plan/moby_skinning_lighting.md:24; suggested) | also docs/plan/moby_skinning_lighting.md docs/plan/tie_lighting.md
+boot,001ea830,transition_load_wad,fn,docs/plan/shrub_lighting.md:209,inferred,calls shrub class init per class
+boot,001eb410,transition_default_draw,fn,docs/plan/render_pipeline.md:9,inferred,calls VU0_loadMicroProgram(0x100ae0)
+boot,001eccd8,camera_update,fn,docs/plan/game_camera_fog.md:31,suggested,doc name CameraUpdate | coined: fun_001eccd8 usual camera update (rows from look dir)
+boot,001ee4b0,update_fog_zones,fn,docs/plan/game_camera_fog.md:15,suggested,doc name UpdateFogZones | coined: fun_001ee4b0 fog zones lerp from env transitions | alt EnvFogUpdate (docs/plan/world_animation.md:204; suggested) | also docs/plan/world_animation.md
+boot,001ee650,moby_skin_light,fn,docs/plan/moby_skinning_lighting.md:7,suggested,doc name MobySkinLight | doc: unnamed; suggested name; EE driver for VU0 104691 | also docs/plan/roadmap.md
+boot,001ef9c8,coll_cell_lookup,fn,docs/plan/collision_queries.md:110,suggested,doc name CollCellLookup | coined: boot cell lookup; level01 0x2117d0
+boot,001efa68,coll_line_fix,fn,docs/plan/collision_queries.md:33,verified,doc name CollLine_Fix | boot line kernel; level01 0x211870 | also docs/plan/roadmap.md
+boot,001f0b58,coll_type,fn,docs/plan/collision_queries.md:39,verified,doc name CollType | boot CollType; level01 0x2151d8 | alt CollSurfaceType (docs/plan/world_animation.md:242; suggested) | also docs/plan/world_animation.md
+boot,001f2070,world_to_screen,fn,docs/plan/game_camera_fog.md:19,suggested,doc name WorldToScreen | coined: fun_001f2070 EE world->screen for one point
+boot,001f2260,build_rotation_view_proj,fn,docs/plan/sky_render_notes.md:61,suggested,doc name BuildRotationViewProj | coined: fun_001f2260 builds view-projection variants from camera rotation | alt UpdateCameraMatrices (docs/plan/game_camera_fog.md:16; suggested) | also docs/plan/game_camera_fog.md
+boot,001f2588,UpdateFog__Fi,fn,docs/plan/game_camera_fog.md:13,verified,existing Lombyte name
+boot,001f2690,parse_occl_grid,fn,docs/plan/occlusion_culling.md:5,verified,doc name ParseOcclGrid | boot copy of level01 0x218e78
+boot,001f2768,get_occl_grid_from_pair,fn,docs/plan/occlusion_culling.md:5,verified,doc name GetOcclGridFromPair | boot copy of level01 0x218f50
+boot,001f2820,build_occl_visibility,fn,docs/plan/occlusion_culling.md:6,verified,doc name BuildOcclVisibility | boot copy of level01 0x219008
+boot,001f2c10,update_occlusion,fn,docs/plan/occlusion_culling.md:6,verified,doc name UpdateOcclusion | boot copy of level01 0x2193f8
+boot,001f2c60,InitViewContext__Fv,fn,docs/plan/game_camera_fog.md:11,verified,existing Lombyte name
+boot,001f2d98,update_view_context,fn,docs/plan/moby_skinning_lighting.md:11,verified,alt UpdateViewContext (docs/plan/sky_render_notes.md:68; verified); alt UpdateViewContext__Fv (docs/plan/game_camera_fog.md:12; verified) | also docs/plan/game_camera_fog.md docs/plan/sky_render_notes.md
+boot,001f33b8,set_render_to_texture_view,fn,docs/plan/game_camera_fog.md:21,suggested,doc name SetRenderToTextureView | coined: fun_001f33b8 render-to-texture view
+boot,001f34e8,set_pal_mode,fn,docs/plan/sky_render_notes.md:37,inferred,patches ZBUF with real ZBP
+boot,001f3868,reset_gs_registers,fn,docs/plan/game_camera_fog.md:20,verified,doc name; sets FOGCOL
+boot,001f39d0,draw_world,fn,docs/plan/moby_skinning_lighting.md:15,inferred,"doc name DrawWorld | doc preferred meaning of draw_debug_profiler | alt DrawDebugProfiler (docs/plan/game_camera_fog.md:16; verified); alt draw_debug_profiler (docs/plan/moby_skinning_lighting.md:15; inferred) | also docs/plan/game_camera_fog.md docs/plan/render_pipeline.md docs/plan/sky_render_notes.md | Lombyte name believed wrong: DrawDebugProfiler, draw_debug_profiler"
+boot,001f44b8,GetEffectTex__Fii,fn,docs/plan/hud_text.md:17,verified,boot equivalent | alt GetEffectTex (docs/plan/particles.md:21; inferred) | also docs/plan/particles.md
+boot,001f4d98,draw_screen_fade,fn,docs/plan/hud_text.md:101,suggested,doc name DrawScreenFade | coined: fun_001f4d98 screen fade; program assumed boot (fun_ prefix)
+boot,001f55d8,draw_bone_quads,fn,docs/plan/menus.md:205,suggested,doc name DrawBoneQuads | coined: fun_001f55d8 textured quads RGBA 0x80808080; program assumed boot
+boot,001f62b0,font_print,fn,docs/plan/hud_text.md:116,verified,doc name FontPrint | boot equivalent
+boot,001f76a0,setup_water_strip_vu1,fn,docs/plan/world_animation.md:30,suggested,doc name SetupWaterStripVu1 | coined: fun_001f76a0 sets VU1 prog 57843; view-proj and guard-band consts | alt DrawSpriteHelper_A (docs/plan/render_pipeline.md:16; suggested) | also docs/plan/render_pipeline.md
+boot,001f96f8,scale_ticks,fn,docs/plan/menus.md:6,verified,doc name ScaleTicks | doc writes fun_001f96f8 = ScaleTicks; boot addr (level01 0x220e30 per hud_text.md) | alt ScaleTickCount (docs/plan/player_controller.md:16; suggested) | also docs/plan/player_controller.md
+boot,001f97a0,log2_plzcw,fn,docs/formats/tfrag_rac1.md:329,suggested,doc name Log2Plzcw | coined: log2(x) = 30 - PLZCW(x) helper; maybe-mid-function
+boot,001f97e8,fill_transfer_words,fn,docs/plan/moby_untextured.md:28,inferred,
+boot,001f9838,mem_copy,fn,docs/plan/tfrag_lighting.md:27,suggested,doc name MemCopy | coined: fun_001f9838(dst; src; n) copies light sets
+boot,001f9988,vec_length,fn,docs/plan/world_animation.md:140,suggested,doc name VecLength | coined: fun_001f9988 in disturbance; assumed |d| (doc unknown)
+boot,001f9a10,vec_add,fn,docs/plan/tie_lighting.md:32,suggested,doc name VecAdd | coined: fun_001f9a10 add translation
+boot,001f9a80,vec_scale,fn,docs/plan/tie_lighting.md:31,suggested,doc name VecScale | coined: fun_001f9a80 multiply all lanes by scalar
+boot,001f9c90,clamp_vec_length,fn,docs/plan/particles.md:128,suggested,doc name ClampVecLength | coined: fun_001f9c90 rescales vector to max length; not drag (line 324)
+boot,001f9cf8,matrix_mul_vec3,fn,docs/plan/tie_lighting.md:31,suggested,doc name MatrixMulVec3 | coined: fun_001f9cf8 M3*v; w kept
+boot,001fa050,euler_to_matrix,fn,docs/plan/player_controller.md:54,suggested,"doc name EulerToMatrix | coined: fun_001fa050 builds rotation rows from Euler 0x13f3e0 | retagged boot: boot function start, not a level01 one"
+boot,001fa070,build_euler_matrix,fn,docs/plan/sky_render_notes.md:85,suggested,doc name BuildEulerMatrix | coined: fun_001fa070 Euler builder M=Rz*Ry*Rx
+boot,001fa2b8,matrix_copy_rows,fn,docs/formats/moby_rac1.md:73,suggested,doc name MatrixCopyRows | coined: stores W rows into item moby; role inferred
+boot,001fa378,sce_vu0_mul_matrix,fn,docs/plan/game_camera_fog.md:22,verified,doc name sceVu0MulMatrix | fun_001fa378 identified as sceVu0MulMatrix | alt MatrixMul4x4 (docs/plan/sky_render_notes.md:71; suggested) | also docs/plan/sky_render_notes.md
+boot,001fb280,set_background_color,fn,docs/plan/game_camera_fog.md:134,verified,doc name
+boot,001fb368,append_gif_transfer_packet,fn,docs/plan/game_camera_fog.md:135,verified,doc name
+boot,001ffc30,hud_sprite,fn,docs/plan/hud_text.md:79,verified,doc name HudSprite | boot equivalent
+boot,00201650,init_once,fn,docs/plan/moby_untextured.md:27,verified,decomp + disassembly
+boot,002026c8,parse_particle_texs,fn,docs/plan/particles.md:20,inferred,doc name ParseParticleTexs | boot copy
+boot,002028e0,load_sky,fn,docs/plan/sky_render_notes.md:13,suggested,doc name LoadSky | coined: sky loader; relocates offsets; sets clear_screen=1
+boot,00202a98,LoadHudBanks__Fv,fn,docs/plan/hud_text.md:23,verified,boot equivalent
+boot,00202d78,build_moby_ad_gif,fn,docs/plan/moby_untextured.md:18,suggested,doc name BuildMobyAdGif | coined: fun_00202d78 builds ad-gif words from moby texture table
+boot,00202fd0,set_up_vis_gif_viewer,fn,docs/plan/moby_untextured.md:20,inferred,
+boot,00203338,moby_class_relocate,fn,docs/plan/moby_untextured.md:14,suggested,doc name MobyClassRelocate | coined: fun_00203338 rewrites ad-gif A+D words of every packet
+boot,00203640,moby_classes_relocate,fn,docs/plan/moby_untextured.md:14,suggested,doc name MobyClassesRelocate | coined: fun_00203640; calls fun_00203338 for every class
+boot,00203730,tie_ad_gif_convert,fn,docs/plan/tie_lighting.md:75,suggested,doc name TieAdGifConvert | coined: fun_00203730 converts tie ad-gifs at load (tfrag rule)
+boot,00203b08,shrub_class_init,fn,docs/plan/shrub_lighting.md:209,suggested,doc name ShrubClassInit | coined: fun_00203b08 shrub class init / ad-gif conversion | alt ConvertAdGif (docs/plan/roadmap.md:69; suggested) | also docs/plan/roadmap.md
+boot,002040e0,relocate_tfrags,fn,docs/plan/trace_harness.md:64,suggested,doc name RelocateTfrags | coined: fun_002040e0 rewrites tfrag header data to absolute ptrs | alt TfragLoadInit (docs/plan/shrub_lighting.md:221; suggested) | also docs/plan/shrub_lighting.md
+boot,00204a40,select_world_object_resource_tables,fn,docs/formats/moby_rac1.md:54,inferred,
+boot,0020b618,wad_decompress,fn,docs/plan/trace_harness.md:63,suggested,doc name WadDecompress | coined: fun_0020b618(wad+0x50; base) decompress
+boot,0020c5f0,init_moby_instance,fn,docs/plan/moby_update_catalogue.md:28,verified,doc name InitMobyInstance | boot copy of level01 0x263488 | alt init_moby_instance (docs/plan/moby_animation.md:69; inferred) | also docs/plan/moby_animation.md
+boot,0020c880,update_moby_animation_state,fn,docs/plan/moby_animation.md:63,inferred,level01 0x263718
+boot,0020c940,moby_loop_sound_refresh,fn,docs/plan/moby_animation.md:78,suggested,doc name MobyLoopSoundRefresh | coined: refreshes loop-sound voice | alt MobyLoopSoundUpdate (docs/plan/audio.md:135; suggested) | also docs/plan/audio.md
+boot,0020c9e0,compute_interpolated_record_value,fn,docs/plan/moby_animation.md:34,inferred,
+boot,0020cc18,find_or_allocate_id_slot,fn,docs/plan/moby_animation.md:85,inferred,
+boot,0020cca8,moby_attach_to_joint,fn,docs/formats/moby_rac1.md:69,suggested,doc name MobyAttachToJoint | coined: attach item moby to a joint chain of Ratchet
+boot,0020d1a8,process_moby_anim_data,fn,docs/plan/moby_skinning_lighting.md:18,inferred,
+boot,0020d278,draw_mobys_setup,fn,docs/plan/moby_skinning_lighting.md:16,inferred,
+boot,0020d3b0,draw_mobys_clean_up,fn,docs/plan/moby_skinning_lighting.md:18,inferred,
+boot,0020d460,draw_mobys,fn,docs/plan/moby_skinning_lighting.md:15,inferred,
+boot,0020d580,moby_anim_advance,fn,docs/plan/moby_animation.md:8,verified,doc name MobyAnimAdvance | algorithm verified from disassembly | also docs/plan/roadmap.md
+boot,0020d868,build_active_moby_list,fn,docs/plan/moby_update_catalogue.md:41,suggested,doc name BuildActiveMobyList | coined: activity gate / active list builder (level01 0x265548) | alt MobyUpdateLoop (docs/plan/roadmap.md:57; suggested) | also docs/plan/roadmap.md
+boot,0020def8,moby_build_rotation,fn,docs/plan/roadmap.md:63,suggested,doc name MobyBuildRotation | coined: fun_0020def8 R = Rz*Ry*Rx via VU0 28259 | alt MobyBuildMatrix (docs/plan/moby_update_catalogue.md:46; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0020e098,moby_anim_sphere_lerp,fn,docs/plan/moby_animation.md:19,suggested,doc name MobyAnimSphereLerp | coined: lerps A/B sequence bounding spheres by t
+boot,0020e0e0,moby_anim_eval,fn,docs/plan/moby_animation.md:8,suggested,doc name MobyAnimEval | suggested name (moby_skinning_lighting.md); algorithm verified | alt MobyAnimEvaluate (docs/plan/roadmap.md:9; suggested) | also docs/plan/roadmap.md
+boot,0020ede8,moby_anim_snapshot,fn,docs/plan/moby_update_catalogue.md:371,suggested,doc name MobyAnimSnapshot | coined: fun_0020ede8 re-encodes current pose as snapshot frame
+boot,00210850,moby_mark_joint_chain,fn,docs/formats/moby_rac1.md:70,suggested,doc name MobyMarkJointChain | coined: marks joints of a list and evaluates them | alt MobyPartialPose (docs/plan/roadmap.md:58; suggested) | also docs/plan/roadmap.md
+boot,002109b8,moby_anim_eval_chain,fn,docs/formats/moby_rac1.md:70,verified,doc name MobyAnimEvalChain | coined: partial evaluator; verified from disassembly (evaluate_chains) | alt MobyPartialPoseChains (docs/plan/roadmap.md:58; suggested) | also docs/plan/roadmap.md
+boot,00211728,moby_anim_proc,fn,docs/plan/moby_skinning_lighting.md:7,inferred,
+boot,00211808,moby_proc,fn,docs/plan/moby_untextured.md:33,verified,doc name MobyProc | 
+boot,00212d68,moby_class_register,fn,docs/plan/moby_update_catalogue.md:25,suggested,doc name MobyClassRegister | coined: boot fun_00212d68 = level copy FUN_00279218
+boot,00212ed8,moby_change_sequence,fn,docs/plan/roadmap.md:56,suggested,doc name MobyChangeSequence | coined: fun_00212ed8 sequence change/blend (pair order unclear) | alt MobySetSeqFrame (docs/plan/menus.md:101; suggested); alt MobyAnimCut (docs/plan/moby_update_catalogue.md:215; suggested) | also docs/plan/menus.md docs/plan/moby_update_catalogue.md
+boot,00212f90,moby_set_anim_snapshot,fn,docs/plan/player_controller.md:249,suggested,"doc name MobySetAnimSnapshot | coined: fun_00212f90 generic set-anim that snapshots the pose | retagged boot: boot function start, not a level01 one | alt MobyBlendSequence (docs/plan/roadmap.md:56; suggested); alt MobyAnimBlend (docs/plan/moby_update_catalogue.md:237; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md"
+boot,002130d8,moby_anim_blend_ex,fn,docs/plan/moby_update_catalogue.md:287,suggested,doc name MobyAnimBlendEx | coined: blend with flags (level01 0x26c7a8)
+boot,00213260,randi,fn,docs/plan/particles.md:141,verified,boot copy
+boot,002132a8,randf,fn,docs/plan/particles.md:142,verified,boot copy
+boot,00213308,rand_angle,fn,docs/plan/particles.md:144,verified,boot copy
+boot,00214970,set_time_base,fn,docs/plan/particles.md:94,verified,doc name SetTimeBase | coined: fun_00214970 sets NTSC/PAL speed; timer scale; dt; dt^2 | alt IsPal (docs/plan/player_controller.md:17; suggested) | also docs/plan/player_controller.md | 2026-09-27 fix: verified: writes 0x15ed60/64/68/6c/70/74/78/7c and 0x15ed80 (PAL flag); level01 copy SetTimeBase 0x276258
+boot,00217a30,create_part,fn,docs/plan/particles.md:13,inferred,doc name CreatePart | boot copy; Lombyte name
+boot,00217b88,update_parts,fn,docs/plan/particles.md:16,inferred,doc name UpdateParts | boot copy
+boot,00217c18,part_proc,fn,docs/plan/particles.md:17,inferred,doc name PartProc | boot copy
+boot,0021880c,_part_load_tex,fn,docs/plan/particles.md:18,inferred,boot copy
+boot,00224368,load_hand_gadget,fn,docs/formats/moby_rac1.md:54,inferred,doc name LoadHandGadget | 
+boot,00224b70,hand_item_update,fn,docs/formats/moby_rac1.md:60,suggested,doc name HandItemUpdate | coined: boot copy
+boot,00224d28,head_item_update,fn,docs/formats/moby_rac1.md:64,suggested,doc name HeadItemUpdate | coined: boot copy
+boot,00224e18,feet_item_update,fn,docs/formats/moby_rac1.md:65,suggested,doc name FeetItemUpdate | coined: boot copy
+boot,00224fc0,back_item_update,fn,docs/formats/moby_rac1.md:62,suggested,doc name BackItemUpdate | coined: boot copy
+boot,00225180,spawn_extra479,fn,docs/formats/moby_rac1.md:67,suggested,doc name SpawnExtra479 | coined: spawns up to 8 x class 479
+boot,00225490,spawn_hand_gadget_moby,fn,docs/formats/moby_rac1.md:54,suggested,doc name SpawnHandGadgetMoby | coined: fun_00225490 spawns the gadget moby via CreateMoby
+boot,00228a30,patch_shrub_gifs,fn,docs/plan/shrub_lighting.md:217,verified,doc name PatchShrubGifs | fun_00228a30; ORs TBP per frame; name suggested in render_pipeline.md:51 | 2026-09-27 fix: verified by decompile; level01 copy 0x29cc38 (not 0x228870)
+boot,00228be8,shrub_proc,fn,docs/plan/shrub_lighting.md:147,verified,doc name ShrubProc | fun_00228be8 exact-match boot copy; level01 = boot + 0x74208
+boot,002292f0,shrub_wind_sway,block,docs/plan/shrub_lighting.md:181,suggested,"doc name ShrubWindSway | coined: boot copy of sway block; maybe-mid-function | 2026-09-27 fix: not a function start, the sway block 0x2292f0..0x229468 inside shrub_proc 0x228be8 (docs/plan/shrub_lighting.md s7); do not rename a function"
+boot,0022a330,shrub_texture_paging,fn,docs/plan/shrub_lighting.md:224,suggested,doc name ShrubTexturePaging | coined: fun_0022a330 fills paging table; uploads base+mip1
+boot,0022ae70,update_sky_effects,fn,docs/plan/particles.md:23,inferred,boot template; star levels have overlay copies | also docs/plan/sky_render_notes.md
+boot,0022b288,draw_sky_shells,fn,docs/plan/sky_render_notes.md:28,suggested,doc name DrawSkyShells | variant sky shell draw paired with level01 0x29f260; name from render_pipeline.md:51
+boot,0022b690,sky_draw_shell,fn,docs/plan/sky_render_notes.md:16,verified,flags==0 textured else gouraud
+boot,0022b6e8,sky_draw_shell_textured,fn,docs/plan/sky_render_notes.md:17,suggested,doc name SkyDrawShellTextured | coined: textured shell; cluster cull; double-buffered SPR DMA
+boot,0022b928,sky_draw_shell_gouraud,fn,docs/plan/sky_render_notes.md:17,suggested,doc name SkyDrawShellGouraud | coined: gouraud shell; cluster cull; SPR DMA
+boot,0022bba0,sky_sprite_proc,fn,docs/plan/sky_render_notes.md:21,inferred,star sprites | alt SkySpriteProc (docs/plan/particles.md:23; inferred) | also docs/plan/particles.md
+boot,0022bec4,_load_tex,fn,docs/plan/particles.md:226,inferred,sky sprite texture loader (own copy)
+boot,0022bf94,sky_transform_vertices,fn,docs/plan/sky_render_notes.md:19,suggested,doc name SkyTransformVertices | coined: vertex transform + clip flags into scratchpad
+boot,0022c0e0,sky_build_gif_gouraud,fn,docs/plan/sky_render_notes.md:20,suggested,doc name SkyBuildGifGouraud | coined: gouraud triangle-list GIF builder
+boot,0022c208,sky_build_gif_textured,fn,docs/plan/sky_render_notes.md:20,suggested,doc name SkyBuildGifTextured | coined: textured triangle-list GIF builder
+boot,0022c4c8,sky_bsphere_check,fn,docs/plan/sky_render_notes.md:18,inferred,doc name SkyBsphereCheck | boot match of level01 SkyBsphereCheck
+boot,0022d7f0,sound_slot_alloc,fn,docs/plan/audio.md:116,suggested,doc name SoundSlotAlloc | coined: doc writes fun_0022d7f0 (boot) = 0x2a13a0 level01
+boot,0022da68,play_class_sound,fn,docs/plan/menus.md:108,suggested,doc name PlayClassSound | coined: fun_0022da68 = class sound n; boot addr; level01 0x2a1618 per audio.md | alt PlayMobySound (docs/plan/moby_update_catalogue.md:295; suggested) | also docs/plan/moby_update_catalogue.md
+boot,0022eaa8,clamp_camera_fov,fn,docs/plan/game_camera_fog.md:59,suggested,doc name ClampCameraFov | coined: fun_0022eaa8 clamps tan(hfov/2) to per-mode minimum
+boot,0022f288,draw_world_paused,fn,docs/plan/render_pipeline.md:21,suggested,doc name DrawWorldPaused | coined: address from level01 name fun_0022f288; maybe unreliable
+boot,00231bd8,play_story_transition,fn,docs/plan/menus.md:247,suggested,doc name PlayStoryTransition | coined: fun_00231bd8(planet;a;b;ticks) first-visit transition; program assumed boot
+boot,00233068,set_tfrag_dists,fn,docs/formats/tfrag_rac1.md:525,verified,"boot name; level01 SetTfragDists 0x2a79f0 | alt SetTfragDists (docs/plan/game_camera_fog.md:76; verified) | also docs/plan/game_camera_fog.md | 2026-09-27 fix: address verified (Lombyte set_tfrag_dists; level01 0x2a79f0 = boot + 0x74988, byte-compared); 0x233b48 is inside vu1_set_scissor"
+boot,00233308,patch_tfrag_gifs,fn,docs/formats/tfrag_rac1.md:364,verified,"doc name PatchTfragGifs | boot copy of level01 0x2a7c90 | 2026-09-27 fix: address verified (Lombyte patch_tfrag_gifs; level01 0x2a7c90 = boot + 0x74988, byte-compared); 0x233de8 is inside dmac_vif1_disable"
+boot,002333a8,draw_tfrag,fn,docs/plan/game_camera_fog.md:17,verified,our name; Lombyte DrawTfrag | alt DrawTfrag (docs/plan/game_camera_fog.md:17; verified)
+boot,002334d8,VU0_loadMicroProgram__FPl,fn,docs/plan/render_pipeline.md:9,verified,boot match of level01 0x2b4470 | alt start_vif1_dma_transfer (docs/plan/render_pipeline.md:9; verified) | Lombyte name believed wrong: start_vif1_dma_transfer
+boot,00233c28,replay_hud_gs_state,fn,docs/plan/hud_text.md:96,suggested,doc name ReplayHudGsState | coined: fun_00233c28 replays 0x1c2970; boot addr (level01 0x2b4bc0)
+boot,00233fb0,tfrag_proc,fn,docs/plan/game_camera_fog.md:18,verified,our name; Lombyte TfragProc | alt TfragProc (docs/formats/tfrag_rac1.md:526; verified) | also docs/formats/tfrag_rac1.md
+boot,00234bd8,compute_tfrag_texture_usage,fn,docs/formats/tfrag_rac1.md:635,verified,doc name ComputeTfragTextureUsage | boot copy of level01 0x2a8a80
+boot,00234d48,build_tfrag_texture_dma,fn,docs/formats/tfrag_rac1.md:361,verified,doc name BuildTfragTextureDma | boot copy of level01 0x2a8bf0 | alt build_tfrag_texture_dma (docs/plan/moby_untextured.md:30; inferred) | also docs/plan/moby_untextured.md
+boot,00234f98,light_tfrags,fn,docs/plan/tfrag_lighting.md:15,verified,doc name LightTfrags | Lombyte fun_00234f98; 0x6a4 bytes
+boot,00235be8,tie_proc,fn,docs/plan/tie_lighting.md:67,verified,doc name TieProc | boot copy of level01 0x2a9a90 (0x235be8..0x2370b8)
+boot,002370c0,tie_texture_paging,fn,docs/plan/tie_lighting.md:77,suggested,doc name TieTexturePaging | coined: fun_002370c0 tie texture paging
+boot,00237370,light_ties,fn,docs/plan/tie_lighting.md:13,verified,doc name LightTies | Lombyte exact match of level01 0x2ab218
+boot,00237a78,moby_screen_rect,fn,docs/plan/menus.md:136,suggested,doc name MobyScreenRect | coined: fun_00237a78 projects moby to widget rect; program assumed boot (fun_ prefix)
+level01,0015ef50,g_game_cameras,data,docs/plan/moby_update_catalogue.md:86,suggested,camera instances; stride 0x20; pvar ptr +0x1c
+level01,0015f3f4,g_render_mask,data,docs/plan/render_pipeline.md:23,verified,DAT_0015f3f4; gates renderers in DrawDebugProfiler | alt g_render_pass_flags (docs/plan/particles.md:170; suggested) | also docs/plan/particles.md
+level01,0015f3f8,g_frame_counter,data,docs/plan/shrub_lighting.md:190,verified,gp-0x7808; +1 per main-loop frame after sceGsSyncV
+level01,0015f3fc,g_fade_to_black,data,docs/plan/menus.md:42,verified,global fade-to-black factor 0..1
+level01,0015f404,g_hud_hide2,data,docs/plan/hud_text.md:102,inferred,HUD skipped while set
+level01,0015f418,g_gif_paging_count,data,docs/plan/particles.md:161,inferred,count for GIF paging list 0x16d200
+level01,0015f444,g_level_fog,data,docs/plan/world_animation.md:209,inferred,level fog globals 0x15f444..0x15f454
+level01,0015f45c,g_font_color_codes_enabled,data,docs/plan/hud_text.md:118,verified,colour codes applied only if non-zero
+level01,0015f460,g_font_color_lock,data,docs/plan/hud_text.md:117,verified,if 0 colour slot 0 = caller colour
+level01,0015f570,g_exit_main_loop,data,docs/plan/menus.md:244,verified,1 leaves main loop
+level01,0015f574,g_num_moby_level_defs,data,docs/plan/audio.md:79,verified,= 2
+level01,0015f5c0,g_next_level,data,docs/plan/menus.md:240,verified,destination level
+level01,0015f5c4,g_game_mode,data,docs/plan/menus.md:13,verified,game mode variable gp-0x763c | also docs/plan/moby_update_catalogue.md docs/plan/render_pipeline.md
+level01,0015f5c8,g_mode_frame_count,data,docs/plan/menus.md:14,verified,frames spent in current mode
+level01,0015f5cc,g_logic_tick_counter,data,docs/plan/sky_render_notes.md:86,verified,"aka uGpffff89cc / DAT_0015f5cc; 60 Hz logic tick | alt g_tick_counter (docs/plan/player_controller.md:25; verified); alt g_logic_tick (docs/plan/menus.md:16; verified); alt g_frame_counter (docs/plan/world_animation.md:5; inferred); alt g_menu_mode (docs/plan/roadmap.md:96; suggested) | also docs/plan/menus.md docs/plan/player_controller.md docs/plan/roadmap.md docs/plan/world_animation.md | 2026-09-27 fix: verified: 0x2ab960 does lw/addiu 1/sw on 0x15f5cc; g_menu_mode (roadmap.md mode table at 0x15f5cc) is wrong, the game-mode variable is 0x15f5c4"
+level01,0015f5d8,g_skip_render_once,data,docs/plan/menus.md:14,verified,set 1 on transitions to skip rendering once
+level01,0015f5e0,g_vu1_resident_program,data,docs/plan/render_pipeline.md:15,verified,DAT_0015f5e0; resident VU1 program id cache; -1 at frame start
+level01,0015f5f0,g_level_sound_def_count,data,docs/plan/audio.md:74,verified,level SoundDef count
+level01,0015f5f4,g_level_sound_defs,data,docs/plan/audio.md:74,verified,level SoundDef array
+level01,0015f600,g_occl_grid,data,docs/formats/occlusion_rac1.md:14,verified,core_data + header.occlusion; set by FUN_00258128
+level01,0015f604,g_occl_octant,data,docs/formats/occlusion_rac1.md:42,verified,octant override block (levels 11; 13; 17)
+level01,0015f608,g_occl_fallback,data,docs/plan/occlusion_culling.md:39,verified,fallback flag 0/1/2; cleared each frame
+level01,0015f60c,g_occl_missed,data,docs/plan/occlusion_culling.md:36,verified,1 when camera outside grid
+level01,0015f610,g_occl_prev_mask,data,docs/plan/occlusion_culling.md:36,verified,pointer to last used mask (sticky)
+level01,0015f618,g_coll_hero_groups,data,docs/plan/collision_queries.md:10,inferred,gp-0x75e8 computed with gp=0x166c00; hero groups ptr
+level01,0015f630,g_ship_enter_request,data,docs/plan/menus.md:52,verified,set 1 by ship triangle; next tick take-off
+level01,0015f640,g_banner_countdown,data,docs/plan/hud_text.md:164,verified,DAT_0015f640
+level01,0015f644,g_banner_alpha,data,docs/plan/hud_text.md:163,verified,DAT_0015f644
+level01,0015f660,g_msg_table,data,docs/plan/hud_text.md:203,verified,DAT_0015f660 message entries
+level01,0015f6a8,g_head_item_joint_table,data,docs/formats/moby_rac1.md:81,suggested,
+level01,0015f7f8,g_health_orb_offsets4,data,docs/plan/hud_text.md:185,inferred,orb offsets for 4 orbs
+level01,0015fb40,g_light_const_vec,data,docs/plan/render_pipeline.md:45,verified,_DAT_0015fb40 vf21 constant (1.0; 0.5; 1/3; 0.25) (tfrag_lighting.md:21)
+level01,0015fc88,g_spawn_test_table,data,docs/plan/moby_render_notes.md:16,suggested,indexed by instance unknown_4 in spawn test; program not stated; loader is level01
+level01,0015ffcc,g_moby_chain_start,data,docs/plan/render_pipeline.md:32,verified,DAT_0015ffcc chain start recorded by DrawMobysSetup
+level01,0015ffd8,g_mobys,data,docs/plan/collision_queries.md:12,inferred,gp-0x6c28 computed with gp=0x166c00; moby array ptr | also docs/plan/moby_update_catalogue.md
+level01,00160008,g_gadget_count,data,docs/formats/moby_rac1.md:52,suggested,
+level01,001600ec,g_cuboids,data,docs/plan/moby_update_catalogue.md:95,suggested,cuboid table; 0x80 each
+level01,0016016c,g_part_pool,data,docs/plan/particles.md:27,inferred,gp-0x6a94; particle pool pointer (2048 x 0x40)
+level01,00160170,g_part_free_hint,data,docs/plan/particles.md:29,inferred,gp-0x6a90 lowest-free hint
+level01,00160174,g_part_high_water,data,docs/plan/particles.md:30,inferred,gp-0x6a8c highest index ever live
+level01,00160178,g_part_live_count,data,docs/plan/particles.md:30,inferred,gp-0x6a88 live count; absolute addr computed with gp=0x166c00
+level01,0016017c,g_global_far,data,docs/plan/particles.md:177,inferred,gp-0x6a84 global far: 0x1f4000 (500 u) or 0x40000 (64 u) underwater
+level01,00160494,g_shrub_runtime_records,data,docs/plan/shrub_lighting.md:15,verified,pointer to 0x20-byte per-instance shrub records
+level01,0016049c,g_shrub_matrix_blocks,data,docs/plan/shrub_lighting.md:16,verified,gp-0x6764; pointer to 0x40-byte matrix blocks
+level01,001604a0,g_shrub_palettes,data,docs/plan/shrub_lighting.md:17,verified,gp-0x6760; 0x60-byte palette per instance
+level01,00160520,g_sky_variant_translation,data,docs/plan/sky_render_notes.md:123,inferred,translation used by sky variant 0x29f260
+level01,00160548,g_ship_classes,data,docs/plan/menus.md:227,verified,ship class table | also docs/plan/moby_update_catalogue.md
+level01,001607d0,g_part_tex0_template,data,docs/plan/particles.md:163,inferred,TEX0 template for particle textures
+level01,001607ec,g_part_size_scale,data,docs/plan/particles.md:202,inferred,sprite size scale (W/2)/(tx*210000)
+level01,00160b80,g_shrub_billboard_ad_tag,data,docs/plan/shrub_lighting.md:163,verified,A+D tag NLOOP 1; 3 x A+D
+level01,00160ba0,g_shrub_billboard_giftag,data,docs/plan/shrub_lighting.md:174,verified,sprite GIF tag 0x160ba0/b0
+level01,00160ec0,g_tfrag_cull_dist,data,docs/plan/world_animation.md:251,inferred,tfrag distance cull
+level01,00160f60,g_tfrag_lod_dists,data,docs/formats/tfrag_rac1.md:529,verified,level01 = boot 0x160ea0 + 0xc0
+level01,00160fc0,g_tie_runtime_records,data,docs/formats/occlusion_rac1.md:83,verified,runtime tie array; 0x20 bytes each
+level01,001611a0,g_vu1_sync_mask,data,docs/plan/render_pipeline.md:21,inferred,uGpffffa5a0 (gp=0x166c00; address computed from gp offset)
+level01,001611b8,g_vu1_chain_buffers,data,docs/plan/render_pipeline.md:21,verified,DAT_001611b8/bc chain buffers
+level01,001611c0,g_vif1_chain_ptr,data,docs/plan/hud_text.md:73,verified,DAT_001611c0 main VIF1 chain append point
+level01,001611c8,g_vu1_chain_limit,data,docs/plan/render_pipeline.md:32,verified,DAT_001611c8 chain overflow check
+level01,001611cc,g_mem_slot_extra,data,docs/plan/trace_harness.md:58,suggested,coined: DAT_001611cc load-path dependent size (0x30000/0x60000/0x100000)
+level01,001611d0,g_vu1_chain_index,data,docs/plan/render_pipeline.md:21,verified,DAT_001611d0; toggles between chain buffers
+level01,00161200,g_uw_tint_rgba,data,docs/plan/world_animation.md:253,inferred,underwater tint RGBAQ 0x161200..03
+level01,00161204,g_uw_fog_color,data,docs/plan/world_animation.md:247,inferred,underwater fog colour 0x161204..06
+level01,00161208,g_uw_fog_near,data,docs/plan/world_animation.md:248,inferred,underwater fog near
+level01,0016120c,g_uw_fog_far,data,docs/plan/world_animation.md:248,inferred,underwater fog far (32 units)
+level01,00161210,g_uw_fog_near_f,data,docs/plan/world_animation.md:248,inferred,underwater near F
+level01,00161214,g_uw_fog_far_f,data,docs/plan/world_animation.md:248,inferred,underwater far F (48)
+level01,00161218,g_ripple_buf_a,data,docs/plan/world_animation.md:133,inferred,height buffer index; swapped with 0x16121c after step
+level01,0016121c,g_ripple_buf_b,data,docs/plan/world_animation.md:133,inferred,height buffer index; swapped with 0x161218 after step
+level01,00161220,g_ripple_render_buf,data,docs/plan/world_animation.md:130,inferred,render buffer index
+level01,00161224,g_ripple_sim_accum,data,docs/plan/world_animation.md:129,inferred,sim clock accumulator f
+level01,001612d0,g_ripple_patch_base,data,docs/plan/world_animation.md:90,inferred,ripple patch base pointer
+level01,001612d4,g_ripple_bounds_ptr,data,docs/plan/world_animation.md:90,inferred,pointer to bounds table 0x1fa6c0
+level01,001612d8,g_ripple_patch_count,data,docs/plan/world_animation.md:90,inferred,ripple patch count (21)
+level01,001612dc,g_water_plane_enable,data,docs/plan/world_animation.md:147,inferred,flat water plane fallback: enable
+level01,001612e0,g_water_plane_centre,data,docs/plan/world_animation.md:147,inferred,flat water plane fallback: centre
+level01,001612e8,g_water_plane_height,data,docs/plan/world_animation.md:147,inferred,flat water plane fallback: height
+level01,001612ec,g_water_plane_radius,data,docs/plan/world_animation.md:147,inferred,flat water plane fallback: radius
+level01,00161368,g_class809_periods,data,docs/plan/world_animation.md:177,inferred,60-tick periods turned into frame counts
+level01,00161374,g_waterfall_uscroll,data,docs/plan/world_animation.md:174,inferred,809 global U scroll
+level01,00161ce0,g_class761_init_done,data,docs/plan/world_animation.md:80,suggested,gp-0x4f20 guard for class 761 init
+level01,00162110,g_env_overlay_scroll_u,data,docs/plan/world_animation.md:182,inferred,1848 UV scroll u
+level01,00162114,g_env_overlay_scroll_v,data,docs/plan/world_animation.md:182,inferred,1848 UV scroll v
+level01,001622a4,g_hologram_spin_angle,data,docs/plan/menus.md:220,verified,"+0.05 per tick | 2026-09-27 fix: valid level01 address in the overlay .bss (0x162280..0x166430, NOBITS; an uninitialised Ghidra block, which apply_doc_names read_memory reports as no-memory); vendor code 0x2b0a08 lwc1 / add angle / 0x2b0a1c swc1: it is the spin angle, advanced 0.05/tick, reset at 0x2ae2d0; was g_hologram_spin_speed; PENDING level01 (locked: unsaved transaction, not written): create_label"
+level01,001622b4,g_vendor_quantity,data,docs/plan/menus.md:191,verified,"ammo purchase quantity | 2026-09-27 fix: valid level01 address in the overlay .bss (0x162280..0x166430; uninitialised Ghidra block, reported no-memory by apply_doc_names); set 0 at 0x2ae2c8, set at 0x2af83c when the popup opens, read/written by the buy flow 0x2af7e8; PENDING level01 (locked: unsaved transaction, not written): create_label"
+level01,00166500,g_normal_lut,data,docs/plan/render_pipeline.md:45,verified,LightTfrags SPR_TO source; 256 x (cos; sin) normal LUT (tfrag_lighting.md:20)
+level01,00166d00,g_cos_table,data,docs/plan/particles.md:201,inferred,256-float cos table
+level01,00167100,g_view_rot,data,docs/plan/particles.md:175,inferred,rotation-only view matrix
+level01,00167140,g_view_proj,data,docs/plan/particles.md:188,inferred,view*proj matrix
+level01,00167180,g_shrub_view_matrix,data,docs/plan/shrub_lighting.md:141,inferred,view matrix = 0x16cfc0 x 0x167100; not decoded | alt g_fog_lane_matrix (docs/plan/roadmap.md:68; suggested) | also docs/plan/roadmap.md
+level01,001671c0,g_guard_band_matrix,data,docs/plan/particles.md:180,inferred,guard-band clip matrix
+level01,00167240,g_render_camera,data,docs/plan/menus.md:97,verified,camera saved by menu; sound listener pos (audio.md) | alt g_render_camera_pos (docs/plan/occlusion_culling.md:34; verified); alt Camera (docs/plan/player_controller.md:25; verified); alt g_camera_pos (docs/plan/moby_update_catalogue.md:59; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/occlusion_culling.md docs/plan/particles.md docs/plan/player_controller.md
+level01,00167250,g_camera_euler,data,docs/plan/player_controller.md:265,verified,camera Euler (Camera+0x10)
+level01,00167258,g_camera_yaw,data,docs/plan/player_controller.md:143,verified,CameraYaw read by hero (Camera Euler yaw)
+level01,00167280,g_active_camera_ptr,data,docs/plan/world_animation.md:240,suggested,coined: pointer; [0x167280]+0x86 = camera mode
+level01,00167310,g_cam_hero_move_dir,data,docs/plan/player_controller.md:261,verified,hero move direction for camera
+level01,00167334,g_cam_hero_speed,data,docs/plan/player_controller.md:261,verified,hero speed for camera
+level01,00167450,g_camera_forward,data,docs/plan/player_controller.md:264,verified,camera row forward (Camera+0x210) | alt g_camera_rotation (docs/plan/audio.md:141; inferred) | also docs/plan/audio.md
+level01,00167460,g_camera_left,data,docs/plan/player_controller.md:264,verified,camera row left
+level01,00167470,g_camera_up,data,docs/plan/player_controller.md:264,verified,camera row up
+level01,00167494,g_camera_underwater,data,docs/plan/audio.md:153,verified,underwater flag | alt g_underwater (docs/plan/particles.md:177; inferred) | also docs/plan/particles.md
+level01,001675d0,g_update_cams,data,docs/plan/player_controller.md:262,verified,48 UpdateCam records; stride 0xa0
+level01,00169590,g_cam_type0_data,data,docs/plan/player_controller.md:268,verified,type-0 camera data block D
+level01,00169a90,g_cam_type0_defaults,data,docs/plan/player_controller.md:268,verified,defaults of data block D
+level01,0016a480,g_tfrag_relight_enable,data,docs/plan/tfrag_lighting.md:17,inferred,DAT_0016a480 gates per-frame LightTfrags call; role not stated
+level01,0016a4b8,g_aa_enabled,data,docs/plan/hud_text.md:218,inferred,DAT_0016a4b8 AA pass enable
+level01,0016c4e0,g_update_mask,data,docs/plan/player_controller.md:22,verified,gameplay update mask (0xf normal; 0x10 debug single-step)
+level01,0016c4ec,g_debug_cam_mode,data,docs/plan/occlusion_culling.md:47,verified,debug menu camera mode
+level01,0016c4f4,g_occl_mode,data,docs/plan/occlusion_culling.md:22,verified,0 off; 1 freeze; 2 active
+level01,0016ccb8,g_font_color_table,data,docs/plan/hud_text.md:117,verified,colour code table
+level01,0016cf70,g_view_tan_half_fov,data,docs/plan/player_controller.md:266,verified,tan(hfov/2) = 0.63; boot 0x18cdb0 | alt g_fov (docs/plan/menus.md:97; verified); alt g_frustum_tan_y (docs/plan/particles.md:179; suggested) | also docs/plan/menus.md docs/plan/particles.md
+level01,0016d060,g_vu_screen_offset,data,docs/plan/particles.md:188,suggested,coined: (2048; 2048; 8388112; fog intercept)
+level01,0016d0a0,g_frustum_tan_x,data,docs/plan/particles.md:179,suggested,frustum tangent (x/y assignment of 0x16d0a0/0x16cf70 assumed)
+level01,0016d0d0,g_view_cf_consts,data,docs/plan/particles.md:188,suggested,coined: (cf10; ...) VU constants
+level01,0016d0e0,g_view_w_slope,data,docs/formats/tfrag_rac1.md:542,verified,DAT_0016d0e0 w-per-world-unit slope from UpdateViewContext
+level01,0016d0f0,g_fog_colour,data,docs/plan/render_pipeline.md:37,verified,DAT_0016d0f0/f4/f8 FOGCOL rgb
+level01,0016d140,g_view_cull_block,data,docs/plan/particles.md:313,inferred,view block read by FastBSphereCheck; written by previous frame render
+level01,0016d200,g_hud_upload_queue,data,docs/plan/hud_text.md:59,verified,per-frame upload list (<=64) | alt g_gif_paging_list (docs/plan/particles.md:161; inferred) | also docs/plan/particles.md
+level01,001734c0,g_freeze_kind,data,docs/plan/menus.md:54,verified,freeze dialog kind | alt g_game_state (docs/plan/occlusion_culling.md:57; inferred) | also docs/plan/occlusion_culling.md
+level01,001734d4,g_freeze_prev_mode,data,docs/plan/menus.md:54,verified,mode before freeze
+level01,00174180,g_occl_mask,data,docs/plan/occlusion_culling.md:76,verified,0x80-byte frame mask copied to scratchpad by procs
+level01,00174200,g_occl_union_mask,data,docs/plan/occlusion_culling.md:42,verified,OR of neighbour masks
+level01,00174284,g_core_index_copy,data,docs/plan/trace_harness.md:59,inferred,DAT_00174284 = 0x320000 core-index copy
+level01,00174288,g_hud_heap,data,docs/plan/hud_text.md:49,inferred,DAT_00174288; bank 0 decompressed at +0x60000
+level01,00174290,g_gadget_buffers,data,docs/formats/moby_rac1.md:54,suggested,two alternating 0x18000 decompress buffers
+level01,00174294,g_level_core_base,data,docs/plan/trace_harness.md:58,inferred,DAT_00174294 base of decompressed level core data
+level01,001742c0,CollOutput,data,docs/plan/collision_queries.md:10,verified,Lombyte name CollOutput (boot 0x194100); +0 world mesh ptr
+level01,00174340,g_coll_moby_xform_keys,data,docs/plan/collision_queries.md:11,verified,8x{key;stamp}
+level01,00174380,g_coll_moby_xform_cache,data,docs/plan/collision_queries.md:11,verified,moby-mesh transform cache 8x0x800
+level01,00178580,g_coll_hit_log,data,docs/plan/collision_queries.md:21,verified,hit log 64x0x40 (boot 0x1983c0) | alt g_hit_messages (docs/plan/moby_update_catalogue.md:291; suggested) | also docs/plan/moby_update_catalogue.md
+level01,001795e8,g_banner_line2,data,docs/plan/hud_text.md:165,inferred,second banner line
+level01,00179890,g_help_state,data,docs/plan/hud_text.md:156,verified,DAT_00179890 help box state
+level01,00179894,g_help_tick,data,docs/plan/hud_text.md:156,verified,DAT_00179894 help box tick
+level01,001798bc,g_msg_count,data,docs/plan/hud_text.md:203,verified,message count
+level01,00179f40,g_item_info,data,docs/plan/menus.md:176,verified,"item info 0x4c/id | 2026-09-27 fix: verified record start (37 x 0x4c; ~40 code refs load base 0x179f40, e.g. GiveItem 0x275760); +0 name id, +4 text id, +8 slot, +0xc attach, +0x10 o_class, +0x14 second o_class, +0x18 Euler/normalise word, +0x1c body flag, +0x38 u16 icon; boot copy 0x1863d0 (zero)"
+level01,00179f48,g_item_def_table,field,docs/formats/moby_rac1.md:78,verified,"corrected item definition table start; stride 0x4c; o_class at +0x08 | 2026-09-27 fix: not a table start: slot field (+8) of record 0 at 0x179f40; PENDING level01 (locked: unsaved transaction, not written): delete the label g_item_def_table created here"
+level01,00179f4c,g_gadget_def_table,field,docs/formats/moby_rac1.md:56,verified,"later corrected: table starts at 0x179f48 | 2026-09-27 fix: not a table start: attach field (+0xc) of record 0 at 0x179f40; PENDING level01 (locked: unsaved transaction, not written): delete the label g_gadget_def_table created here"
+level01,00179f50,g_item_table,field,docs/plan/moby_update_catalogue.md:173,verified,"item table; 0x4c stride; moby_rac1.md puts start at 0x179f48 (0x179f50 = o_class field) | 2026-09-27 fix: not a table start: o_class field (+0x10) of record 0 at 0x179f40; PENDING level01 (locked: unsaved transaction, not written): delete the label g_item_table created here"
+level01,0017aa40,g_hand_item_joint_table,data,docs/formats/moby_rac1.md:81,suggested,hand joints 55..70
+level01,0017aa88,g_head_item_joint_table_b,data,docs/formats/moby_rac1.md:81,suggested,
+level01,0017aad0,g_feet_item_joint_table,data,docs/formats/moby_rac1.md:81,suggested,
+level01,0017aae8,g_feet_item_joint_table_b,data,docs/formats/moby_rac1.md:81,suggested,
+level01,0017ab60,g_hero_joint_mods,data,docs/plan/player_controller.md:170,inferred,joint-modifier angles
+level01,0017c070,g_pack_fidget_table,data,docs/formats/moby_rac1.md:82,suggested,heli pack fidget table
+level01,0017c238,g_hero_speed_table,data,docs/plan/player_controller.md:159,verified,0x10-byte rows {down; up; speed; stick}
+level01,0017c270,g_anim_blend_curves,data,docs/plan/player_controller.md:252,inferred,eased blend curve t tables (100 bytes each)
+level01,0017e0d0,g_hud_slots,data,docs/plan/hud_text.md:171,verified,13 slots x 0x90
+level01,0017e8e0,g_health_orb_offsets5,data,docs/plan/hud_text.md:185,inferred,orb offsets for 5 orbs
+level01,0017e8f8,g_health_orb_offsets8,data,docs/plan/hud_text.md:185,inferred,orb offsets for 8 orbs
+level01,0017e95c,g_hud_show_all,data,docs/plan/hud_text.md:176,verified,global show-all
+level01,0017e964,g_hud_z,data,docs/plan/hud_text.md:91,verified,DAT_0017e964 HUD Z constant
+level01,0017e988,g_hud_hide,data,docs/plan/hud_text.md:102,inferred,HUD skipped while set
+level01,0017f140,g_env_circles,data,docs/plan/world_animation.md:197,inferred,env zone XY bounding circles
+level01,0017f340,g_env_records,data,docs/plan/world_animation.md:197,inferred,env zone 0x80-byte records
+level01,00180340,g_dir_light_bank,data,docs/plan/shrub_lighting.md:19,verified,16 directional light sets x 0x40 | also docs/plan/trace_harness.md
+level01,00180740,g_point_light_bank,data,docs/plan/shrub_lighting.md:19,verified,point lights x 0x20 | also docs/plan/trace_harness.md
+level01,00184894,g_menu_planet,data,docs/plan/menus.md:83,verified,current planet / ship destination
+level01,00186f80,g_view_proj_matrix,data,docs/plan/shrub_lighting.md:158,verified,view x projection matrix (vf28..31)
+level01,0018cea0,g_screen_offset,data,docs/plan/shrub_lighting.md:159,verified,vf23 screen offset + fog offset
+level01,0018cf10,g_q_numerator,data,docs/plan/shrub_lighting.md:159,verified,vf22 (cf10) Q numerator
+level01,0018cf20,g_fog_clamps,data,docs/plan/shrub_lighting.md:159,verified,vf21 fog clamps
+level01,0018f140,g_anim_snapshot_frames,data,docs/plan/moby_animation.md:57,suggested,level01 address of boot 0x1aabc0
+level01,00197780,g_moby_class_headers,data,docs/plan/moby_update_catalogue.md:26,suggested,class header pointer per slot
+level01,00197b00,g_moby_class_update,data,docs/plan/moby_update_catalogue.md:25,suggested,per-class-slot update fn pointer table
+level01,00198040,g_class_slot_by_oclass,data,docs/plan/moby_update_catalogue.md:26,suggested,u8 class slot indexed by o_class
+level01,0019a300,g_moby_tbp_table,data,docs/plan/render_pipeline.md:33,verified,table for PatchMobyGifs
+level01,0019bc60,g_moby_grid,data,docs/plan/collision_queries.md:12,verified,"moby grid 64x64 cells (boot 0x1b76e0) | 2026-09-27 fix: verified in CollLine_Fix 0x211870; boot - 0x1ba80, unlike CollOutput 0x1742c0 / hit log 0x178580 (boot - 0x1fe40)"
+level01,001abcc0,g_moby_group_members,data,docs/plan/moby_update_catalogue.md:62,suggested,u16 moby-index lists per group; bit15=last; 0x70 groups
+level01,001abe80,g_moby_target_list,data,docs/plan/moby_update_catalogue.md:63,suggested,NULL-terminated array of targetable (mode 0x1000) active mobys
+level01,001acc00,g_instance_to_moby,data,docs/plan/moby_update_catalogue.md:90,suggested,instance index -> runtime moby index (-1 if not spawned)
+level01,001b0040,g_gadget_oclass,data,docs/formats/moby_rac1.md:52,suggested,per-gadget o_class
+level01,001b00a0,g_gadget_stream,data,docs/formats/moby_rac1.md:52,suggested,per-gadget compressed stream pointer
+level01,001b0100,g_gadget_compressed_size,data,docs/formats/moby_rac1.md:52,suggested,
+level01,001b0160,g_gadget_texture_slots,data,docs/formats/moby_rac1.md:52,suggested,16 texture slots per gadget
+level01,001b02e0,g_gadget_sound_ids,data,docs/plan/audio.md:76,verified,class ids for classes without blob | alt g_gadget_sound_remap (docs/formats/moby_rac1.md:52; suggested) | also docs/formats/moby_rac1.md
+level01,001b0930,g_ship_paths,data,docs/plan/menus.md:242,verified,fly-away paths | alt g_splines (docs/plan/moby_update_catalogue.md:96; suggested) | also docs/plan/moby_update_catalogue.md
+level01,001b1d00,g_part_alloc_bitmap,data,docs/plan/particles.md:28,inferred,particle allocation bitmap (256 bytes)
+level01,001b1e00,g_part_alloc_bitmap2,data,docs/plan/particles.md:29,inferred,second bitmap; never set in retail
+level01,001b1f00,g_part_tex_table,data,docs/plan/particles.md:20,inferred,128 x u64 particle texture words
+level01,001b2300,g_part_update_table,data,docs/plan/particles.md:19,inferred,81 per-type particle update fn pointers
+level01,001b2500,g_part_def_ptrs,data,docs/plan/particles.md:20,inferred,per-type frame-list pointers (0x1b2500[type])
+level01,001b2700,g_part_def_blob,data,docs/plan/particles.md:20,inferred,copy of the part_defs index blob
+level01,001b2a08,g_page_pause_root,data,docs/plan/menus.md:89,verified,pause menu root page
+level01,001b2b70,g_menu_widget_table,data,docs/plan/menus.md:82,verified,widget table
+level01,001b2d04,g_menu_widget_table_alt,data,docs/plan/menus.md:82,verified,alt widget table (level 0/0xe or flags)
+level01,001b2db0,g_scene_mode_table_a,data,docs/formats/moby_rac1.md:77,suggested,mode table of scene controller
+level01,001b3280,g_scene_mode_table_b,data,docs/formats/moby_rac1.md:77,suggested,mode table of scene controller
+level01,001b3318,g_load_hand_gadget_record,data,docs/formats/moby_rac1.md:77,suggested,fn-pointer record {LoadHandGadget; ...}
+level01,001b3998,g_page_map,data,docs/plan/menus.md:90,verified,map page
+level01,001b6508,g_page_ship_planet_select,data,docs/plan/menus.md:91,verified,ship planet select page
+level01,001b6fb8,g_page_kind23,data,docs/plan/menus.md:93,inferred,page for kind 0x23 (entry unknown)
+level01,001b7670,g_page_kind22,data,docs/plan/menus.md:92,inferred,page for kind 0x21->0x22 (entry unknown)
+level01,001b8b48,g_page_kind2d,data,docs/plan/menus.md:94,inferred,page for kind 0x2d (entry unknown)
+level01,001ba170,g_menu_kind,data,docs/plan/menus.md:80,verified,page menu kind | alt g_scene_state (docs/formats/moby_rac1.md:77; suggested) | also docs/formats/moby_rac1.md
+level01,001ba178,g_menu_pending_page,data,docs/plan/menus.md:107,verified,page change request
+level01,001ba17c,g_menu_post_action,data,docs/plan/menus.md:80,verified,close post-action 1..7
+level01,001ba180,g_menu_snapshot,data,docs/plan/menus.md:36,verified,menu frame snapshot buffer
+level01,001ba1a0,g_hand_item_id,data,docs/formats/moby_rac1.md:56,suggested,
+level01,001ba1a4,g_feet_item_id,data,docs/formats/moby_rac1.md:56,suggested,
+level01,001ba1a8,g_head_item_id,data,docs/formats/moby_rac1.md:56,suggested,
+level01,001ba1ac,g_back_item_id,data,docs/formats/moby_rac1.md:56,suggested,
+level01,001ba254,g_menu_action_arg,data,docs/plan/menus.md:126,inferred,movie/scene argument for post-action
+level01,001ba260,g_menu_return_page,data,docs/plan/menus.md:49,verified,page reopened after movie/scene launched from menu
+level01,001ba280,g_menu_frame_counter,data,docs/plan/menus.md:81,verified,menu frame counter
+level01,001ba310,g_menu_mobys,data,docs/plan/menus.md:100,verified,14 menu mobys class 0x472
+level01,001ba950,g_death_bits_table,data,docs/plan/moby_update_catalogue.md:218,suggested,second death-bit table
+level01,001bbb04,g_spawn_id_flags,data,docs/plan/moby_update_catalogue.md:186,suggested,per-spawn-id flag
+level01,001bd430,g_shrub_light_list,data,docs/plan/shrub_lighting.md:70,verified,shrub relight list copied by DrawShrubs; arg of LightShrubs
+level01,001bdc60,g_sky_matrix,data,docs/plan/sky_render_notes.md:60,verified,SkyM 4x4 (level01)
+level01,001bdca0,g_footstep_level_base,data,docs/plan/audio.md:80,verified,doc writes tbl_0x1bdca0 | alt g_footstep_sound_table (docs/plan/collision_queries.md:82; inferred) | also docs/plan/collision_queries.md
+level01,001bdd00,g_ship_hatch_points,data,docs/plan/menus.md:228,verified,hatch point per ship
+level01,001c2588,g_hologram_info,data,docs/plan/menus.md:177,verified,hologram class/scale/description 0x14/id
+level01,001c2940,g_gs_restore_regs_b,data,docs/plan/render_pipeline.md:51,inferred,A+D block for VU1_restoreGsRegs_B
+level01,001c2970,g_hud_gs_state,data,docs/plan/hud_text.md:96,inferred,TEST_1/ALPHA_1 A+D packet | alt g_part_gs_setup (docs/plan/particles.md:171; suggested) | also docs/plan/particles.md
+level01,001c2cc0,g_tfrag_vu_const_block,data,docs/formats/tfrag_rac1.md:553,verified,level01 copy of boot 0x1de740 (qw666-669 at 0x1c2d70)
+level01,001c3060,g_shrub_billboard_pass2_gs,data,docs/plan/shrub_lighting.md:161,verified,TEST_1 0x53001 block for pass 2
+level01,001c3090,g_shrub_billboard_gs_setup,data,docs/plan/shrub_lighting.md:157,verified,A+D TEST_1/CLAMP_1 block for billboards
+level01,001c3130,g_shrub_billboard_corner_table,data,docs/plan/shrub_lighting.md:89,verified,billboard corner/ST table; 8 qw
+level01,001c31b0,g_part_vu_consts,data,docs/plan/particles.md:189,suggested,coined: 14-qw REF VU constants + MSCAL/TEX1/CLAMP block
+level01,001c3200,g_part_giftag_sprite,data,docs/plan/particles.md:196,suggested,coined: GIF tag template for sprite/flat quad packets
+level01,001c3210,g_part_giftag_line,data,docs/plan/particles.md:198,suggested,coined: GIF tag template for line packets
+level01,001c3220,g_part_giftag_ribbon,data,docs/plan/particles.md:199,suggested,coined: GIF tag template for ribbon packets
+level01,001c3380,g_gs_restore_regs_a,data,docs/plan/render_pipeline.md:30,inferred,A+D block for VU1_restoreGsRegs_A
+level01,001c35d0,g_glyphs_regular,data,docs/plan/hud_text.md:109,verified,232x4B glyph table
+level01,001c3970,g_glyphs_small,data,docs/plan/hud_text.md:110,verified,232x4B glyph table
+level01,001c3d10,g_glyphs_large,data,docs/plan/hud_text.md:111,verified,232x4B glyph table
+level01,001c4318,g_level_new_vendor_item,data,docs/plan/menus.md:158,verified,new vendor item per level
+level01,001c4370,g_shrub_sway_sin_table,data,docs/plan/shrub_lighting.md:188,verified,256 signed bytes -127*sin
+level01,001c4470,g_shrub_sway_constants,data,docs/plan/shrub_lighting.md:189,verified,vf8/vf9 sway constants
+level01,001c4530,g_weapon_prices,data,docs/plan/menus.md:162,verified,weapon record 0x18/id: price; discount; ammo prices; max ammo
+level01,001c4544,g_bolt_count,data,docs/plan/moby_update_catalogue.md:115,suggested,doc: bolts -= price (0x1c4544); could be the price instead
+level01,001c4e80,g_tfrag_texture_table,data,docs/plan/render_pipeline.md:41,verified,tfrag texture entries (log2 size top nibble)
+level01,001c5180,g_tfrag_tbp_table,data,docs/plan/render_pipeline.md:33,verified,TBP/CBP u16 pairs for PatchTfragGifs
+level01,001c5480,g_tfrag_adgif_table,data,docs/plan/render_pipeline.md:29,verified,tfrag ad-gif table; 0x38 qw
+level01,001c5880,g_tfrag_visible_list,data,docs/plan/render_pipeline.md:23,verified,arg of LightTfrags; 0x40 qw copied from SPR 0x70003000
+level01,001c6f80,g_tie_tbp_table,data,docs/plan/render_pipeline.md:33,verified,table for PatchTieGifs
+level01,001c7780,g_tie_visible_list,data,docs/plan/render_pipeline.md:23,verified,arg of LightTies
+level01,001c8980,g_tie_visible_list_2,data,docs/plan/render_pipeline.md:30,inferred,second tie list (DrawTies_2 pass)
+level01,001c94a0,g_hologram_extra_parts,data,docs/plan/menus.md:219,inferred,+0x200 extra hologram part table
+level01,001ca4a0,g_vendor_demo_scene_table,data,docs/plan/menus.md:199,inferred,weapon demo scene per item (values unknown)
+level01,001ca538,g_vendor_ticker_lines,data,docs/plan/menus.md:206,verified,24 random ticker line ids
+level01,001ca940,g_vendor_substate,data,docs/plan/menus.md:180,verified,vendor substate
+level01,001ca944,g_vendor_timer,data,docs/plan/menus.md:180,verified,vendor substate timer
+level01,001ca950,g_vendor_snapshot,data,docs/plan/menus.md:36,verified,vendor frame snapshot buffer
+level01,001ca960,g_vendor_state,data,docs/plan/menus.md:219,inferred,vendor struct; hologram item class at +0x300
+level01,001ca980,g_vendor_remote_mode,data,docs/plan/menus.md:151,verified,1 = PDA remote vendor
+level01,001ca98c,g_vendor_scroll,data,docs/plan/menus.md:187,verified,carousel scroll offset
+level01,001ca99c,g_vendor_buy_state,data,docs/plan/menus.md:190,verified,buy flow state 1..4
+level01,001ca9a0,g_vendor_camera_tween,data,docs/plan/menus.md:181,inferred,camera tween state
+level01,001caa10,g_vendor_items,data,docs/plan/menus.md:153,verified,5 ints per item
+level01,001cab50,g_vendor_item_count,data,docs/plan/menus.md:153,verified,vendor item count
+level01,001cac80,g_water_gs_setup,data,docs/plan/world_animation.md:63,suggested,coined: DIRECT GS setup shared by strip and ripple water
+level01,001cad00,g_ripple_consts,data,docs/plan/world_animation.md:101,inferred,ripple sim constants (16;16;-8;-8;...)
+level01,001cad30,g_ripple_light,data,docs/plan/world_animation.md:102,inferred,ripple light direction
+level01,001cad40,g_ripple_strip_order0,data,docs/plan/world_animation.md:164,inferred,strip order table 1 of 3
+level01,001cada0,g_ripple_strip_order1,data,docs/plan/world_animation.md:164,inferred,strip order table 2 of 3
+level01,001cae00,g_ripple_strip_order2,data,docs/plan/world_animation.md:164,inferred,strip order table 3 of 3
+level01,001cafe0,g_ripple_base_uv,data,docs/plan/world_animation.md:159,inferred,base UV table per 4x4 sub-block
+level01,001cb1b0,g_ripple_uv_selector,data,docs/plan/world_animation.md:160,inferred,per-vertex wobble selector
+level01,001cbc60,g_foam_element_positions,data,docs/plan/world_animation.md:173,inferred,760 element positions
+level01,001d4900,g_foam_vscroll_speeds,data,docs/plan/world_animation.md:173,inferred,760 per-element V scroll speeds
+level01,001e2fc0,g_water_strips_676,data,docs/plan/world_animation.md:33,inferred,8 x 0x60 strip descriptors
+level01,001e3380,g_water_strips_678,data,docs/plan/world_animation.md:33,inferred,2 x 0x60 strip descriptors
+level01,001e34c0,g_ripple_patches,data,docs/plan/world_animation.md:89,inferred,21 x 0x1190 ripple patch records
+level01,001fa590,g_ripple_subblock_masks,data,docs/plan/world_animation.md:107,inferred,sub-block masks per patch
+level01,001fa5e8,g_ripple_zone_first_patch,data,docs/plan/world_animation.md:106,inferred,per-zone first patch
+level01,001fa608,g_ripple_zone_patch_count,data,docs/plan/world_animation.md:106,inferred,per-zone patch count
+level01,001fa628,g_ripple_zone_drop_odds,data,docs/plan/world_animation.md:106,inferred,per-zone random drop odds
+level01,001fa650,g_ripple_drip_points,data,docs/plan/world_animation.md:126,inferred,5 drip spawn points
+level01,001fa6c0,g_ripple_bounds,data,docs/plan/world_animation.md:90,inferred,ripple patch bounds table
+level01,001fbc80,g_water_strips_761,data,docs/plan/world_animation.md:33,inferred,4 x 0x60 strip descriptors
+level01,00202d80,g_water_strips_1225,data,docs/plan/world_animation.md:33,inferred,3 x 0x60 strip descriptors
+level01,00208108,g_env_overlay_positions,data,docs/plan/world_animation.md:187,inferred,1848 mesh positions
+level01,00208138,g_env_overlay_normals,data,docs/plan/world_animation.md:187,inferred,1848 mesh normals
+level01,00208150,g_env_overlay_colours,data,docs/plan/world_animation.md:188,inferred,1848 mesh colours
+level01,00208c70,g_hero_attach_list_ids,data,docs/formats/moby_rac1.md:80,suggested,{0..6; 29; 30}
+level01,0020ae00,g_bolt_crank_state_table,data,docs/plan/moby_update_catalogue.md:114,suggested,6-state jump table used by 0x2e0c68
+level01,0020bb00,g_moby_class_table,data,docs/plan/particles.md:230,inferred,per-level {o_class; update; vtbl} table (184 entries) | alt g_moby_update_table (docs/plan/moby_update_catalogue.md:14; suggested) | also docs/plan/moby_update_catalogue.md
+level01,0020c3ac,g_default_moby_vtbl,data,docs/plan/moby_update_catalogue.md:19,suggested,default class vtbl; 6 fn ptrs (suck-cannon interface; inferred)
+level01,0020c480,lvl.camvtbl,data,docs/plan/player_controller.md:263,verified,camera type vtable
+level01,0020c580,g_sound_instance_types,data,docs/plan/audio.md:177,verified,{class;fn} table
+level01,0020ce40,Cam_InterpValues__FffPffff,fn,docs/plan/player_controller.md:267,verified,existing Lombyte name (line 8)
+level01,0020d620,UpdateAllCameras__Fi,fn,docs/plan/player_controller.md:262,verified,existing Lombyte name (line 8)
+level01,0020e670,CameraPreUpdate,fn,docs/plan/player_controller.md:260,suggested,coined: computes up vectors; hero move dir/speed
+level01,0020e9f0,UnderwaterTest,fn,docs/plan/world_animation.md:239,suggested,coined: per-camera-update underwater flag test (line 205 says 0x20eca8)
+level01,0020eca8,CameraUpdate,fn,docs/plan/player_controller.md:24,verified,doc name (line 259); camera update (mask 8)
+level01,0020ee80,CameraResetBehindHero,fn,docs/plan/player_controller.md:283,suggested,coined: hard reset behind the hero after 30 blocked ticks
+level01,0020f480,LensFlareDraw,fn,docs/plan/particles.md:170,suggested,coined: lens-flare pass (FX textures); not a particle
+level01,002102b8,EnvFogUpdate,fn,docs/plan/world_animation.md:204,suggested,coined: level copy of fun_001ee4b0
+level01,002117d0,CollCellLookup,fn,docs/plan/collision_queries.md:38,suggested,coined: cell lookup z/y/x tree -> leaf word
+level01,00211870,CollLine_Fix,fn,docs/plan/collision_queries.md:33,verified,segment query; boot 0x1efa68 | alt coll_line (docs/plan/collision_queries.md:107; verified) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,00211c98,CollLineVertexDecode,block,docs/plan/collision_queries.md:65,suggested,"coined: vertex decode in line kernel; maybe-mid-function | 2026-09-27 fix: block inside CollLine_Fix 0x211870, not a function start"
+level01,00211f48,CollLineQuadSplit,block,docs/plan/collision_queries.md:70,suggested,"coined: quad split in line kernel; maybe-mid-function | 2026-09-27 fix: block inside CollLine_Fix 0x211870, not a function start"
+level01,00212960,coll_sphere,fn,docs/plan/player_controller.md:224,verified,port name (collision_queries.md:107); sphere query | alt CollSphere (docs/plan/moby_update_catalogue.md:185; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,00212c48,CollSphereVertexDecode,block,docs/plan/collision_queries.md:65,suggested,"coined: vertex decode in sphere kernel; maybe-mid-function | 2026-09-27 fix: block inside coll_sphere 0x212960, not a function start"
+level01,00212f68,CollSphereQuadSplit,block,docs/plan/collision_queries.md:70,suggested,"coined: quad split in sphere kernel; maybe-mid-function | 2026-09-27 fix: block inside coll_sphere 0x212960, not a function start"
+level01,002135a0,coll_capsule,fn,docs/plan/player_controller.md:220,verified,port name (collision_queries.md:107); vertical capsule query | alt CollHeroCapsule (docs/plan/roadmap.md:85; suggested); alt CollCapsule (docs/plan/moby_update_catalogue.md:292; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,00214468,coll_sphere_mobys,fn,docs/plan/collision_queries.md:36,verified,port name (line 108); sphere vs mobys only | alt CollSphereVsMobys (docs/plan/moby_update_catalogue.md:292; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,00214d70,coll_sphere_hero_groups,fn,docs/plan/player_controller.md:220,verified,port name (collision_queries.md:108); sphere vs hero groups | alt CollHeroGroups (docs/plan/roadmap.md:85; suggested) | also docs/plan/roadmap.md
+level01,002151d8,CollType,fn,docs/plan/collision_queries.md:39,verified,surface id from CollOutput+0x1c; boot 0x1f0b58
+level01,00215208,CollSoundClass,fn,docs/plan/collision_queries.md:40,verified,footstep sound class from CollOutput+0x1c
+level01,00216198,DebugCameraUpdate,fn,docs/plan/menus.md:29,suggested,coined: mode -1 debug free camera/menu update
+level01,002174e0,DebugCameraRender,fn,docs/plan/menus.md:29,suggested,coined: mode -1 debug render
+level01,00218998,ProfilerTimerStop,fn,docs/plan/render_pipeline.md:51,suggested,FUN_00218998 stubbed profiler timer stop
+level01,002189a0,ProfilerTimerStart,fn,docs/plan/render_pipeline.md:51,suggested,FUN_002189a0 stubbed profiler timer start
+level01,00218d70,UpdateFog,fn,docs/plan/world_animation.md:247,inferred,copies level fog into view context; underwater alternate set
+level01,00218e78,ParseOcclGrid,fn,docs/plan/occlusion_culling.md:128,verified,grid lookup
+level01,00218f50,GetOcclGridFromPair,fn,docs/plan/occlusion_culling.md:41,verified,neighbour-cell lookup
+level01,00219008,BuildOcclVisibility,fn,docs/plan/occlusion_culling.md:34,verified,builds per-frame mask
+level01,002193f8,UpdateOcclusion,fn,docs/plan/occlusion_culling.md:28,verified,called near top of DrawDebugProfiler
+level01,00219448,InitViewContext__Fv,fn,docs/plan/hud_text.md:89,verified,
+level01,00219580,UpdateViewContext,fn,docs/formats/tfrag_rac1.md:525,verified,level01 copy; calls SetTfragDists every frame
+level01,00219cd0,SetPalMode__Fi,fn,docs/plan/hud_text.md:89,verified,also docs/plan/render_pipeline.md
+level01,0021a050,ResetGsRegisters__Fv,fn,docs/plan/render_pipeline.md:37,verified,emits reset A+D blocks + FOGCOL
+level01,0021a1b8,DrawWorld,fn,docs/plan/render_pipeline.md:21,suggested,"doc's preferred name for DrawDebugProfiler | alt FrameRender (docs/plan/hud_text.md:95; suggested); alt DrawDebugProfiler (docs/plan/sky_render_notes.md:14; verified) | also docs/plan/hud_text.md docs/plan/sky_render_notes.md docs/plan/world_animation.md | Lombyte name believed wrong: DrawDebugProfiler | 2026-09-27 fix: an earlier rename replaced the Lombyte plate; PENDING level01 (locked: unsaved transaction, not written): append plate line ""Lombyte exact-boot-match: boot 0x001f39d0 (Lombyte name DrawDebugProfiler)"""
+level01,0021aa30,GameplayRender,fn,docs/plan/menus.md:21,suggested,coined: mode 0 render (doc says Lombyte DrawDebugProfiler is main world render) | alt RenderFrame (docs/plan/player_controller.md:19; suggested) | also docs/plan/player_controller.md
+level01,0021aa90,prepare_debug_profiler_render,fn,docs/plan/render_pipeline.md:49,verified,wrapper of DrawDebugProfiler
+level01,0021aac8,FreezeModeRender,fn,docs/plan/menus.md:25,suggested,coined: mode 4 freeze render
+level01,0021ab50,PageMenuModeRender,fn,docs/plan/menus.md:24,suggested,coined: mode 3 render; calls 0x28d080(0)
+level01,0021ab78,SlideshowModeRender,fn,docs/plan/menus.md:28,suggested,coined: mode 7 render
+level01,0021ac60,SetupGifPaging__Fi,fn,docs/plan/render_pipeline.md:41,verified,reserves 4 qw
+level01,0021ad78,DoGifPaging__Fv,fn,docs/plan/render_pipeline.md:41,verified,fills paging chain
+level01,0021ae98,GetEffectTex__Fii,fn,docs/plan/hud_text.md:17,verified,fetches FX texture n | alt GetEffectTex (docs/plan/particles.md:21; inferred) | also docs/plan/particles.md
+level01,0021afe0,RegisterDrawCallback,fn,docs/plan/world_animation.md:16,verified,"coined: draw-callback list 1 (doc: 'lists'; may be list data or register fn) | alt AddDrawCallback (docs/plan/moby_update_catalogue.md:297; suggested) | also docs/plan/moby_update_catalogue.md | 2026-09-27 fix: verified: appends (fn, arg) to list 0x15f424 (fn 0x16dd00, arg 0x16de00, max 64); drained by 0x21b030 after mobys"
+level01,0021b030,RunDrawCallbacksPostMoby,fn,docs/plan/render_pipeline.md:23,verified,"drains list 0x15f424 (RegisterDrawCallback 0x21afe0); called by DrawWorld at 0x21a4e0, after DrawMobys, before the lens flare | was RunDrawCallbacks_0 (CSV) / Ghidra RunDrawCallbacks_1: both address-order numbers, which do not match the lists | alt RunDrawCallbacks (docs/plan/particles.md:169; suggested) | also docs/plan/particles.md | PENDING level01 (locked: unsaved transaction, not written): rename RunDrawCallbacks_1 -> RunDrawCallbacksPostMoby by hand"
+level01,0021b0a8,RunDrawCallbacksPostTie,fn,docs/plan/render_pipeline.md:23,verified,"drains list 0x15f42c (fn 0x16e100, arg 0x16e200; no registrar in level01); called at 0x21a330 after the ties, before shrubs | was RunDrawCallbacks_1 (CSV) / Ghidra RunDrawCallbacks_2 (address order) | PENDING level01 (locked: unsaved transaction, not written): rename RunDrawCallbacks_2 -> RunDrawCallbacksPostTie by hand"
+level01,0021b120,RunDrawCallbacksPostShrub,fn,docs/plan/render_pipeline.md:23,verified,"drains list 0x15f430 (fn 0x16e300, arg 0x16e400; no registrar in level01); called at 0x21a404 after shrubs, before mobys | was RunDrawCallbacks_2 (CSV) / Ghidra RunDrawCallbacks_3 (address order) | PENDING level01 (locked: unsaved transaction, not written): rename RunDrawCallbacks_3 -> RunDrawCallbacksPostShrub by hand"
+level01,0021b198,RegisterDrawCallback2,fn,docs/plan/world_animation.md:16,verified,"coined: draw-callback list 2; 760 registers its callback on it | alt AddDrawCallback2 (docs/plan/moby_update_catalogue.md:297; suggested) | also docs/plan/moby_update_catalogue.md | 2026-09-27 fix: verified: appends to list 0x15f428 (fn 0x16df00, arg 0x16e000, max 64); drained by 0x21b1e8 after particles"
+level01,0021b1e8,RunDrawCallbacksPostPart,fn,docs/plan/render_pipeline.md:23,verified,"drains list 0x15f428 (RegisterDrawCallback2 0x21b198); called at 0x21a5ac after PartProc | was RunDrawCallbacks_3 (CSV) / Ghidra RunDrawCallbacks_4 (address order) | PENDING level01 (locked: unsaved transaction, not written): rename RunDrawCallbacks_4 -> RunDrawCallbacksPostPart by hand"
+level01,0021b5c0,GrabFrameSnapshot,fn,docs/plan/menus.md:183,suggested,coined: snapshots rendered world for vendor
+level01,0021bce0,DrawRectOverlay,fn,docs/plan/hud_text.md:85,verified,untextured rect
+level01,0021be90,DrawTexturedQuad,fn,docs/plan/hud_text.md:84,verified,glyphs; FX textures
+level01,0021c958,DrawUIFrame,fn,docs/plan/hud_text.md:148,verified,(top;bottom;left;right;alpha)
+level01,0021cc40,measure_text_width,fn,docs/plan/hud_text.md:129,verified,
+level01,0021ccf0,FontPrint,fn,docs/plan/hud_text.md:116,verified,per-byte glyph renderer
+level01,0021cf70,font_print_large,fn,docs/plan/hud_text.md:109,inferred,Lombyte name; misleading; doc says this is the regular font (FX tex 1) | alt FontPrintRegular (docs/plan/hud_text.md:109; suggested)
+level01,0021cff0,FontPrintSmall,fn,docs/plan/hud_text.md:110,suggested,coined: small font print
+level01,0021d070,FontPrintLarge,fn,docs/plan/hud_text.md:111,suggested,coined: large font print
+level01,0021d0f0,FontPrintWindowFloat,fn,docs/plan/hud_text.md:136,suggested,coined: float-position path for window flag 8
+level01,0021d3f8,FontPrintRegularRight,fn,docs/plan/hud_text.md:109,suggested,coined: regular font right-aligned
+level01,0021d488,FontPrintSmallRight,fn,docs/plan/hud_text.md:110,suggested,coined: small font right-aligned
+level01,0021d518,FontPrintLargeRight,fn,docs/plan/hud_text.md:111,suggested,coined: large font right-aligned
+level01,0021d5a8,FontPrintRegularCentre,fn,docs/plan/hud_text.md:109,suggested,coined: regular font centred
+level01,0021d640,FontPrintSmallCentre,fn,docs/plan/hud_text.md:110,suggested,coined: small font centred
+level01,0021d6d8,FontPrintLargeCentre,fn,docs/plan/hud_text.md:111,suggested,coined: large font centred
+level01,0021db48,FontPrintWindow,fn,docs/plan/hud_text.md:132,verified,word wrap
+level01,0021e0a8,FontPrintSmallWindow,fn,docs/plan/hud_text.md:110,suggested,coined: small font window print
+level01,0021e120,FontSetWindow,fn,docs/plan/hud_text.md:133,verified,
+level01,0021e340,DrawSpriteHelper_A,fn,docs/plan/render_pipeline.md:16,suggested,coined: billboard/sprite draw helper using VU1 prog 0x10e818 | doc cross-ref fun_001f76a0
+level01,0021fa98,EmitStripST,fn,docs/plan/world_animation.md:65,suggested,coined: strip emitter re-sending ST (copy with CTXT=1)
+level01,0021fda8,DrawEnvOverlayMesh,fn,docs/plan/world_animation.md:192,suggested,coined: draws the 1848 meshes
+level01,00220e30,ticks,fn,docs/plan/particles.md:96,verified,doc name ticks(n) = (int)(n*timer_scale+0.5); pinned from the code (line 297) | alt ScaleTicks (docs/plan/hud_text.md:5; verified) | also docs/plan/hud_text.md docs/plan/moby_update_catalogue.md
+level01,00220e78,FastDecTimer,fn,docs/plan/moby_update_catalogue.md:299,inferred,doc: 0x220e78/0x220ea8 FastDecTimer
+level01,00220ea8,FastDecTimer,fn,docs/plan/moby_update_catalogue.md:299,inferred,second of the FastDecTimer pair | also docs/plan/particles.md
+level01,00221090,write_dma_channel,fn,docs/plan/render_pipeline.md:27,verified,SPR_FROM (D8) scratchpad to main copy
+level01,00221188,VecAdd,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: vec add
+level01,002211b8,VecSub,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: vec sub
+level01,00221210,VecScale,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: vec scale
+level01,00221360,VecDistance,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: distance
+level01,00221398,VecDistance2,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: distance (second variant)
+level01,002217c0,Atan2,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: atan2
+level01,00221ff8,AngleAdd,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: angle add
+level01,00222100,AngleDiff,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: angle diff
+level01,00222160,truncate_float_to_s32,fn,docs/plan/occlusion_culling.md:128,verified,bare cvt.w.s
+level01,002221a8,FastTweenColor,fn,docs/plan/particles.md:98,inferred,per-byte colour lerp on VU0
+level01,002221f0,FastBSphereCheck,fn,docs/plan/particles.md:312,verified,bounding-sphere view test; verified from disassembly
+level01,002224f8,SetupFS_AA_buffer,fn,docs/plan/render_pipeline.md:37,verified,builds full-screen AA packets
+level01,00222ee8,append_gif_transfer_packet,fn,docs/plan/render_pipeline.md:37,verified,full-screen clear packet
+level01,00223200,PutAABlitPacket_A,fn,docs/plan/render_pipeline.md:23,suggested,FUN_00223200 AA/flip blit; 38 regs @0x151900; doc suggests PutAABlitPacket_* | alt AaBlit (docs/plan/hud_text.md:95; suggested) | also docs/plan/hud_text.md
+level01,00223260,PutAABlitPacket_B,fn,docs/plan/render_pipeline.md:21,suggested,FUN_00223260; emits 41 regs @0x151b60; doc suggests PutAABlitPacket_*
+level01,00223640,mode_freezeInit,fn,docs/plan/menus.md:25,verified,(kind;arg) enters freeze dialog mode 4
+level01,002249b0,UpdateModeFreeze,fn,docs/plan/menus.md:25,verified,mode 4 freeze dialog update
+level01,00225818,Help_Request,fn,docs/plan/hud_text.md:153,verified,(msg_id;slot) | alt HelpQueue (docs/plan/moby_update_catalogue.md:300; suggested) | also docs/plan/moby_update_catalogue.md
+level01,002259e8,msg_string__Fi,fn,docs/plan/hud_text.md:203,verified,message lookup by id
+level01,00225a98,Help_ComputeSize,fn,docs/plan/hud_text.md:154,suggested,coined: help box size measure
+level01,00225bd0,Help_Update,fn,docs/plan/menus.md:261,verified,help/tutorial box update
+level01,002266c0,DrawHud2D_B,fn,docs/plan/render_pipeline.md:23,suggested,coined: FUN_002266c0 HUD/2D draw in frame render | alt Help_Draw (docs/plan/hud_text.md:101; suggested) | also docs/plan/hud_text.md
+level01,00226b70,HeroInit,fn,docs/plan/moby_update_catalogue.md:109,suggested,coined: hero init (zeroes hero block; finds moby +0xa6==0)
+level01,00226fa8,HeroTakeDamage,fn,docs/plan/hud_text.md:185,suggested,coined: damage path calling health show; maybe-mid-function
+level01,00227d90,HudBoltAlertShow,fn,docs/plan/hud_text.md:188,suggested,coined: nearby-bolt alert show [L]
+level01,00227e48,HeroFootstepSound,fn,docs/plan/collision_queries.md:82,suggested,coined: footstep sound (calls 0x2a1898)
+level01,00228000,HeroUpdateAlt,fn,docs/plan/moby_update_catalogue.md:231,suggested,coined: hero update path when hero mode != 0
+level01,00228870,HeroUpdate,fn,docs/plan/player_controller.md:23,verified,"coined: hero update per tick (mask 1) | also docs/plan/moby_update_catalogue.md docs/plan/particles.md | 2026-09-27 fix: verified by decompile (bounds check 2..1022, calls RatchetAnimAdvance/HeroMotionUpdate/... HeroItemsUpdate); the Ghidra name PatchShrubGifs here is a wrong earlier rename; PENDING level01 (locked: unsaved transaction, not written): rename_function 0x228870 PatchShrubGifs -> HeroUpdate by hand (apply_doc_names only aliases non-default names)"
+level01,00229f20,HeroSyncMoby,fn,docs/plan/player_controller.md:92,suggested,coined: moby sync (pos; Euler; rows)
+level01,0022a940,HeroComputeAttachMatrices,fn,docs/formats/moby_rac1.md:77,suggested,coined: attach matrices for items
+level01,0022a9c8,HeroItemPoseFromRatchet,fn,docs/formats/moby_rac1.md:81,suggested,coined: builds item keyframe from Ratchet local pose | alt HeroAttachGear (docs/plan/roadmap.md:58; suggested) | also docs/plan/roadmap.md
+level01,0022c080,HeroScanTargets,fn,docs/plan/moby_update_catalogue.md:64,suggested,coined: hero code scanning target array; maybe-mid-function
+level01,0022c9a0,HeroWallLedgeCheckA,fn,docs/plan/collision_queries.md:86,suggested,coined: wall/ledge check (rejects ids 9/0xc or 10/0xc; slope test)
+level01,0022cd48,HeroSurfaceReaction,fn,docs/plan/player_controller.md:89,suggested,coined: surface reaction (water; special floors)
+level01,0022d090,HeroWallLedgeCheckB,fn,docs/plan/player_controller.md:90,suggested,coined: hero update step 4; collision_queries.md:86 lists it among wall/ledge checks
+level01,0022d838,HeroWallLedgeCheckC,fn,docs/plan/collision_queries.md:86,suggested,coined: wall/ledge check (rejects ids 9/0xc or 10/0xc; slope test)
+level01,0022ddd8,GetClankModule,fn,docs/plan/player_controller.md:101,suggested,coined: Clank module query 0x22ddd8(3)
+level01,0022f3c0,HeroItemsCreate,fn,docs/plan/moby_update_catalogue.md:242,suggested,coined: creates Clank and pack mobys via CreateMoby
+level01,0022fec0,HeroItemsAttach,fn,docs/formats/moby_rac1.md:77,suggested,coined: per-item attach and advance
+level01,002307e0,UpdateWrenchSelected,fn,docs/formats/moby_rac1.md:79,suggested,coined: sets 0x15ed90 to 1 when wrench selected
+level01,00231268,HeroItemsUpdate,fn,docs/formats/moby_rac1.md:77,suggested,coined: calls item create and attach
+level01,00231ae0,HeroSizeCapsule,fn,docs/plan/player_controller.md:88,suggested,coined: sizes the capsule
+level01,00231d18,HeroMotionUpdate,fn,docs/plan/player_controller.md:48,suggested,coined: hero stick -> per-state physics -> move+collide -> timer++
+level01,00231f70,StickTarget,fn,docs/plan/player_controller.md:142,inferred,doc name StickTarget(scale; mode)
+level01,00232290,HeroSpeedFromTable,fn,docs/plan/player_controller.md:159,suggested,coined: picks walk/run speed from table 0x17c238
+level01,00232490,TurnTo,fn,docs/plan/player_controller.md:140,inferred,doc name TurnTo(k;d;max) -> 0x270b58
+level01,002326e8,SpeedStep,fn,docs/plan/player_controller.md:145,inferred,doc name SpeedStep(acc; dec)
+level01,00232738,SetPlanarVel,fn,docs/plan/player_controller.md:146,inferred,doc name SetPlanarVel(yaw)
+level01,00232820,HeroSteepWallStop,fn,docs/plan/player_controller.md:166,suggested,coined: stops climbing steep walls after leaving ground
+level01,00232978,HeroWallCheck,fn,docs/plan/player_controller.md:155,suggested,coined: wall check; removes velocity into wall
+level01,00232dc0,HeroGroundProbe,fn,docs/plan/player_controller.md:225,suggested,coined: ground probe via CollLine_Fix flags 2
+level01,00233588,HeroStepUpSnap,fn,docs/plan/player_controller.md:230,suggested,coined: step-up / snap to ground
+level01,00233940,HeroCapsulePasses,fn,docs/plan/player_controller.md:218,suggested,coined: up to 8 capsule passes + hero groups | alt HeroMove (docs/plan/moby_update_catalogue.md:250; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00233d08,HeroCapsuleResolve,fn,docs/plan/player_controller.md:218,suggested,coined: capsule resolve -> 0x233940
+level01,00233de0,HeroMovePipeline,fn,docs/plan/player_controller.md:215,suggested,coined: move and collision pipeline | also docs/plan/roadmap.md
+level01,00234358,AirAccel,fn,docs/plan/player_controller.md:177,inferred,doc name AirAccel(a)
+level01,002345f0,HeroJumpVertical,fn,docs/plan/player_controller.md:180,suggested,coined: per-tick jump vertical
+level01,00234b40,HeroJumpHorizontal,fn,docs/plan/player_controller.md:180,suggested,coined: per-tick air horizontal (jump states)
+level01,00235638,HeroLean,fn,docs/plan/player_controller.md:170,suggested,coined: procedural lean via joint modifiers
+level01,00236678,HeroDecayMomentum,fn,docs/plan/player_controller.md:151,suggested,coined: momentum shrinks by dec each tick
+level01,002368e0,HeroTeleport,fn,docs/plan/moby_update_catalogue.md:294,suggested,coined: hero teleport | also docs/plan/world_animation.md
+level01,00236a68,HeroEdgeBrake,fn,docs/plan/player_controller.md:153,suggested,coined: edge brake line cast ahead
+level01,002370b8,HeroStatePhysics,fn,docs/plan/player_controller.md:87,suggested,coined: per-state physics | alt HeroPhysics (docs/plan/particles.md:245; suggested) | also docs/plan/particles.md
+level01,0023c458,HeroMoveCollide,fn,docs/plan/player_controller.md:87,suggested,coined: move+collide
+level01,0023c710,HeroTickStateTimer,fn,docs/plan/player_controller.md:67,suggested,coined: state timer ++ after the move; maybe-mid-function
+level01,0023ceb0,HeroClassifyStick,fn,docs/plan/player_controller.md:323,suggested,coined: stick classification (not decoded)
+level01,0023cf98,SetState,fn,docs/plan/player_controller.md:94,verified,doc name SetState(id; playAnim) (H) | alt HeroSetState (docs/plan/moby_update_catalogue.md:205; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,00240ed8,HeroPdaGadget,fn,docs/plan/menus.md:150,suggested,coined: PDA gadget hero code calling 0x2ae1a0(0); maybe-mid-function
+level01,00241968,HeroChooseJump,fn,docs/plan/player_controller.md:110,suggested,coined: crouch jump 0xb vs jump 7 selection
+level01,00241a08,HeroWalkRunAnim,fn,docs/plan/player_controller.md:168,suggested,coined: walk/run anim selection with hysteresis
+level01,00242198,HeroLandingNextState,fn,docs/plan/player_controller.md:125,suggested,coined: picks next state after landing
+level01,00242420,HeroCrouchJumps,fn,docs/plan/player_controller.md:120,suggested,coined: crouch jumps from state 4
+level01,00242930,HeroStateTransitions,fn,docs/plan/player_controller.md:91,suggested,coined: state transitions | alt HeroCheckQuickSelect (docs/plan/menus.md:66; suggested); alt HeroStateMachine (docs/plan/moby_update_catalogue.md:231; suggested) | also docs/plan/menus.md docs/plan/moby_update_catalogue.md docs/plan/roadmap.md
+level01,002473e0,HeroPickFidget,fn,docs/formats/moby_rac1.md:82,suggested,coined: picks fidget from pack table
+level01,00247a90,SetAnim,fn,docs/plan/player_controller.md:249,inferred,doc name SetAnim(blend; seq; frame) | alt HeroSetAnim (docs/plan/moby_update_catalogue.md:236; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00247d48,RatchetAnimAdvance,fn,docs/plan/player_controller.md:86,suggested,coined: Ratchet's own anim advance
+level01,002494d8,AddAmmo,fn,docs/plan/menus.md:195,suggested,coined: (id;qty) adds ammo; returns overflow
+level01,00249618,HeroPlatformUpdate,fn,docs/plan/player_controller.md:324,suggested,coined: moby collision/moving platforms; not reversed
+level01,0024a498,HudShowHealth,fn,docs/plan/hud_text.md:185,suggested,coined: shows health slot
+level01,0024a4e0,Hud_GetIconIndex__Fi,fn,docs/plan/hud_text.md:40,verified,linear scan of icon table
+level01,0024a668,HudMoveBank,fn,docs/plan/menus.md:99,suggested,coined: moves HUD bank on menu entry
+level01,0024a848,LinkHudBank__FiPc,fn,docs/plan/hud_text.md:46,verified,
+level01,0024ab28,Hud_SendResidentBank__FiPcb,fn,docs/plan/hud_text.md:50,verified,alt Hud_SendResidentBank (docs/plan/render_pipeline.md:41; verified) | also docs/plan/render_pipeline.md
+level01,0024ad98,HudShow,fn,docs/plan/hud_text.md:171,verified,doc's name | alt queue_animation_update (docs/plan/hud_text.md:172; inferred)
+level01,0024c898,HudRaceTimerDraw,fn,docs/plan/hud_text.md:191,suggested,coined: race timer draw
+level01,0024d180,QuickSelectInit,fn,docs/plan/menus.md:67,suggested,coined: quick-select HUD slot 3 init callback
+level01,0024d238,QuickSelectUpdate,fn,docs/plan/menus.md:67,suggested,coined: quick-select HUD slot 3 update callback
+level01,0024d938,QuickSelectDraw,fn,docs/plan/menus.md:67,suggested,coined: quick-select HUD slot 3 draw callback
+level01,0024e238,HudHealthUpdate,fn,docs/plan/hud_text.md:185,suggested,coined: health slot update
+level01,0024e418,HudHealthDraw,fn,docs/plan/hud_text.md:185,suggested,coined: health slot draw
+level01,0024e8d0,HudShowBolts,fn,docs/plan/hud_text.md:186,suggested,coined: registers bolt counter slot
+level01,0024e908,HudBoltsUpdate,fn,docs/plan/hud_text.md:186,suggested,coined: bolt counter update
+level01,0024ea00,HudBoltsDraw,fn,docs/plan/hud_text.md:186,suggested,coined: bolt counter draw
+level01,0024eed8,HudBoltAlertDraw,fn,docs/plan/hud_text.md:188,suggested,coined: nearby-bolt alert draw
+level01,0024f368,HudWeaponInit,fn,docs/plan/hud_text.md:187,suggested,coined: weapon+ammo slot init
+level01,0024f3b0,HudWeaponDraw,fn,docs/plan/hud_text.md:187,suggested,coined: weapon+ammo slot draw
+level01,0024f880,HudUpdate,fn,docs/plan/hud_text.md:176,suggested,coined: HUD slot update loop
+level01,0024f9c0,HudWeaponShow,fn,docs/plan/hud_text.md:187,suggested,coined: weapon+ammo slot show
+level01,0024fb50,HudDraw,fn,docs/plan/menus.md:223,verified,HUD pass (named in hud_text.md) | alt DrawHud2D_A (docs/plan/render_pipeline.md:23; suggested) | also docs/plan/render_pipeline.md
+level01,0024fd28,HudFrame,fn,docs/plan/hud_text.md:83,verified,(slot;frame;x;y;flags;a)
+level01,0024fe10,GetIconFrame__Fii,fn,docs/plan/hud_text.md:40,verified,
+level01,0024fec0,GetFrameTex__Fi,fn,docs/plan/hud_text.md:57,verified,builds TEX0
+level01,002500e0,HudSprite,fn,docs/plan/hud_text.md:79,verified,(frame;x;y;w;h;a)
+level01,002502c8,HudSpriteSubRect,fn,docs/plan/hud_text.md:82,suggested,coined: HUD sprite 1:1 sub-rect
+level01,00250468,HudSpriteRot180,fn,docs/plan/hud_text.md:80,suggested,coined: HUD sprite rotated 180 (right end caps)
+level01,002506c8,HudSpriteRot90,fn,docs/plan/hud_text.md:81,suggested,coined: HUD sprite rotated 90
+level01,002513b8,Hud_sendTexture__FPciiiii,fn,docs/plan/render_pipeline.md:41,verified,HUD texture bank
+level01,002519c0,HudWeaponUpdate,fn,docs/plan/hud_text.md:187,suggested,coined: weapon+ammo slot update
+level01,00251ab0,DrawBarFrame,fn,docs/plan/hud_text.md:151,suggested,coined: bar frame 30080 caps + middle
+level01,00251b88,DrawBanner,fn,docs/plan/hud_text.md:162,suggested,coined: banner draw called from HudDraw
+level01,00251da0,VendorStockLevelInit,fn,docs/plan/menus.md:158,suggested,coined: at level load drops unknown items; adds planet's new item
+level01,00252128,InitMemSlots__Fv,fn,docs/plan/trace_harness.md:58,inferred,sets level core base DAT_00174294
+level01,002521a0,InitOnce__Fv,fn,docs/plan/render_pipeline.md:9,verified,loads VU0 patch 0x10e4d0; calls sce_gs_reset_graph | alt InitOnce (docs/plan/moby_untextured.md:27; verified) | also docs/plan/moby_untextured.md
+level01,00252570,DrawSky,fn,docs/plan/sky_render_notes.md:14,suggested,FUN_00252570; name suggested in render_pipeline.md:51; called from DrawDebugProfiler
+level01,002525f8,WritePointLight_A,fn,docs/plan/tfrag_lighting.md:19,suggested,coined: FUN_002525f8 writes point-light bank
+level01,00252750,WritePointLight_B,fn,docs/plan/tfrag_lighting.md:19,suggested,coined: FUN_00252750 writes point-light bank | alt AllocPointLight (docs/plan/moby_update_catalogue.md:298; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00252850,FreePointLight,fn,docs/plan/moby_update_catalogue.md:298,suggested,coined: free point light
+level01,002528a8,UpdateAllPointLights,fn,docs/plan/render_pipeline.md:45,verified,point light maintenance
+level01,00252a28,CreatePointLight,fn,docs/plan/render_pipeline.md:45,verified,point light create
+level01,00252dd8,refresh_point_light,fn,docs/plan/render_pipeline.md:45,verified,point light refresh
+level01,00253648,ParseParticleTexs,fn,docs/plan/particles.md:20,inferred,level load: part_defs + part_textures
+level01,00253e28,LoadHudBanks__Fv,fn,docs/plan/hud_text.md:23,verified,copies hud_header to HUD heap
+level01,00254108,BuildMobyAdGif,fn,docs/plan/moby_untextured.md:18,suggested,coined: level01 copy of fun_00202d78
+level01,00254360,set_up_vis_gif_viewer,fn,docs/plan/moby_untextured.md:20,inferred,
+level01,002546c8,MobyClassRelocate,fn,docs/plan/moby_untextured.md:14,suggested,coined: level01 copy of fun_00203338
+level01,002549d0,MobyClassesRelocate,fn,docs/plan/moby_untextured.md:14,suggested,coined: level01 copy of fun_00203640
+level01,00255470,RelocateTfrags,fn,docs/plan/trace_harness.md:64,suggested,coined: level01 copy of fun_002040e0 | alt TfragLoadInit (docs/formats/tfrag_rac1.md:323; suggested) | also docs/formats/tfrag_rac1.md
+level01,00255740,CollInit,fn,docs/plan/collision_queries.md:10,suggested,coined: FUN_00255740 collision init (mesh ptr; hero groups)
+level01,00255958,InitLevelRenderGlobals,fn,docs/plan/render_pipeline.md:51,suggested,coined: doc suggests 'level render-globals init'; also shrub/light loader | alt LoadGameplayMobys (docs/plan/moby_update_catalogue.md:84; suggested); alt RelocateTextBlock (docs/plan/hud_text.md:201; suggested); alt LevelRenderInit (docs/plan/particles.md:28; suggested); alt CollLevelInit (docs/plan/collision_queries.md:11; suggested) | also docs/plan/collision_queries.md docs/plan/hud_text.md docs/plan/moby_update_catalogue.md docs/plan/particles.md | doc cross-ref FUN_00255958
+level01,00258128,LoadLevelCoreData,fn,docs/plan/trace_harness.md:63,suggested,coined: FUN_00258128 decompresses core data; relocates tfrags | alt LevelCoreSetup (docs/formats/tfrag_rac1.md:323; suggested); alt LoadLevelCore (docs/plan/moby_update_catalogue.md:49; suggested); alt LevelLoad (docs/plan/audio.md:73; suggested) | also docs/formats/tfrag_rac1.md docs/plan/audio.md docs/plan/moby_update_catalogue.md
+level01,00259788,select_world_object_resource_tables,fn,docs/formats/moby_rac1.md:54,inferred,
+level01,00259c40,entry,fn,docs/plan/menus.md:15,verified,main loop | also docs/plan/player_controller.md docs/plan/render_pipeline.md
+level01,0025e7b0,MobyUnknown74Hook,fn,docs/plan/moby_update_catalogue.md:345,suggested,coined: instance unknown_74 hook
+level01,00261448,memcard_Save,fn,docs/plan/moby_update_catalogue.md:300,inferred,
+level01,00261c10,RippleHeightsToSpr,fn,docs/plan/world_animation.md:134,suggested,coined: copies heights + halos to scratchpad
+level01,00261d78,RippleLerpBuffers,fn,docs/plan/world_animation.md:131,suggested,coined: lerp(prev; cur; f) into buffer 2
+level01,00261df8,RippleVertex,fn,docs/plan/world_animation.md:88,suggested,coined: per-vertex normal; grey light; env reflection UV
+level01,00262038,RipplePatchStep,fn,docs/plan/world_animation.md:88,suggested,coined: 8-neighbour wave step per active patch
+level01,00262388,RippleEmitSubBlock,fn,docs/plan/world_animation.md:163,suggested,coined: emits a 4x4 sub-block as 46-vertex strips
+level01,00262618,WaterStripVertexUV,fn,docs/plan/world_animation.md:56,suggested,coined: per-vertex VU0 macro (wobble; z blend; 2-layer UV)
+level01,00263300,MobyFreeSlotBookkeeping,fn,docs/plan/moby_update_catalogue.md:34,suggested,coined: free-slot bookkeeping; first step of frame | alt UpdateMobysPartA (docs/plan/player_controller.md:23; suggested) | also docs/plan/player_controller.md
+level01,00263390,CreateMoby,fn,docs/plan/moby_update_catalogue.md:289,inferred,
+level01,00263488,InitMobyInstance,fn,docs/plan/moby_update_catalogue.md:28,verified,doc section 9 verified (+0x74 update; mode 2) | also docs/plan/collision_queries.md
+level01,002636c0,DeleteMoby,fn,docs/plan/moby_update_catalogue.md:289,verified,"state 0xfd/0xfe | 2026-09-27 fix: verified: Lombyte exact-boot-match boot 0x20c828; sets state 0xfd/0xfe, stamps tick+2"
+level01,00263718,update_moby_animation_state,fn,docs/plan/moby_update_catalogue.md:288,inferred,boot 0x20c880
+level01,00263870,MobyAnimFindFrame,fn,docs/plan/moby_animation.md:34,suggested,coined: frame finder reading frame time
+level01,00263920,MobyAnimKeyTime,fn,docs/plan/moby_update_catalogue.md:288,suggested,coined: returns current key time
+level01,00264370,AttachManipulator,fn,docs/plan/moby_update_catalogue.md:290,inferred,(m; joint; node); fills +0x64 list
+level01,002643e8,DetachManipulator,fn,docs/plan/moby_update_catalogue.md:290,suggested,doc writes Detach
+level01,00264508,MobyAttachToJoint,fn,docs/formats/moby_rac1.md:69,suggested,coined: fun_0020cca8 attach rule
+level01,00264630,MobyGetBoneMatrix,fn,docs/plan/menus.md:205,suggested,coined: (moby;bone;...) used to place quads on vendor monitor bones
+level01,002646d0,MobyEvalAttachLists,fn,docs/formats/moby_rac1.md:80,suggested,coined: evaluates N joint lists into attach matrices | alt MobyAttachMatrix (docs/plan/roadmap.md:58; suggested) | also docs/plan/roadmap.md
+level01,002647a8,DmaMobyTextures,fn,docs/plan/render_pipeline.md:41,verified,moby texture DMA
+level01,002648b0,PatchMobyGifs,fn,docs/plan/render_pipeline.md:23,verified,moby TEX0 fixup
+level01,00264c30,DrawMobysSetup__Fv,fn,docs/plan/render_pipeline.md:9,verified,adds moby VU1 program; loads VU0 prog 0x100090
+level01,00264ce8,DrawMobyList,fn,docs/plan/render_pipeline.md:32,verified,re-entrant per-list moby draw
+level01,00264d68,DrawMobysCleanUp,fn,docs/plan/render_pipeline.md:32,verified,moby draw cleanup
+level01,00264e18,DrawMobys,fn,docs/plan/render_pipeline.md:23,verified,moby draw entry
+level01,00264e98,EnvNearestSamplePoint,fn,docs/plan/audio.md:201,suggested,coined: env sample point nearest hero sets music track; maybe-mid-function
+level01,00265080,SetMissionDone,fn,docs/plan/moby_update_catalogue.md:222,suggested,coined: set mission byte / mission done | alt SetMissionByte (docs/plan/menus.md:254; suggested) | also docs/plan/menus.md
+level01,002651a0,LightMoby,fn,docs/plan/render_pipeline.md:45,suggested,FUN_002651a0; doc-suggested name; uses 0x180340 bank
+level01,00265260,MobyAnimAdvance,fn,docs/plan/moby_update_catalogue.md:43,verified,boot fun_0020d580; algorithm verified in moby_animation.md | also docs/plan/audio.md
+level01,00265548,BuildActiveMobyList,fn,docs/plan/moby_update_catalogue.md:41,suggested,coined: fun_0020d868 activity gate; builds active moby list
+level01,00265bd8,MobyBuildMatrix,fn,docs/plan/moby_update_catalogue.md:46,suggested,coined: fun_0020def8 rebuilds rotation rows/bounding sphere unless mode&4
+level01,00265dc0,MobyAnimEval,fn,docs/plan/moby_animation.md:94,suggested,level01 copy of fun_0020e0e0
+level01,00267fc0,MobyCollXformCached,fn,docs/plan/collision_queries.md:95,suggested,coined: moby blob transform via 8-entry cache
+level01,00269938,MobyAnimDecodeLocalPose,fn,docs/formats/moby_rac1.md:81,suggested,coined: Ratchet decoded local pose
+level01,0026a6c0,MobyAnimProc,fn,docs/plan/occlusion_culling.md:169,verified,walks moby animation-evaluation job list
+level01,0026a7a0,MobyProc,fn,docs/plan/moby_untextured.md:33,verified,also docs/plan/render_pipeline.md
+level01,0026bbc0,EnvZoneLookup,fn,docs/plan/world_animation.md:200,suggested,coined: env zone lookup returning index and t
+level01,0026be04,HeroEnvLighting,fn,docs/plan/world_animation.md:215,suggested,coined: env zone hero light-bank cross-fade
+level01,0026c250,SetDeathBits,fn,docs/plan/moby_update_catalogue.md:300,suggested,coined: death bits (0x14c190 + level*0x100; 0x1ba950)
+level01,0026c5a8,hard_cut,fn,docs/plan/moby_update_catalogue.md:369,inferred,port Rust name for this fn (clamps B) | alt MobyAnimCut (docs/plan/moby_update_catalogue.md:287; suggested)
+level01,0026c660,MobyAnimBlend,fn,docs/plan/moby_update_catalogue.md:287,suggested,coined: fun_00212f90 sequence blend
+level01,0026c7a8,MobyAnimBlendEx,fn,docs/plan/moby_update_catalogue.md:287,suggested,coined: fun_002130d8 blend with flags
+level01,0026c930,randi,fn,docs/plan/particles.md:141,verified,r % n; also FUN_0026c930 in world_animation.md:121 | alt RandRange (docs/plan/audio.md:118; suggested); alt RandMod (docs/plan/moby_update_catalogue.md:299; suggested) | also docs/plan/audio.md docs/plan/moby_update_catalogue.md
+level01,0026c970,rand_range,fn,docs/plan/particles.md:141,verified,r % (b-a+1) + a | alt RandInt (docs/plan/moby_update_catalogue.md:299; suggested) | also docs/plan/moby_update_catalogue.md
+level01,0026c9c8,randf,fn,docs/plan/particles.md:142,verified,a + r*(b-a)*2^-15 | alt RandFloat (docs/plan/moby_update_catalogue.md:299; suggested) | also docs/plan/moby_update_catalogue.md
+level01,0026ca28,randf_sym,fn,docs/plan/particles.md:143,verified,12-bit random float; sign from bit 16
+level01,0026ca90,rand_angle,fn,docs/plan/particles.md:144,verified,random angle in [-pi; pi) | alt RandAngle (docs/plan/moby_update_catalogue.md:299; suggested) | also docs/plan/moby_update_catalogue.md
+level01,0026cb58,rand_vec,fn,docs/plan/particles.md:145,verified,random vector of random length; verified (line 294)
+level01,0026cef0,SpringTurn,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: spring turn
+level01,0026d058,SpringTurn2,fn,docs/plan/moby_update_catalogue.md:299,suggested,coined: spring turn (second variant)
+level01,0026d930,SeedJumpPattern,fn,docs/plan/moby_update_catalogue.md:199,suggested,coined: 577 init seeds a jump pattern; maybe-mid-function
+level01,0026e008,MobyGroupCount,fn,docs/plan/moby_update_catalogue.md:293,suggested,coined: group count
+level01,0026e618,GroundHeight,fn,docs/plan/moby_update_catalogue.md:292,suggested,coined: ground height probe (line from z+0.5 down)
+level01,0026ed38,SetWaterLevel,fn,docs/plan/collision_queries.md:83,suggested,coined: records water level into 0x13f640 | alt WaterHeightAt (docs/plan/world_animation.md:144; suggested) | also docs/plan/world_animation.md
+level01,0026f320,MobyGetHitMessage,fn,docs/plan/moby_update_catalogue.md:189,suggested,coined: hit/damage message query (m; mask; keep)
+level01,00270728,Approach,fn,docs/plan/player_controller.md:137,inferred,doc name Approach(t; step; &x) | also docs/plan/moby_update_catalogue.md
+level01,00270780,Spring,fn,docs/plan/player_controller.md:138,inferred,doc name Spring(t;k;d;max;&x;&v)
+level01,00270b58,SpringAngle,fn,docs/plan/player_controller.md:140,suggested,coined: yaw spring with wrapped angle differences (called by TurnTo)
+level01,00271030,NormaliseMatrixColumns,fn,docs/formats/moby_rac1.md:73,suggested,coined: normalises the three columns
+level01,00271170,ReflectVelocity,fn,docs/plan/particles.md:122,suggested,coined: reflects particle velocity on collision hit (factor P.3c)
+level01,002726c8,SplineProject,fn,docs/plan/moby_update_catalogue.md:293,suggested,coined: spline project
+level01,00272e28,SplineSample,fn,docs/plan/moby_update_catalogue.md:293,suggested,coined: spline sample
+level01,00273310,SpawnBeamExplosion,fn,docs/plan/moby_update_catalogue.md:296,suggested,coined: beam/explosion
+level01,00274820,PointInCuboid,fn,docs/plan/moby_update_catalogue.md:95,suggested,coined: point-in-cuboid test (cuboid table 0x1600ec) | also docs/plan/world_animation.md
+level01,002755f8,CarryRiders,fn,docs/plan/moby_update_catalogue.md:138,suggested,coined: carry riders
+level01,002756d0,UnlockPlanet,fn,docs/plan/menus.md:254,suggested,coined: unlocks planet | alt UnlockItem (docs/plan/moby_update_catalogue.md:221; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00275760,GiveItem,fn,docs/plan/menus.md:194,suggested,coined: (id;1) gives weapon
+level01,00276fe8,LineOfSightTest,fn,docs/plan/moby_update_catalogue.md:123,suggested,coined: LOS test
+level01,00277c38,ShowPlanetBanner,fn,docs/plan/menus.md:258,suggested,coined: planet banner 1009+ [L]
+level01,00277fb8,HeroOnMoby,fn,docs/plan/moby_update_catalogue.md:293,suggested,coined: hero-on-moby test
+level01,002780b0,SpawnImpactSparks,fn,docs/plan/particles.md:245,suggested,coined: impact sparks via particle type 1
+level01,002787a0,BreakFxA,fn,docs/plan/moby_update_catalogue.md:296,suggested,coined: one of three break FX fns
+level01,002789e0,ShowBanner,fn,docs/plan/hud_text.md:162,verified,(msg_id;ticks=180) | alt HudText (docs/plan/moby_update_catalogue.md:300; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00278a50,ShowBannerf,fn,docs/plan/hud_text.md:162,suggested,coined: ShowBanner with printf arg
+level01,00278ad8,BreakFxB,fn,docs/plan/moby_update_catalogue.md:296,suggested,coined: one of three break FX fns
+level01,00278e20,BreakFxC,fn,docs/plan/moby_update_catalogue.md:296,suggested,coined: one of three break FX fns
+level01,00278eb8,RaceTimerShow,fn,docs/plan/hud_text.md:191,suggested,coined: race timer slot 12 show
+level01,00278f58,try_set_help_message,fn,docs/plan/moby_update_catalogue.md:300,inferred,
+level01,00279070,OpenShipMenu,fn,docs/plan/moby_update_catalogue.md:217,suggested,coined: ship menu; called with 2
+level01,00279218,MobyClassRegister,fn,docs/plan/moby_update_catalogue.md:24,suggested,coined: class-load lookup of update/vtbl; writes 0x197b00[slot] and class+0x2c
+level01,002792d0,MobyLoadTimeUpdatePass,fn,docs/plan/particles.md:328,suggested,coined: FUN_002792d0 runs every moby update once before first frame | alt MobyLoadUpdatePass (docs/plan/moby_update_catalogue.md:49; suggested); alt UpdateMobys (docs/plan/occlusion_culling.md:166; suggested) | also docs/plan/moby_update_catalogue.md docs/plan/occlusion_culling.md
+level01,002793d8,MobyUpdateLoop,fn,docs/plan/moby_update_catalogue.md:35,suggested,coined: per-frame moby loop (anim advance; update fn; matrix) | alt MobyUpdateAll (docs/plan/menus.md:114; suggested) | also docs/plan/menus.md docs/plan/particles.md
+level01,00279470,UpdateMobysPartB,fn,docs/plan/player_controller.md:23,suggested,coined: one of four moby update calls (mask 2); doc unsure which is which | alt UpdateMobys (docs/plan/moby_update_catalogue.md:35; suggested) | also docs/plan/moby_update_catalogue.md
+level01,002796f8,MusicStreamInit,fn,docs/plan/audio.md:185,suggested,coined: calls InitVAGStreamingEx(4;0xf000;0;1); maybe-mid-function
+level01,00279cd8,PlayDialogue,fn,docs/plan/audio.md:202,suggested,coined: dialogue (id<10000) scene sounds
+level01,00279fa8,music_start_track,fn,docs/plan/audio.md:187,verified,
+level01,0027a080,StartTrackBody,fn,docs/plan/audio.md:189,verified,queues loop body
+level01,0027a168,music_Transition,fn,docs/plan/audio.md:196,verified,plays stinger
+level01,0027a248,MusicRequestTrack,fn,docs/plan/audio.md:194,suggested,coined: (track;stinger) music change request
+level01,0027a688,music_Update,fn,docs/plan/audio.md:194,verified,
+level01,0027af20,MusicStartCallback,fn,docs/plan/audio.md:188,suggested,coined: handle callback sets state 8
+level01,0027afb8,MusicTimeRemainingCallback,fn,docs/plan/audio.md:197,suggested,coined: arms fade
+level01,0027b940,PadPressedWithin,fn,docs/plan/player_controller.md:45,suggested,coined: (mask;n;*ago) mask pressed within last n ticks (input buffer)
+level01,0027b9e0,PadComboWithin,fn,docs/plan/player_controller.md:46,suggested,coined: both buttons pressed within n ticks; at most gap apart
+level01,0027ba60,PadStickLengthAgo,fn,docs/plan/player_controller.md:46,suggested,coined: stick length n-1 ticks ago
+level01,0027c478,UpdatePad__FR3PAD,fn,docs/plan/player_controller.md:19,verified,existing Lombyte name (line 7); doc writes UpdatePad | alt PadUpdate (docs/plan/menus.md:21; suggested) | also docs/plan/menus.md
+level01,0027c498,CreatePart,fn,docs/plan/particles.md:13,inferred,Lombyte name; stub a1=0 then jumps to CreatePart2
+level01,0027c4a0,CreatePart2,fn,docs/plan/particles.md:14,verified,real allocator; pool logic verified from disassembly (line 300)
+level01,0027c5e8,KillPart,fn,docs/plan/particles.md:15,verified,frees record; verified from disassembly (line 300)
+level01,0027c6f0,PartType22Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 22 update fn from RegisterPartTypes table
+level01,0027c7e8,UpdateParts,fn,docs/plan/particles.md:16,inferred,per-tick dispatch through the particle type table
+level01,0027c878,PartProc,fn,docs/plan/render_pipeline.md:14,verified,particles | also docs/plan/particles.md
+level01,0027d46c,_part_load_tex,fn,docs/plan/render_pipeline.md:41,verified,particle textures | also docs/plan/particles.md
+level01,0027d4e0,RegisterPartTypes,fn,docs/plan/particles.md:19,inferred,fills 81-entry update table 0x1b2300
+level01,0027d928,PartType00Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 0 update fn from RegisterPartTypes table
+level01,0027daf0,PartType01Spawn,fn,docs/plan/particles.md:60,suggested,coined: particle type 1 spawner (only CreatePart call site) (impact sparks)
+level01,0027dbc8,PartType01Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 1 update fn from RegisterPartTypes table (impact sparks)
+level01,0027dc98,PartType02Spawn,fn,docs/plan/particles.md:60,suggested,coined: particle type 2 spawner (only CreatePart call site)
+level01,0027de70,PartType02Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 2 update fn from RegisterPartTypes table
+level01,0027e0d8,PartType03Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 3 update fn from RegisterPartTypes table
+level01,0027e538,PartType04Spawn,fn,docs/plan/particles.md:60,suggested,coined: particle type 4 spawner (only CreatePart call site)
+level01,0027e650,PartType04Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 4 update fn from RegisterPartTypes table
+level01,0027e750,PartType05Spawn,fn,docs/plan/particles.md:60,suggested,coined: particle type 5 spawner (only CreatePart call site)
+level01,0027e850,PartType05Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 5 update fn from RegisterPartTypes table
+level01,0027e900,PartType06Spawn,fn,docs/plan/particles.md:60,suggested,coined: particle type 6 spawner (only CreatePart call site) (data-driven emitter particle) | alt SpawnParticle (docs/plan/moby_update_catalogue.md:112; suggested) | also docs/plan/moby_update_catalogue.md
+level01,0027eb08,PartType06Update,fn,docs/plan/particles.md:60,suggested,coined: particle type 6 update fn from RegisterPartTypes table (data-driven emitter particle)
+level01,0027f200,PartType07Update,fn,docs/plan/particles.md:61,suggested,coined: particle type 7 update fn from RegisterPartTypes table
+level01,0027f2b0,PartType08Spawn,fn,docs/plan/particles.md:61,suggested,coined: particle type 8 spawner (only CreatePart call site)
+level01,0027f3a0,PartType08Update,fn,docs/plan/particles.md:61,suggested,coined: particle type 8 update fn from RegisterPartTypes table
+level01,0027f4d8,PartType09Update,fn,docs/plan/particles.md:61,suggested,coined: particle type 9 update fn from RegisterPartTypes table
+level01,0027f660,PartType10Spawn,fn,docs/plan/particles.md:61,suggested,coined: particle type 10 spawner (only CreatePart call site)
+level01,0027f788,PartType10Update,fn,docs/plan/particles.md:61,suggested,coined: particle type 10 update fn from RegisterPartTypes table
+level01,0027f8f8,PartType11Spawn,fn,docs/plan/particles.md:61,suggested,coined: particle type 11 spawner (only CreatePart call site)
+level01,0027fb80,PartType11Update,fn,docs/plan/particles.md:61,suggested,coined: particle type 11 update fn from RegisterPartTypes table
+level01,00280138,PartType12Spawn,fn,docs/plan/particles.md:62,suggested,coined: particle type 12 spawner (only CreatePart call site)
+level01,00280408,PartType12Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 12 update fn from RegisterPartTypes table
+level01,00280698,PartType13Spawn,fn,docs/plan/particles.md:62,suggested,coined: particle type 13 spawner (only CreatePart call site)
+level01,00280818,PartType13Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 13 update fn from RegisterPartTypes table
+level01,00280970,PartType14Spawn,fn,docs/plan/particles.md:62,suggested,coined: particle type 14 spawner (only CreatePart call site)
+level01,00280ac8,PartType14Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 14 update fn from RegisterPartTypes table
+level01,00280bd0,PartType15Spawn,fn,docs/plan/particles.md:62,suggested,coined: particle type 15 spawner (only CreatePart call site)
+level01,00280d08,PartType15Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 15 update fn from RegisterPartTypes table
+level01,00280f30,PartType16Spawn,fn,docs/plan/particles.md:62,suggested,coined: particle type 16 spawner (only CreatePart call site)
+level01,002810e8,PartType16Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 16 update fn from RegisterPartTypes table
+level01,00281428,PartType17Update,fn,docs/plan/particles.md:62,suggested,coined: particle type 17 update fn from RegisterPartTypes table
+level01,00281430,PartType18Spawn,fn,docs/plan/particles.md:63,suggested,coined: particle type 18 spawner (only CreatePart call site)
+level01,002815b8,PartType18Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 18 update fn from RegisterPartTypes table
+level01,00281748,PartType19Spawn,fn,docs/plan/particles.md:63,suggested,coined: particle type 19 spawner (only CreatePart call site)
+level01,00281850,PartType19Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 19 update fn from RegisterPartTypes table
+level01,002818c0,PartType20Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 20 update fn from RegisterPartTypes table
+level01,00281c10,PartType21Spawn,fn,docs/plan/particles.md:63,suggested,coined: particle type 21 spawner (only CreatePart call site)
+level01,00281d10,PartType21Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 21 update fn from RegisterPartTypes table
+level01,00281f30,PartType22Spawn,fn,docs/plan/particles.md:63,suggested,coined: particle type 22 spawner (only CreatePart call site) | alt SpawnSmoke (docs/plan/moby_update_catalogue.md:296; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00282060,PartType23Spawn,fn,docs/plan/particles.md:63,suggested,coined: particle type 23 spawner (only CreatePart call site) | alt SpawnSprite (docs/plan/moby_update_catalogue.md:296; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00282210,PartType23Update,fn,docs/plan/particles.md:63,suggested,coined: particle type 23 update fn from RegisterPartTypes table
+level01,002824d0,PartType24Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 24 update fn from RegisterPartTypes table
+level01,002825f8,PartType25Spawn,fn,docs/plan/particles.md:64,suggested,coined: particle type 25 spawner (only CreatePart call site)
+level01,00282760,PartType25Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 25 update fn from RegisterPartTypes table
+level01,00282b00,PartType26Spawn,fn,docs/plan/particles.md:64,suggested,coined: particle type 26 spawner (only CreatePart call site)
+level01,00282c40,PartType26Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 26 update fn from RegisterPartTypes table
+level01,00282d80,PartType27Spawn,fn,docs/plan/particles.md:64,suggested,coined: particle type 27 spawner (only CreatePart call site)
+level01,00282e60,PartType27Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 27 update fn from RegisterPartTypes table
+level01,00282ef0,PartType28Spawn,fn,docs/plan/particles.md:64,suggested,coined: particle type 28 spawner (only CreatePart call site)
+level01,002831b0,PartType28Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 28 update fn from RegisterPartTypes table
+level01,00283408,PartType29Update,fn,docs/plan/particles.md:64,suggested,coined: particle type 29 update fn from RegisterPartTypes table
+level01,002836d0,PartType30Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 30 update fn from RegisterPartTypes table
+level01,00283be8,PartType31Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 31 update fn from RegisterPartTypes table
+level01,00283d88,PartType32Spawn,fn,docs/plan/particles.md:65,suggested,coined: particle type 32 spawner (only CreatePart call site)
+level01,00283ea8,PartType32Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 32 update fn from RegisterPartTypes table
+level01,002840a8,PartType33Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 33 update fn from RegisterPartTypes table
+level01,002840e0,PartType34Spawn,fn,docs/plan/particles.md:65,suggested,coined: particle type 34 spawner (only CreatePart call site)
+level01,002842e0,PartType34Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 34 update fn from RegisterPartTypes table
+level01,002845a8,PartType35Spawn,fn,docs/plan/particles.md:65,suggested,coined: particle type 35 spawner (only CreatePart call site)
+level01,002846c0,PartType35Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 35 update fn from RegisterPartTypes table
+level01,002848f8,PartType36Update,fn,docs/plan/particles.md:65,suggested,coined: particle type 36 update fn from RegisterPartTypes table
+level01,00284a60,PartType37Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 37 update fn from RegisterPartTypes table
+level01,00284b60,PartType38Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 38 update fn from RegisterPartTypes table
+level01,00284c98,PartType39Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 39 update fn from RegisterPartTypes table
+level01,00284d88,PartType40Spawn,fn,docs/plan/particles.md:66,suggested,coined: particle type 40 spawner (only CreatePart call site)
+level01,00284f70,PartType40Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 40 update fn from RegisterPartTypes table
+level01,00285768,PartType41Spawn,fn,docs/plan/particles.md:66,suggested,coined: particle type 41 spawner (only CreatePart call site)
+level01,002858a8,PartType41Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 41 update fn from RegisterPartTypes table
+level01,002858f0,PartType42Spawn,fn,docs/plan/particles.md:66,suggested,coined: particle type 42 spawner (only CreatePart call site)
+level01,00285ae0,PartType42Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 42 update fn from RegisterPartTypes table
+level01,00286238,PartType43Update,fn,docs/plan/particles.md:66,suggested,coined: particle type 43 update fn from RegisterPartTypes table
+level01,00286450,PartType44Spawn,fn,docs/plan/particles.md:67,suggested,coined: particle type 44 spawner (only CreatePart call site)
+level01,002865e8,PartType44Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 44 update fn from RegisterPartTypes table
+level01,00286780,PartType45Spawn,fn,docs/plan/particles.md:67,suggested,coined: particle type 45 spawner (only CreatePart call site)
+level01,002868e0,PartType45Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 45 update fn from RegisterPartTypes table
+level01,00286a68,PartType46Spawn,fn,docs/plan/particles.md:67,suggested,coined: particle type 46 spawner (only CreatePart call site)
+level01,00286b88,PartType46Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 46 update fn from RegisterPartTypes table
+level01,00286cb0,PartType47Spawn,fn,docs/plan/particles.md:67,suggested,coined: particle type 47 spawner (only CreatePart call site)
+level01,00286d80,PartType47Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 47 update fn from RegisterPartTypes table
+level01,00286e20,PartType48Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 48 update fn from RegisterPartTypes table
+level01,00286eb8,PartType49Update,fn,docs/plan/particles.md:67,suggested,coined: particle type 49 update fn from RegisterPartTypes table
+level01,00286f90,PartType50Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 50 update fn from RegisterPartTypes table
+level01,00287060,PartType51Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 51 update fn from RegisterPartTypes table
+level01,00287158,PartType52Spawn,fn,docs/plan/particles.md:68,suggested,coined: particle type 52 spawner (only CreatePart call site)
+level01,00287288,PartType52Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 52 update fn from RegisterPartTypes table
+level01,00287328,PartType53Spawn,fn,docs/plan/particles.md:68,suggested,coined: particle type 53 spawner (only CreatePart call site)
+level01,002874b8,PartType53Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 53 update fn from RegisterPartTypes table
+level01,00287700,PartType54Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 54 update fn from RegisterPartTypes table
+level01,002878a0,PartType55Spawn,fn,docs/plan/particles.md:68,suggested,coined: particle type 55 spawner (only CreatePart call site)
+level01,002879a0,PartType55Update,fn,docs/plan/particles.md:68,suggested,coined: particle type 55 update fn from RegisterPartTypes table
+level01,00287b00,PartType56Spawn,fn,docs/plan/particles.md:69,suggested,coined: particle type 56 spawner (only CreatePart call site) (mist puff)
+level01,00287bd8,PartType56Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 56 update fn from RegisterPartTypes table (mist puff)
+level01,00287c80,PartType57Spawn,fn,docs/plan/particles.md:69,suggested,coined: particle type 57 spawner (only CreatePart call site) (flat ripple)
+level01,00287d90,PartType57Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 57 update fn from RegisterPartTypes table (flat ripple)
+level01,00287e70,PartType58Spawn,fn,docs/plan/particles.md:69,suggested,coined: particle type 58 spawner (only CreatePart call site)
+level01,00288068,PartType58Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 58 update fn from RegisterPartTypes table
+level01,00288410,PartType59Spawn,fn,docs/plan/particles.md:69,suggested,coined: particle type 59 spawner (only CreatePart call site) (glow)
+level01,00288530,PartType59Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 59 update fn from RegisterPartTypes table (glow)
+level01,00288588,PartType60Spawn,fn,docs/plan/particles.md:69,suggested,coined: particle type 60 spawner (only CreatePart call site) (sparkle)
+level01,00288740,PartType60Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 60 update fn from RegisterPartTypes table (sparkle)
+level01,002888f0,PartType61Update,fn,docs/plan/particles.md:69,suggested,coined: particle type 61 update fn from RegisterPartTypes table
+level01,00288bb0,PartType62Spawn,fn,docs/plan/particles.md:70,suggested,coined: particle type 62 spawner (only CreatePart call site)
+level01,00288ca8,PartType62Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 62 update fn from RegisterPartTypes table
+level01,00288d58,PartType63Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 63 update fn from RegisterPartTypes table
+level01,00288d90,PartType64Spawn,fn,docs/plan/particles.md:70,suggested,coined: particle type 64 spawner (only CreatePart call site)
+level01,00288f10,PartType64Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 64 update fn from RegisterPartTypes table
+level01,00289388,PartType65Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 65 update fn from RegisterPartTypes table
+level01,00289648,PartType66Spawn,fn,docs/plan/particles.md:70,suggested,coined: particle type 66 spawner (only CreatePart call site)
+level01,002897b0,PartType66Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 66 update fn from RegisterPartTypes table
+level01,00289850,PartType67Spawn,fn,docs/plan/particles.md:70,suggested,coined: particle type 67 spawner (only CreatePart call site)
+level01,002899c0,PartType67Update,fn,docs/plan/particles.md:70,suggested,coined: particle type 67 update fn from RegisterPartTypes table
+level01,00289cc0,PartType68Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 68 update fn from RegisterPartTypes table
+level01,00289df0,PartType69Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 69 update fn from RegisterPartTypes table
+level01,0028a078,PartType70Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 70 update fn from RegisterPartTypes table
+level01,0028a0e0,PartType71Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 71 update fn from RegisterPartTypes table
+level01,0028a3f0,PartType72Spawn,fn,docs/plan/particles.md:71,suggested,coined: particle type 72 spawner (only CreatePart call site)
+level01,0028a578,PartType72Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 72 update fn from RegisterPartTypes table
+level01,0028a5b8,PartType73Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 73 update fn from RegisterPartTypes table
+level01,0028a7a8,PartType74Spawn,fn,docs/plan/particles.md:71,suggested,coined: particle type 74 spawner (only CreatePart call site)
+level01,0028a908,PartType74Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 74 update fn from RegisterPartTypes table
+level01,0028aae8,PartType75Update,fn,docs/plan/particles.md:71,suggested,coined: particle type 75 update fn from RegisterPartTypes table
+level01,0028ac08,PartType76Update,fn,docs/plan/particles.md:72,suggested,coined: particle type 76 update fn from RegisterPartTypes table
+level01,0028ac58,PartType77Update,fn,docs/plan/particles.md:72,suggested,coined: particle type 77 update fn from RegisterPartTypes table
+level01,0028ad08,PartType78Spawn,fn,docs/plan/particles.md:72,suggested,coined: particle type 78 spawner (only CreatePart call site)
+level01,0028ae98,PartType78Update,fn,docs/plan/particles.md:72,suggested,coined: particle type 78 update fn from RegisterPartTypes table
+level01,0028b160,PartType79Update,fn,docs/plan/particles.md:72,suggested,coined: particle type 79 update fn from RegisterPartTypes table
+level01,0028b2a8,PartType80Update,fn,docs/plan/particles.md:72,suggested,coined: particle type 80 update fn from RegisterPartTypes table
+level01,0028bf50,EnterMenuMode,fn,docs/plan/menus.md:8,verified,doc's preferred name; (kind) sets mode 3 page menu; pauses music/sfx | alt PauseAllSounds (docs/plan/menus.md:8; inferred) | Lombyte name believed wrong: PauseAllSounds
+level01,0028c128,LoadItemIdsFromSave,fn,docs/formats/moby_rac1.md:77,suggested,coined: copies item ids from save | alt PageMenuFirstTick (docs/plan/menus.md:85; suggested) | also docs/plan/menus.md
+level01,0028c6c8,PageMenuClose,fn,docs/plan/menus.md:117,suggested,coined: close; restores HUD bank; frees mobys; runs post-action
+level01,0028c990,PageMenuUpdate,fn,docs/plan/menus.md:24,suggested,"page-menu (pause/map/planet-select) update; entry 0x28bf50, draw 0x28d080 | alt SceneController (docs/formats/moby_rac1.md:77; suggested, coined) | also docs/formats/moby_rac1.md"
+level01,0028d080,PageMenuDraw,fn,docs/plan/menus.md:24,suggested,coined: page menu render (snapshot; black 0x30; mobys; widgets)
+level01,0028e600,ListWidgetUpdate,fn,docs/plan/menus.md:130,suggested,"coined: page-menu list widget update (hl timers, ✕ actions 0..11; docs/plan/menus.md ""List widget"") | was MenuSetPostAction, an earlier doc-coined name (not Lombyte) believed wrong | PENDING level01 (locked: unsaved transaction, not written): rename MenuSetPostAction -> ListWidgetUpdate by hand; cluster-propagated MenuSetPostAction also in levels 05, 10, 12, 16"
+level01,0028f868,MapWidgetUpdate,fn,docs/plan/menus.md:137,verified,map page W2 widget update (docs/plan/menus.md Map; draw is 0x292d38) | Lombyte name believed wrong: DrawMapScreen (boot 0x21be60 draw_map_screen)
+level01,00290808,DrawSoundMenu,fn,docs/plan/menus.md:137,verified,widget draw
+level01,00290cd0,MenuTextSwap,fn,docs/plan/hud_text.md:202,suggested,coined: streams/swaps all_text for menus (second of pair)
+level01,00290d40,MenuTextLoad,fn,docs/plan/hud_text.md:202,suggested,coined: streams/swaps all_text for menus (first of pair)
+level01,00292298,DrawQuitGameMenu,fn,docs/plan/menus.md:137,verified,widget draw
+level01,00292528,DrawItemsMenu,fn,docs/plan/menus.md:137,verified,widget draw
+level01,00292980,GoldBoltPanelDraw,fn,docs/plan/menus.md:302,inferred,"coined: confirm-page W4 gold-bolt panel (spinning moby + ""Found: N of M"") | Lombyte name believed wrong: DrawGBsShipMenu__maybe (boot 0x21ef78; boot_functions.csv setup_menu_display_text)"
+level01,00292d70,DrawMissionsMenu,fn,docs/plan/menus.md:137,verified,widget draw
+level01,002932f0,draw_menu_selection_marker,fn,docs/plan/menus.md:139,verified,menu selection marker / cursor
+level01,00293670,StreamedImageDraw,fn,docs/plan/menus.md:299,inferred,coined: map page W4 streamed planet picture draw (update 0x293398) | Lombyte name believed wrong: draw_transition_overlay (boot 0x21fc68)
+level01,00294a38,ToggleListDraw,fn,docs/plan/menus.md:137,verified,generic toggle-list widget draw (HelpDesk/Subtitles pages; update 0x294830) | Lombyte name believed wrong: DrawCheatsMenu (boot 0x221030 draw_cheats_menu)
+level01,00296990,DrawSaveMenu,fn,docs/plan/menus.md:138,suggested,coined: save/load widget draw (first of pair)
+level01,00296ce0,DrawLoadMenu,fn,docs/plan/menus.md:138,suggested,coined: save/load widget draw (second of pair)
+level01,00297d70,LoadHandGadget,fn,docs/formats/moby_rac1.md:54,inferred,also docs/plan/menus.md
+level01,00298578,HandItemUpdate,fn,docs/formats/moby_rac1.md:60,suggested,coined: update fn of hand items (wrench 71 etc.)
+level01,00298730,HeadItemUpdate,fn,docs/formats/moby_rac1.md:64,suggested,coined: update fn of head items
+level01,00298820,FeetItemUpdate,fn,docs/formats/moby_rac1.md:65,suggested,coined: update fn of feet items
+level01,002989c8,BackItemUpdate,fn,docs/formats/moby_rac1.md:62,suggested,coined: update fn of back items 601/607-609
+level01,00298f80,CheatEntryUpdate,fn,docs/plan/menus.md:114,suggested,"coined: cheat entry, called every tick (records presses while R2+L1 held; docs/plan/menus.md ""Every tick"") | was MenuInput, an earlier doc-coined name (not Lombyte) believed wrong | PENDING level01 (locked: unsaved transaction, not written): rename MenuInput -> CheatEntryUpdate by hand; cluster-propagated MenuInput also in levels 00, 02-18"
+level01,0029caf8,dma_shrub_textures,fn,docs/plan/render_pipeline.md:31,verified,shrub texture DMA
+level01,0029cc38,PatchShrubGifs,fn,docs/plan/shrub_lighting.md:223,verified,"level01 copy of fun_00228a30; name from render_pipeline.md:51 | 2026-09-27 fix: verified = boot 0x228a30 (same decompile, tables 0x1bd330/0x1bc4b0/0x1bce30); Ghidra name already PatchShrubGifs"
+level01,0029cd40,DrawShrubs,fn,docs/plan/render_pipeline.md:23,verified,shrub draw entry
+level01,0029cdf0,ShrubProc,fn,docs/plan/shrub_lighting.md:55,verified,shrub chain builder
+level01,0029d4f8,ShrubWindSway,block,docs/plan/shrub_lighting.md:181,suggested,"coined: wind sway block 0x29d4f8..0x29d670; returns via 0x70003fa0; maybe-mid-function | 2026-09-27 fix: not a function start, the sway block inside ShrubProc 0x29cdf0; do not rename a function"
+level01,0029e7e8,LightShrubs,fn,docs/plan/shrub_lighting.md:14,verified,was FUN_0029e7e8; boot copy not located; VU0 prog 436083 | also docs/plan/trace_harness.md
+level01,0029edb0,UpdateSkyShellsStatic,fn,docs/plan/render_pipeline.md:51,verified,"static (identity) sky-shell loop, taken when level index 0x15ed84 != 1 (DrawSky 0x252570) | was DrawSkyShells_NTSC (docs/plan/render_pipeline.md:51; suggested) -- wrong: the test is on the level index, not the PAL flag 0x15ed80 | also docs/plan/sky_render_notes.md | PENDING level01 (locked: unsaved transaction, not written): rename DrawSkyShells_NTSC -> UpdateSkyShellsStatic by hand; cluster-propagated DrawSkyShells_NTSC also at L00 0x2892d0, L02 0x28a3e8, L03 0x277c60, L04 0x27c320 (not renamed: other-level writes were not permitted)"
+level01,0029ee10,UpdateSkyShellsAnimated,fn,docs/plan/render_pipeline.md:51,verified,"animated sky-shell loop (shells 2-4 rotate with 0x15f5cc), taken when level index 0x15ed84 == 1 (DrawSky 0x252570) | was DrawSkyShells_PAL (docs/plan/render_pipeline.md:51; suggested) -- wrong: not PAL | also docs/plan/sky_render_notes.md | PENDING level01 (locked: unsaved transaction, not written): rename DrawSkyShells_PAL -> UpdateSkyShellsAnimated by hand"
+level01,0029f260,DrawSkyShells,fn,docs/plan/sky_render_notes.md:122,suggested,FUN_0029f260 standalone sky shell loop; name from render_pipeline.md:51
+level01,0029f668,SkyDrawShell__Fi,fn,docs/plan/sky_render_notes.md:16,verified,existing level01 name; draws one sky shell (render_pipeline.md:23)
+level01,0029f6c0,SkyDrawShellTextured,fn,docs/plan/sky_render_notes.md:17,suggested,coined: level01 copy of boot 0x22b6e8
+level01,0029f900,SkyDrawShellGouraud,fn,docs/plan/sky_render_notes.md:17,suggested,coined: level01 copy of boot 0x22b928
+level01,002a00b0,SkyBsphereCheck,fn,docs/plan/sky_render_notes.md:18,inferred,per-cluster bounding-sphere cull; existing level01 name
+level01,002a0190,SoundOcclusionOrigin,fn,docs/plan/audio.md:156,suggested,coined: jittered listener origin for occlusion
+level01,002a02e0,SoundDistanceVolume,fn,docs/plan/audio.md:146,suggested,coined: distance volume
+level01,002a0418,SoundComputePan,fn,docs/plan/audio.md:149,suggested,coined: pan
+level01,002a04b8,SoundMasterVolumeInit,fn,docs/plan/audio.md:164,suggested,coined: master volume groups init
+level01,002a0638,sound_update,fn,docs/plan/audio.md:139,verified,per-frame sound update | also docs/plan/roadmap.md
+level01,002a12f0,SoundIsAlive,fn,docs/plan/audio.md:131,suggested,coined: (moby;slot) alive? | alt VoiceAlive (docs/plan/moby_update_catalogue.md:295; suggested) | also docs/plan/moby_update_catalogue.md
+level01,002a1348,release_voice_slot,fn,docs/plan/moby_update_catalogue.md:295,inferred,alt SoundRelease (docs/plan/audio.md:131; suggested) | also docs/plan/audio.md
+level01,002a13a0,SoundSlotAlloc,fn,docs/plan/audio.md:116,suggested,coined: sound slot allocation
+level01,002a1618,PlayClassSound,fn,docs/plan/audio.md:126,suggested,coined: class sound i of moby; doc writes fun_0022da68 | alt PlayMobySound (docs/plan/moby_update_catalogue.md:295; suggested) | also docs/plan/moby_update_catalogue.md
+level01,002a16c0,PlayClassSoundByClass,fn,docs/plan/audio.md:127,suggested,coined: class sound looked up by o_class
+level01,002a1770,PlayLevelSoundAtMoby,fn,docs/plan/audio.md:79,suggested,coined: (i;flags;moby) level def at moby
+level01,002a1808,PlayLevelSoundAtInstance,fn,docs/plan/audio.md:128,suggested,coined: level def at sound instance
+level01,002a1898,PlayFootstepSound,fn,docs/plan/collision_queries.md:82,suggested,coined: sound = tbl[level] + class*4 + foot*2 + variant + base | alt PlayFootstep (docs/plan/audio.md:79; suggested) | also docs/plan/audio.md
+level01,002a1968,SoundSetVolume,fn,docs/plan/audio.md:130,suggested,coined: set slot volume
+level01,002a1988,SoundSetPitchBend,fn,docs/plan/audio.md:130,suggested,coined: set slot pitch bend
+level01,002a19a8,SoundInstanceUpdate,fn,docs/plan/audio.md:177,suggested,coined: dispatches sound instance update
+level01,002a1a18,RunLevelCallbacks,fn,docs/plan/moby_update_catalogue.md:36,suggested,coined: runs level callback list 0x13f2e4 | alt UpdateMobysPartC (docs/plan/player_controller.md:23; suggested) | also docs/plan/player_controller.md
+level01,002a1b08,SoundStopAll,fn,docs/plan/audio.md:131,suggested,coined: stop all sounds
+level01,002a1c40,ShipUpdate,fn,docs/plan/moby_update_catalogue.md:214,suggested,coined: engine-shared ship update set on moby+0x74 | alt Class531Update (docs/plan/world_animation.md:262; suggested) | also docs/plan/menus.md docs/plan/world_animation.md
+level01,002a2130,ShipDrawCallbackNear,fn,docs/plan/moby_update_catalogue.md:216,suggested,coined: ship draw callback when camera within 32
+level01,002a24b8,EnterShipMode,fn,docs/plan/menus.md:27,suggested,coined: (sub) sets mode 6 and substate; take-off with 0
+level01,002a27c8,ShipTakeOff,fn,docs/plan/menus.md:52,suggested,coined: take-off; calls 0x2a24b8(0)
+level01,002a2848,ShipTravelTo,fn,docs/plan/menus.md:27,suggested,coined: (dest) ship travel after planet select; landing or fly-away
+level01,002a29c0,ShipLandingStart,fn,docs/plan/menus.md:27,suggested,coined: new level starts mode 6 substate 8 (landing)
+level01,002a33b0,SpaceLoadingLoop,fn,docs/plan/menus.md:27,suggested,coined: mode 6 substate 4 in-space loading loop
+level01,002a3b90,DrawWorldPaused,fn,docs/plan/render_pipeline.md:21,suggested,coined: pause/freeze variant of frame render (mode 4) | doc cross-ref fun_0022f288
+level01,002a4080,GameStateUpdate,fn,docs/plan/particles.md:90,suggested,coined: game-state update (substates 0/8/3); runs moby updates then UpdateParts | alt ShipModeUpdate (docs/plan/menus.md:27; suggested) | also docs/plan/menus.md
+level01,002a57f0,dispatch_game_state_update,fn,docs/plan/render_pipeline.md:21,verified,mode 6 path to frame render
+level01,002a5868,EnterSpaceLoadingLoop,fn,docs/plan/menus.md:32,suggested,coined: enters substate 4 random space flight while disc loads
+level01,002a68f8,DoSpaceTransition,fn,docs/plan/menus.md:245,verified,(dest level) space transition and level load | also docs/plan/moby_update_catalogue.md
+level01,002a70a8,ShipDrawCallback,fn,docs/plan/moby_update_catalogue.md:216,suggested,coined: ship engine draw callback
+level01,002a79f0,SetTfragDists,fn,docs/plan/render_pipeline.md:29,verified,tfrag LOD distance table
+level01,002a7b48,DmaTfragTextures,fn,docs/plan/render_pipeline.md:29,verified,splices tfrag texture sub-chain
+level01,002a7c90,PatchTfragGifs,fn,docs/plan/render_pipeline.md:23,verified,ORs TBP0 into tfrag TEX0 | also docs/plan/world_animation.md
+level01,002a7d30,DrawTfrag,fn,docs/plan/render_pipeline.md:23,verified,tfrag draw entry
+level01,002a7e58,TfragProc,fn,docs/plan/render_pipeline.md:11,verified,tfrag SPR chain builder + cull
+level01,002a8a80,ComputeTfragTextureUsage,fn,docs/plan/render_pipeline.md:41,verified,usage bitmap
+level01,002a8bf0,BuildTfragTextureDma,fn,docs/plan/render_pipeline.md:41,verified,tfrag texture upload chain
+level01,002a8e40,LightTfrags,fn,docs/plan/render_pipeline.md:23,verified,VU0 macro tfrag lighting
+level01,002a94e8,dma_tie_textures,fn,docs/plan/render_pipeline.md:30,verified,tie texture DMA
+level01,002a9628,PatchTieGifs,fn,docs/plan/render_pipeline.md:23,verified,tie TEX0 fixup
+level01,002a9770,DrawTies_1,fn,docs/plan/render_pipeline.md:23,verified,tie draw
+level01,002a9838,DrawTies_2,fn,docs/plan/render_pipeline.md:23,verified,two-pass mirror/reflection tie draw
+level01,002a9a90,TieProc,fn,docs/plan/render_pipeline.md:12,verified,tie chain builder
+level01,002aaf68,BuildTieTextureDma,fn,docs/plan/render_pipeline.md:30,suggested,FUN_002aaf68; doc-suggested name
+level01,002ab218,LightTies,fn,docs/plan/render_pipeline.md:23,verified,VU0 macro tie lighting | also docs/plan/trace_harness.md
+level01,002ab960,IncrementTickCounter,fn,docs/plan/player_controller.md:25,suggested,coined: end of gameplay tick; tick counter 0x15f5cc++ | alt GameTick (docs/plan/menus.md:16; suggested) | also docs/plan/menus.md
+level01,002aba68,InLevelFrameUpdate,fn,docs/plan/moby_update_catalogue.md:32,suggested,coined: in-level per-frame fn (moby loop; callbacks; hero; parts) | alt GameplayUpdate (docs/plan/menus.md:21; suggested); alt GameplayTick (docs/plan/player_controller.md:19; suggested) | also docs/plan/menus.md docs/plan/player_controller.md
+level01,002ac330,DialogStreamStart,fn,docs/plan/moby_update_catalogue.md:221,suggested,coined: dialog stream fn; doc does not distinguish it from 0x2acf50 | alt StartScene (docs/plan/menus.md:23; suggested) | also docs/plan/menus.md
+level01,002aca80,CutsceneModeUpdate,fn,docs/plan/menus.md:23,suggested,coined: mode 2 in-engine cutscene update
+level01,002acf50,DialogStreamUpdate,fn,docs/plan/moby_update_catalogue.md:221,suggested,coined: dialog stream fn; doc does not distinguish it from 0x2ac330 | alt PlayMovieById (docs/plan/menus.md:22; suggested) | also docs/plan/menus.md
+level01,002acfe8,PlayMovieC,fn,docs/plan/menus.md:22,suggested,coined: starts PSS movie variant (post-action 6; arg 0x1ba254)
+level01,002ad050,PlayMovieB,fn,docs/plan/menus.md:22,suggested,coined: starts PSS movie variant (post-action 4)
+level01,002ad0c0,StartPssMovie,fn,docs/plan/menus.md:22,suggested,coined: (lsn;size;planet) enters mode 1 movie
+level01,002ad2b8,MovieExitToGameplay,fn,docs/plan/menus.md:21,suggested,coined: returns from PSS movie mode 1 to mode 0
+level01,002ad498,MovieModeUpdate,fn,docs/plan/menus.md:22,suggested,coined: mode 1 PSS movie update (save VRAM; play; restore)
+level01,002ad558,EnterSlideshowMode,fn,docs/plan/menus.md:28,suggested,coined: enters mode 7 (menu post-action 7)
+level01,002ad738,SlideshowModeUpdate,fn,docs/plan/menus.md:28,suggested,coined: mode 7 streamed image slideshow update
+level01,002adef0,VendorBuildItemList,fn,docs/plan/menus.md:153,suggested,coined: builds vendor item list 0x1caa10
+level01,002ae1a0,OpenVendorMenu,fn,docs/plan/moby_update_catalogue.md:110,suggested,coined: vendor menu opened on triangle | alt VendorEnter (docs/plan/menus.md:26; suggested) | also docs/plan/menus.md
+level01,002ae660,VendorExit,fn,docs/plan/menus.md:200,suggested,coined: camera back to hero; sound 6; mode 0; music unpaused
+level01,002ae7f8,VendorStartWeaponDemo,fn,docs/plan/menus.md:199,suggested,coined: enters substate 3 weapon demo scene
+level01,002af7e8,DrawSpriteHelper_C,fn,docs/plan/render_pipeline.md:51,suggested,coined: FUN_002af7e8 touches 0x101010; billboard/sprite draw helper | alt VendorBuyFlow (docs/plan/menus.md:190; suggested) | also docs/plan/menus.md
+level01,002b03b8,VendorModeUpdate,fn,docs/plan/menus.md:26,suggested,coined: mode 5 Gadgetron vendor update
+level01,002b1a48,VendorDrawTicker,fn,docs/plan/menus.md:206,suggested,coined: vendor ticker target
+level01,002b1b58,VendorDrawSalesmanVideo,fn,docs/plan/menus.md:208,suggested,coined: salesman video target
+level01,002b1c10,VendorDrawIconStrip,fn,docs/plan/menus.md:210,suggested,coined: icon strip target
+level01,002b1f08,VendorDrawItemPanel,fn,docs/plan/menus.md:212,suggested,coined: item panel target
+level01,002b2430,VendorDrawButtonWindow,fn,docs/plan/menus.md:218,suggested,coined: button window target
+level01,002b2688,VendorDrawPrompt,fn,docs/plan/menus.md:217,suggested,coined: prompt text target
+level01,002b3130,VendorDrawScreens,fn,docs/plan/menus.md:203,suggested,coined: draws off-screen monitor targets; does not decompile
+level01,002b3700,VendorDrawGlassQuads,fn,docs/plan/menus.md:221,suggested,coined: glass quads on vendor bones
+level01,002b3cc8,VendorDrawHologramCone,fn,docs/plan/menus.md:221,suggested,coined: hologram cone 4 quads
+level01,002b4020,VendorModeRender,fn,docs/plan/menus.md:26,suggested,coined: mode 5 vendor render; calls 0x2b3130 | alt DrawWorldMode5 (docs/plan/render_pipeline.md:21; suggested) | also docs/plan/render_pipeline.md
+level01,002b4470,VU0_loadMicroProgram__FPl,fn,docs/plan/render_pipeline.md:9,verified,kicks VIF0 DMA chain
+level01,002b45c8,VU1_swapChain__Fv,fn,docs/plan/render_pipeline.md:21,verified,toggles chain buffers
+level01,002b4638,VU1_sendChain__Fv,fn,docs/plan/render_pipeline.md:21,verified,kicks last frame's chain on D1
+level01,002b47c8,VU1_addDataRef__FPvi,fn,docs/plan/render_pipeline.md:10,verified,writes REF tag qwc or 0x30000000 + address
+level01,002b4820,write_vif_unpack_packet,fn,docs/plan/render_pipeline.md:27,verified,STCYCL + UNPACK V4_32
+level01,002b4918,VU1_addGSregister,fn,docs/plan/render_pipeline.md:27,verified,2-qw DIRECT A+D
+level01,002b49d8,VU1_setScissor,fn,docs/plan/render_pipeline.md:27,verified,SCISSOR reg 0x40
+level01,002b4b00,VU1_restoreGsRegs_A,fn,docs/plan/render_pipeline.md:30,suggested,FUN_002b4b00 restore 3 GS regs from 0x1c3380
+level01,002b4b60,VU1_restoreGsRegs_B,fn,docs/plan/render_pipeline.md:51,suggested,FUN_002b4b60 A+D from 0x1c2940
+level01,002b4bc0,ReplayHudGsState,fn,docs/plan/hud_text.md:96,suggested,coined: replays GS state packet 0x1c2970
+level01,002b4c88,DownloadFrameBuffer,fn,docs/plan/menus.md:35,suggested,coined: (buf;fbp;size) downloads GS frame buffer to EE RAM snapshot
+level01,002b4d38,UploadFrameSnapshot,fn,docs/plan/menus.md:36,suggested,coined: re-uploads snapshot each frame with IMAGE GIFtags
+level01,002b5110,VU1_addIrqTag,fn,docs/plan/render_pipeline.md:23,suggested,FUN_002b5110 writes CNT+IRQ tag
+level01,002b7a48,RipplePatchesInit,fn,docs/plan/world_animation.md:88,suggested,coined: ripple module init (theta; steps; radius; speed; zero heights)
+level01,002b7f30,RippleSimStep,fn,docs/plan/world_animation.md:130,suggested,coined: runs one ripple sim step
+level01,002b7fe0,RippleSimClock,fn,docs/plan/world_animation.md:129,suggested,coined: sim accumulator; step every 8 ticks
+level01,002b80d0,RippleUpdateUV,fn,docs/plan/world_animation.md:158,suggested,coined: shared water UV scroll + wobble angles
+level01,002b82a8,RippleDisturb,fn,docs/plan/world_animation.md:121,suggested,coined: disturbance (x; y; r; amp; patches; n; additive)
+level01,002b8910,RippleHeightQuery,fn,docs/plan/world_animation.md:144,suggested,coined: water height (+normal) from active patch or flat plane
+level01,002b8c08,RippleBuildGrid,fn,docs/plan/world_animation.md:150,suggested,coined: 17x17 vertex grid from heights
+level01,002b8f98,DrawSpriteHelper_B,fn,docs/plan/render_pipeline.md:16,suggested,coined: FUN_002b8f98 billboard/sprite helper using VU1 prog 0x10e818
+level01,002b91c8,RippleDraw,fn,docs/plan/world_animation.md:137,suggested,coined: draws active ripple patches
+level01,002b96e0,DrawStaticStrips,fn,docs/plan/moby_update_catalogue.md:132,suggested,coined: draw static strips | alt DrawWaterStrips (docs/plan/world_animation.md:31; suggested) | also docs/plan/world_animation.md
+level01,002b9a68,LevelAmbienceUpdate,fn,docs/plan/moby_update_catalogue.md:37,suggested,coined: level ambience | alt UpdateMobysPartD (docs/plan/player_controller.md:23; suggested) | also docs/plan/player_controller.md
+level01,002b9eb0,PathPlatformUpdate,fn,docs/plan/moby_update_catalogue.md:143,suggested,coined: update fn class 726
+level01,002ba658,TextureScrollUpdate,fn,docs/plan/moby_update_catalogue.md:157,suggested,coined: update fn class 809 | alt Class809Update (docs/plan/world_animation.md:176; suggested) | also docs/plan/world_animation.md
+level01,002bb128,VendorUpdate,fn,docs/plan/moby_update_catalogue.md:8,suggested,coined: update fn of class 11 Gadgetron vendor; not defined in Ghidra
+level01,002bb758,BoltUpdate,fn,docs/plan/moby_update_catalogue.md:111,suggested,coined: update fn of bolt classes 13-16
+level01,002bc4f0,CollectBolt,fn,docs/plan/moby_update_catalogue.md:111,suggested,coined: bolts += value; HUD
+level01,002bd100,ParticleEmitterUpdate,fn,docs/plan/moby_update_catalogue.md:112,suggested,coined: update fn class 27; pvar-driven bursts | alt Class27EmitterUpdate (docs/plan/particles.md:110; suggested) | also docs/plan/particles.md
+level01,002bfe40,DrawSpriteHelper_D,fn,docs/plan/render_pipeline.md:51,suggested,coined: FUN_002bfe40 touches 0x101010; billboard/sprite draw helper
+level01,002c5218,FxDebrisGroupUpdateA,fn,docs/plan/moby_update_catalogue.md:177,suggested,coined: update fn of classes 149; 348-364 (look like FX/debris)
+level01,002cb540,CameraCollLineFix,fn,docs/plan/occlusion_culling.md:58,suggested,coined: FUN_002cb540 CollLine_Fix camera-placement path; sets fallback 1
+level01,002db028,FxDebrisGroupUpdateB,fn,docs/plan/moby_update_catalogue.md:177,suggested,coined: update fn of classes 204; 213-226; 1006; 1438-1449 (FX/debris)
+level01,002e0c68,BoltCrankUpdate,fn,docs/plan/moby_update_catalogue.md:114,suggested,coined: update fn class 280
+level01,002e1ac0,ItemOfferUpdate,fn,docs/plan/moby_update_catalogue.md:115,suggested,coined: update fn classes 304 and 1456-1465
+level01,002e6bf0,PathEnemyUpdate,fn,docs/plan/moby_update_catalogue.md:117,suggested,coined: update fn class 459 (spline enemy)
+level01,002ea178,CrateUpdate,fn,docs/plan/moby_update_catalogue.md:118,suggested,coined: update fn crate classes 500/501/502/505/511
+level01,002eb498,CrateDropBolts,fn,docs/plan/moby_update_catalogue.md:118,suggested,coined: spawns N bolt mobys from crate
+level01,002eb918,CrateBreakFx,fn,docs/plan/moby_update_catalogue.md:118,suggested,coined: crate break FX/debris
+level01,002edca0,AmoeboidUpdate,fn,docs/plan/moby_update_catalogue.md:123,suggested,coined: update fn classes 572/865/866
+level01,002efc60,GroundCritterUpdate,fn,docs/plan/moby_update_catalogue.md:125,suggested,coined: update fn class 577
+level01,002f2b68,CommandedNpcUpdate,fn,docs/plan/moby_update_catalogue.md:126,suggested,coined: update fn class 604
+level01,002f2eb8,NearestAreaMarkerUpdate,fn,docs/plan/moby_update_catalogue.md:127,suggested,coined: update fn class 605
+level01,002f30c0,ClankPackUpdate,fn,docs/plan/moby_update_catalogue.md:245,suggested,coined: update fn class 607; seq 6 in hero state 8
+level01,002f3120,WaterCurrentUpdate,fn,docs/plan/moby_update_catalogue.md:128,suggested,coined: update fn class 613
+level01,002f4348,CrankRotatorUpdate,fn,docs/plan/moby_update_catalogue.md:129,suggested,coined: update fn class 641
+level01,002f4428,BlargFlyerUpdate,fn,docs/plan/moby_update_catalogue.md:130,suggested,coined: update fn class 660
+level01,002f4710,CrankSliderUpdate,fn,docs/plan/moby_update_catalogue.md:129,suggested,coined: update fn class 665
+level01,002f4960,DropshipUpdate,fn,docs/plan/moby_update_catalogue.md:131,suggested,coined: update fn class 666
+level01,002f5168,FlyerPathDriver,fn,docs/plan/moby_update_catalogue.md:130,suggested,coined: shared flyer path driver
+level01,002f60f8,Class676DrawCallback,fn,docs/plan/world_animation.md:29,suggested,coined: class 676 per-frame draw callback | alt CustomDrawMeshDraw (docs/plan/moby_update_catalogue.md:132; suggested) | also docs/plan/moby_update_catalogue.md
+level01,002f6128,CustomDrawMeshUpdate,fn,docs/plan/moby_update_catalogue.md:8,suggested,coined: update fn class 676; not defined in Ghidra | alt Class676Update (docs/plan/world_animation.md:28; suggested) | also docs/plan/world_animation.md
+level01,002f6150,Class678DrawCallback,fn,docs/plan/world_animation.md:29,suggested,coined: class 678 per-frame draw callback
+level01,002f6180,CustomDrawSurfacesUpdate,fn,docs/plan/moby_update_catalogue.md:133,suggested,coined: update fn class 678 | alt Class678Update (docs/plan/world_animation.md:28; suggested) | also docs/plan/world_animation.md
+level01,002f6328,WaterCurrent679Update,fn,docs/plan/moby_update_catalogue.md:128,suggested,coined: update fn class 679
+level01,002f7728,GunshipUpdate,fn,docs/plan/moby_update_catalogue.md:134,suggested,coined: update fn class 688
+level01,002f8268,FloatingPushableUpdate,fn,docs/plan/moby_update_catalogue.md:135,suggested,coined: update fn class 695
+level01,002f8530,SpawnDebrisMoby,fn,docs/plan/moby_update_catalogue.md:296,suggested,coined: debris moby
+level01,002f8c58,ImpactSmokeEmitterUpdate,fn,docs/plan/moby_update_catalogue.md:136,suggested,coined: update fn class 700
+level01,002f9080,CollapsingPlatformUpdate,fn,docs/plan/moby_update_catalogue.md:137,suggested,coined: update fn class 701
+level01,002f95c0,ElevatorUpdate,fn,docs/plan/moby_update_catalogue.md:138,suggested,coined: update fn classes 703/715
+level01,002f9810,BreakableRockUpdate,fn,docs/plan/moby_update_catalogue.md:139,suggested,coined: update fn class 704
+level01,002f9bf0,OscillatingSpinnerUpdate,fn,docs/plan/moby_update_catalogue.md:140,suggested,coined: update fn class 705
+level01,002f9d80,ProjectileBreakableUpdate,fn,docs/plan/moby_update_catalogue.md:141,suggested,coined: update fn classes 709-711
+level01,002fa720,GrassUpdate,fn,docs/plan/moby_update_catalogue.md:142,suggested,coined: update fn classes 724/725
+level01,002fa800,BreakableWallUpdate,fn,docs/plan/moby_update_catalogue.md:144,suggested,coined: update fn class 729
+level01,002fad68,MissionNpcUpdate,fn,docs/plan/moby_update_catalogue.md:145,suggested,coined: update fn classes 730/790
+level01,002fb5b0,CameraTriggerUpdate,fn,docs/plan/moby_update_catalogue.md:146,suggested,coined: update fn class 737
+level01,002fb8a8,HingedBridgeUpdate,fn,docs/plan/moby_update_catalogue.md:147,suggested,coined: update fn class 746
+level01,002fbf80,InfobotUpdate,fn,docs/plan/moby_update_catalogue.md:148,suggested,coined: update fn class 750 | also docs/plan/menus.md
+level01,002fd0c0,Class751DrawCallback,fn,docs/plan/world_animation.md:137,suggested,coined: 751 draw callback -> 0x2b91c8(0x1e34c0; 21)
+level01,002fd0e8,WaterSurfaceFxUpdate,fn,docs/plan/moby_update_catalogue.md:149,suggested,coined: update fn class 751 | alt Class751Init (docs/plan/world_animation.md:101; suggested) | also docs/plan/world_animation.md
+level01,002fd9a0,BreakablePotUpdate,fn,docs/plan/moby_update_catalogue.md:150,suggested,coined: update fn class 754
+level01,002fdbc0,ParticleFieldUpdate,fn,docs/plan/moby_update_catalogue.md:151,suggested,coined: update fn class 760
+level01,002fe080,Class760DrawCallback,fn,docs/plan/world_animation.md:171,suggested,coined: waterfall foam/mist quads callback
+level01,002feb28,Class761DrawCallback,fn,docs/plan/world_animation.md:29,suggested,coined: class 761 per-frame draw callback
+level01,002feb58,PulsingMeshUpdate,fn,docs/plan/moby_update_catalogue.md:152,suggested,coined: update fn class 761 | alt Class761Update (docs/plan/world_animation.md:28; suggested) | also docs/plan/world_animation.md
+level01,002fed68,SlidingDoorUpdate,fn,docs/plan/moby_update_catalogue.md:153,suggested,coined: update fn classes 768/769
+level01,002ff118,TalkingNpcUpdate,fn,docs/plan/moby_update_catalogue.md:154,suggested,coined: update fn class 774
+level01,002ff860,BreakablePropUpdate,fn,docs/plan/moby_update_catalogue.md:155,suggested,coined: update fn class 778
+level01,002ffcd0,Class787Update,fn,docs/plan/world_animation.md:126,suggested,coined: drip class 787 (maybe its spawn fn; not update)
+level01,00300220,CheckpointTriggerUpdate,fn,docs/plan/moby_update_catalogue.md:156,suggested,coined: update fn class 805
+level01,00300528,CrateSpawnIconMoby,fn,docs/plan/moby_update_catalogue.md:119,suggested,coined: ammo crate 501 init spawns icon moby 806
+level01,003021b8,EnemySpawnerUpdate,fn,docs/plan/moby_update_catalogue.md:158,suggested,coined: update fn class 815
+level01,00302648,RcRangeLimiterUpdate,fn,docs/plan/moby_update_catalogue.md:159,suggested,coined: update fn class 832
+level01,003040d8,DefaultVtbl_DeleteMoby,fn,docs/plan/moby_update_catalogue.md:20,verified,"default moby vtbl 0x20c3ac slot 5 (0x20c3c0): 7-instruction wrapper that calls DeleteMoby 0x2636c0 | was DeleteMoby (docs/plan/moby_update_catalogue.md:20; inferred), a duplicate of the real DeleteMoby | PENDING level01 (locked: unsaved transaction, not written): rename_function 0x3040d8 DeleteMoby -> DefaultVtbl_DeleteMoby by hand; also cluster-propagated DeleteMoby in levels 00,02-18 (L00 0x2db868, L02 0x2e64d8, L03 0x2d6ba0, L04 0x2ddbf8, L05 0x311340, L06 0x2ec4d0, L07 0x3073d0, L08 0x2fd5e8, L09 0x2fcd18, L10 0x2d0508, L11 0x304b00, L12 0x2fbcc8, L13 0x2fe8a8, L14 0x2f7dc8, L15 0x2e0810, L16 0x2da268, L17 0x2de0b0, L18 0x2e5bf8) need the same rename (not done: other-level writes were not permitted)"
+level01,00307c48,ShootableUpdate,fn,docs/plan/moby_update_catalogue.md:160,suggested,coined: update fn class 1042
+level01,00307ca0,GoldBoltUpdate,fn,docs/plan/moby_update_catalogue.md:161,suggested,coined: update fn class 1134
+level01,00308bd8,TeleporterPadUpdate,fn,docs/plan/moby_update_catalogue.md:162,suggested,coined: update fn class 1135
+level01,00309898,MenuMobyUpdate,fn,docs/plan/menus.md:100,suggested,coined: class 0x472 menu moby update
+level01,00309bf8,Class1225DrawCallback,fn,docs/plan/world_animation.md:29,suggested,coined: class 1225 per-frame draw callback | alt CustomDrawGlowDraw (docs/plan/moby_update_catalogue.md:163; suggested) | also docs/plan/moby_update_catalogue.md
+level01,00309c98,CustomDrawGlowUpdate,fn,docs/plan/moby_update_catalogue.md:9,suggested,coined: update fn class 1225; not defined in Ghidra | alt Class1225Update (docs/plan/world_animation.md:28; suggested) | also docs/plan/world_animation.md
+level01,0030acb8,HelpHintDirectorUpdate,fn,docs/plan/moby_update_catalogue.md:164,suggested,coined: update fn class 1341 | alt NovalisLevelScript (docs/plan/hud_text.md:213; suggested) | also docs/plan/hud_text.md
+level01,0030b618,WanderingLightUpdate,fn,docs/plan/moby_update_catalogue.md:165,suggested,coined: update fn class 1504
+level01,0030c190,CutsceneFxUpdate,fn,docs/plan/moby_update_catalogue.md:166,suggested,coined: update fn class 1546
+level01,0030cd18,FxGroupUpdate,fn,docs/plan/moby_update_catalogue.md:18,suggested,coined: update fn shared by 13 FX classes (1736-1817)
+level01,0030d0f0,BreakableCrateVariantUpdate,fn,docs/plan/moby_update_catalogue.md:167,suggested,coined: update fn class 1813
+level01,0030df40,MouseCritterUpdate,fn,docs/plan/moby_update_catalogue.md:168,suggested,coined: update fn class 1818
+level01,0030ef18,EnvOverlayVertex,fn,docs/plan/world_animation.md:187,suggested,coined: per-vertex sphere-map UV
+level01,0030f0e0,Class1848DrawCallback,fn,docs/plan/world_animation.md:183,suggested,coined: 1848 sphere-map overlay draw callback
+level01,0030f208,UvScrollerUpdate,fn,docs/plan/moby_update_catalogue.md:169,suggested,coined: update fn class 1848 | alt Class1848Update (docs/plan/world_animation.md:182; suggested) | also docs/plan/world_animation.md
+level01,003111d8,CamType0HeroStateTweaks,fn,docs/plan/player_controller.md:291,suggested,coined: state-dependent camera tweaks
+level01,00311890,CamType0InitSnap,fn,docs/plan/player_controller.md:317,suggested,coined: camera init snap behind hero
+level01,00311f38,CamType0Init,fn,docs/plan/player_controller.md:263,suggested,coined: type-0 follow camera init
+level01,00314e00,CameraType0Update,fn,docs/plan/roadmap.md:88,suggested,coined: type-0 follow camera | alt CamType0Update (docs/plan/player_controller.md:263; suggested) | also docs/plan/player_controller.md
+level01,00316ef8,CameraScript,fn,docs/plan/moby_update_catalogue.md:301,suggested,coined: camera script | alt CameraTween (docs/plan/menus.md:181; suggested) | also docs/plan/menus.md
+level01,00317070,CameraScript2,fn,docs/plan/moby_update_catalogue.md:301,suggested,coined: camera script (second fn)
+level01,003197a0,SndInstSphereUpdate,fn,docs/plan/audio.md:180,suggested,coined: class 0 sphere
+level01,00319928,SndInstBoxVolumeUpdate,fn,docs/plan/audio.md:181,suggested,coined: class 1 box volume by depth
+level01,00319cc8,SndInstBoxOneShotUpdate,fn,docs/plan/audio.md:181,suggested,coined: class 2 box one-shot
+level01,00319f18,SndInstReverbBoxUpdate,fn,docs/plan/audio.md:173,suggested,coined: sound-instance class 3 reverb box
+level01,0031a078,SndInstUnderwaterLoopUpdate,fn,docs/plan/audio.md:181,suggested,coined: class 5 underwater loop | alt ReleaseVoices (docs/plan/world_animation.md:255; suggested) | also docs/plan/world_animation.md
+level01,0031a128,SndInstMusicBoxUpdate,fn,docs/plan/audio.md:182,suggested,coined: class 6 music box
+level05,00318a68,SetWaterPlane,fn,docs/plan/world_animation.md:147,suggested,coined: level-05 code setting flat water plane; maybe-mid-function
+unknown,00187040,g_world_projection,data,docs/plan/roadmap.md:67,inferred,world projection used for sky; program not stated; likely boot (next to boot camera 0x187080)
+unknown,0019e6c0,g_chrome_gif_words,data,docs/plan/moby_untextured.md:19,suggested,chrome ad-gif words; program not stated
+unknown,0019e6d8,g_glass_gif_words,data,docs/plan/moby_untextured.md:19,suggested,glass ad-gif words; program not stated

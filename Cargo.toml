@@ -1,0 +1,27 @@
+[workspace]
+resolver = "2"
+# Product crates (ship) under crates/; dev-only tools under tools/ (never shipped; product never depends on them).
+members = ["crates/rc-formats", "crates/rc-engine", "crates/rc-game", "crates/rc-extract", "crates/rc-data", "crates/rc-video", "tools/trace", "tools/repo-checks", "tools/xtask"]
+
+[workspace.package]
+# The one Ratchet & Clank Recomp version (every crate: `version.workspace = true`). Release tags are `v<version>[-pre]`
+# (docs/workflows/release.md); the manifest and `ratchet_clank --version-json` carry this version.
+version = "0.3.4"
+edition = "2021"
+license = "ISC"
+publish = false
+
+[workspace.dependencies]
+anyhow = "1"
+thiserror = "2"
+bytemuck = { version = "1", features = ["derive", "min_const_generics", "extern_crate_alloc"] }
+
+# Fast iteration: optimise dependencies (Bevy) fully, our crates lightly.
+[profile.dev]
+opt-level = 1
+# macOS: bundle debug info into .dSYM so per-codegen-unit .o files don't pile up in target/
+split-debuginfo = "packed"
+[profile.dev.package."*"]
+opt-level = 3
+# No debug info for external crates (Bevy, wgpu, ...): macOS unpacked debug objects grew target/ to 132 GB.
+debug = false

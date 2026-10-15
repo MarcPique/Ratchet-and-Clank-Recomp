@@ -1,0 +1,11 @@
+[package]
+name = "xtask"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Dev only (never ships). One short command per dev chore: `cargo xtask <command>` (alias in .cargo/config.toml). Doc: tools/xtask/README.md."
+
+# No dependencies on purpose: std only. It shells out to `cargo` (the dev build of ratchet_clank-extract) and to
+# tools/package/package.sh, so building it compiles nothing but this crate.
+[dependencies]

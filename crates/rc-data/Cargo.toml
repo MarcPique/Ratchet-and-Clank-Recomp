@@ -1,0 +1,11 @@
+[package]
+name = "rc-data"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "The Tier 1 engine cache (docs/plan/launcher_extractor.md §5.2): decompressed WAD lumps on disk, served to the engine once per process."
+
+# No Bevy and no external crates (docs/plan/decisions.md): the extractor's `prepare` and the engine share it.
+[dependencies]
+rc-formats = { path = "../rc-formats" }

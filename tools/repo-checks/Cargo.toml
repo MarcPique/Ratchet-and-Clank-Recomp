@@ -1,0 +1,10 @@
+[package]
+name = "repo-checks"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Dev-only guard tests for the repository layout (product vs tools, no personal paths in the product). Never ships. Doc: tools/repo-checks/README.md."
+
+# No dependencies on purpose: the checks read files as text.
+[dependencies]
