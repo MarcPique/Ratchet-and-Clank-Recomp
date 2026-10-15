@@ -1,6 +1,11 @@
 # Galería de Ratchet & Clank Recomp
 
-Las capturas son fotogramas reales del juego. Salvo la indicada a 720p, están tomadas a **3840 × 2160** con la ventana oculta para no interrumpir el escritorio. Las vistas de símbolos muestran los diez iconos dibujados por el HUD del juego mediante su modo de prueba, para comparar cada mando en las mismas condiciones. La comparativa final es una visualización directa del atlas de texturas, con los dieciséis símbolos de cada familia.
+Las capturas de los menús y mandos son fotogramas reales del juego. Salvo la indicada a 720p, están tomadas a **3840 × 2160** con la ventana oculta para no interrumpir el escritorio. Las vistas de símbolos muestran los diez iconos dibujados por el HUD del juego mediante su modo de prueba, para comparar cada mando en las mismas condiciones. La comparativa final es una visualización directa del atlas de texturas, con los dieciséis símbolos de cada familia.
+
+## Instalador
+
+- [Ventana del instalador renovado](instalador-ventana.png)
+- [Instalador maximizado a 4K](instalador-4k.png)
 
 ## Menú principal y opciones
 

@@ -12,7 +12,7 @@ Copy-Item -LiteralPath $bundle -Destination (Join-Path $repo 'installer\payload\
 $publish = Join-Path $out 'publish'
 dotnet publish (Join-Path $repo 'installer\RatchetClankInstaller.csproj') -c Release -o $publish
 if ($LASTEXITCODE -ne 0) { throw 'No se pudo compilar el instalador.' }
-$exe = Join-Path $publish 'Instalar Ratchet & Clank.exe'
+$exe = Join-Path $publish 'Instalar-Ratchet-Clank.exe'
 if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) { throw "Falta el instalador compilado: $exe" }
-Copy-Item -LiteralPath $exe -Destination (Join-Path $out 'Instalar Ratchet & Clank.exe') -Force
-Write-Output (Join-Path $out 'Instalar Ratchet & Clank.exe')
+Copy-Item -LiteralPath $exe -Destination (Join-Path $out 'Instalar-Ratchet-Clank.exe') -Force
+Write-Output (Join-Path $out 'Instalar-Ratchet-Clank.exe')
