@@ -34,6 +34,7 @@ CASES = (
     ("graficos-rendimiento-4k", "menu", "dualsense", 18),
     ("dlss5-4k", "menu", "dualsense", 19),
     ("dlss5-perfiles-4k", "menu", "dualsense", 20),
+    ("dlss5-equilibrado-4k", "menu", "dualsense", 20),
     ("mandos-dualsense-4k", "menu", "dualsense", 22),
     ("mandos-xbox-series-4k", "menu", "xboxseries", 22),
     ("mandos-switch-4k", "menu", "nintendo", 22),
@@ -98,6 +99,8 @@ def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
             steps.append("790:press X")
         if name == "dlss5-perfiles-4k":
             steps.append("800:press X")
+        if name == "dlss5-equilibrado-4k":
+            steps.extend(("800:press X", "820:press X", "840:press X"))
         env["RC_PLAY_SCRIPT"] = ",".join(steps)
         env["RC_SCREENSHOT_FRAME"] = str(900 if name.startswith("dlss5-") else max(430, 420 + 18 * (row - 1) + 28))
     else:

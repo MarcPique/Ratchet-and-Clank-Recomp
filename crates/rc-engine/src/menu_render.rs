@@ -885,7 +885,7 @@ fn menu_frame(
                         let previous = *display;
                         (display.aspect, display.resolution, display.render_scale, display.window_kind, display.monitor, display.refresh_rate, display.vsync, display.frame_limit, display.show_stats) = (aspect, res, scale, kind, monitor, refresh, vsync, fps, stats);
                         println!("menus: frame {frame}: Advanced Options: aspect {aspect:?}, resolution {res:?}, scale {scale:?}, mode {kind:?}, monitor {monitor}, refresh {refresh:?}, vsync {vsync}, fps limit {fps:?}");
-                        if previous.aspect != aspect || previous.resolution != res || previous.render_scale != scale || previous.window_kind != kind || previous.monitor != monitor || previous.refresh_rate != refresh {
+                        if previous.aspect != aspect || previous.resolution != res || previous.window_kind != kind || previous.monitor != monitor || previous.refresh_rate != refresh {
                             pending_display.start(previous);
                         } else {
                             display.save_changed(&previous);
@@ -1590,7 +1590,7 @@ fn front_end_frame(
                     if display.aspect != aspect || display.resolution != res || display.render_scale != scale || display.window_kind != kind || display.monitor != monitor || display.refresh_rate != refresh || display.vsync != vsync || display.frame_limit != fps || display.show_stats != stats {
                         let previous = *display;
                         (display.aspect, display.resolution, display.render_scale, display.window_kind, display.monitor, display.refresh_rate, display.vsync, display.frame_limit, display.show_stats) = (aspect, res, scale, kind, monitor, refresh, vsync, fps, stats);
-                        if previous.aspect != aspect || previous.resolution != res || previous.render_scale != scale || previous.window_kind != kind || previous.monitor != monitor || previous.refresh_rate != refresh {
+                        if previous.aspect != aspect || previous.resolution != res || previous.window_kind != kind || previous.monitor != monitor || previous.refresh_rate != refresh {
                             pending_display.start(previous);
                         } else { display.save_changed(&previous); }
                         println!("menus: frame {frame}: front end: Advanced Options display {display:?}");

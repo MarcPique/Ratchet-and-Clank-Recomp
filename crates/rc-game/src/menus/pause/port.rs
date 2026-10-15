@@ -181,6 +181,10 @@ pub mod text {
     pub const TRANSFORMER_J: i32 = -0x1da;
     pub const TRANSFORMER_K: i32 = -0x1db;
     pub const ENABLE_DLSS5: i32 = -0x1dc;
+    pub const CINEMATIC: i32 = -0x1dd;
+    pub const QUALITY: i32 = -0x1de;
+    pub const BALANCED: i32 = -0x1df;
+    pub const PERFORMANCE_MODE: i32 = -0x1e0;
     /// The game's own "on" / "off" (20314 / 20315, the Subtitles / HelpDesk toggle values).
     pub const ON: i32 = 20314;
     pub const OFF: i32 = 20315;
@@ -262,6 +266,8 @@ pub mod text {
             DLSS5_PRESET => b"DLSS 5 preset", CNN_E => b"CNN E", CNN_F => b"CNN F",
             TRANSFORMER_J => b"Transformer J", TRANSFORMER_K => b"Transformer K",
             ENABLE_DLSS5 => b"Enable DLSS 5",
+            CINEMATIC => b"Cinematic", QUALITY => b"Quality",
+            BALANCED => b"Balanced", PERFORMANCE_MODE => b"Performance",
             _ => return None,
         })
     }
@@ -276,6 +282,8 @@ pub mod text {
             (2, ANTI_ALIASING) => b"Anticrenelage", (2, SHADOWS) => b"Ombres", (2, RESOLUTION) => b"Resolution",
             (2, BUTTON_PROMPTS) => b"Icones manette",
             (2, DLSS5_PRESET) => b"Profil DLSS 5", (2, ENABLE_DLSS5) => b"Activer DLSS 5",
+            (2, CINEMATIC) => b"Cinema", (2, QUALITY) => b"Qualite",
+            (2, BALANCED) => b"Equilibre", (2, PERFORMANCE_MODE) => b"Performance",
             (2, RES_WINDOW) => b"Fenetre", (2, FULLSCREEN) => b"Plein ecran", (2, VSYNC) => b"Synchro V",
             (2, RENDER_SCALE) => b"Echelle de rendu",
             (2, MONITOR) => b"Moniteur", (2, SCREEN_CURRENT) => b"Actuel", (2, WINDOWED) => b"Fenetre",
@@ -296,6 +304,8 @@ pub mod text {
             (3, DESCRIPTION) => b"Zusaetzliche PC-Einstellungen",
             (3, BUTTON_PROMPTS) => b"Controller-Symbole",
             (3, DLSS5_PRESET) => b"DLSS 5 Profil", (3, ENABLE_DLSS5) => b"DLSS 5 aktivieren",
+            (3, CINEMATIC) => b"Kino", (3, QUALITY) => b"Qualitaet",
+            (3, BALANCED) => b"Ausgewogen", (3, PERFORMANCE_MODE) => b"Leistung",
             (3, PRESET) => b"Profil", (3, ORIGINAL) => b"Original", (3, ENHANCED) => b"Verbessert", (3, CUSTOM) => b"Benutzerdef.",
             (3, ANTI_ALIASING) => b"Kantenglaettung", (3, SHADOWS) => b"Schatten", (3, RESOLUTION) => b"Aufloesung",
             (3, RES_WINDOW) => b"Fenster", (3, FULLSCREEN) => b"Vollbild", (3, VSYNC) => b"V-Sync",
@@ -340,12 +350,16 @@ pub mod text {
             (4, LARGE) => b"Grande", (4, EXTRA_LARGE) => b"Muy grande", (4, HALF) => b"Media",
             (4, BUTTON_PROMPTS) => b"Iconos del mando",
             (4, UNAVAILABLE) => b"No disponible",
-            (4, AUTO) => b"Automatico",
+            (4, AUTO) => b"Autom\x84tico",
             (4, DLSS5_PRESET) => b"Perfil DLSS 5",
             (4, ENABLE_DLSS5) => b"Activa DLSS 5",
+            (4, CINEMATIC) => b"Cinem\x84tico", (4, QUALITY) => b"Calidad",
+            (4, BALANCED) => b"Equilibrado", (4, PERFORMANCE_MODE) => b"Rendimiento",
             (5, ENTRY) => b"Opz. avanzate", (5, TITLE) => b"Opzioni avanzate",
             (5, BUTTON_PROMPTS) => b"Icone controller",
             (5, DLSS5_PRESET) => b"Profilo DLSS 5", (5, ENABLE_DLSS5) => b"Attiva DLSS 5",
+            (5, CINEMATIC) => b"Cinema", (5, QUALITY) => b"Qualita",
+            (5, BALANCED) => b"Bilanciato", (5, PERFORMANCE_MODE) => b"Prestazioni",
             (5, DESCRIPTION) => b"Impostazioni aggiuntive del port PC",
             (5, PRESET) => b"Profilo", (5, ORIGINAL) => b"Originale", (5, ENHANCED) => b"Migliorato", (5, CUSTOM) => b"Personalizzato",
             (5, ANTI_ALIASING) => b"Antialiasing", (5, SHADOWS) => b"Ombre", (5, RESOLUTION) => b"Risoluzione",
@@ -446,7 +460,7 @@ pub const ENTRIES: &[Entry] = &[
     Entry { setting: Setting::FpsLimit, label: text::FPS_LIMIT, values: &[text::FPS_30, text::FPS_60, text::FPS_120, text::FPS_144, text::FPS_165, text::FPS_240, text::FPS_UNLIMITED] },
     Entry { setting: Setting::Performance, label: text::PERFORMANCE, values: &[text::OFF, text::ON] },
     Entry { setting: Setting::Dlss5, label: text::DLSS5, values: &[text::OFF, text::ON, text::UNAVAILABLE] },
-    Entry { setting: Setting::Dlss5Preset, label: text::DLSS5_PRESET, values: &[text::AUTO, text::CNN_E, text::CNN_F, text::TRANSFORMER_J, text::TRANSFORMER_K, text::ENABLE_DLSS5] },
+    Entry { setting: Setting::Dlss5Preset, label: text::DLSS5_PRESET, values: &[text::AUTO, text::CINEMATIC, text::QUALITY, text::BALANCED, text::PERFORMANCE_MODE, text::CUSTOM, text::ENABLE_DLSS5] },
     Entry { setting: Setting::Language, label: text::LANGUAGE, values: &[text::ENGLISH, text::FRENCH, text::GERMAN, text::SPANISH, text::ITALIAN] },
     Entry { setting: Setting::ButtonPrompts, label: text::BUTTON_PROMPTS, values: &[text::AUTO, text::DUALSENSE, text::DUALSHOCK4, text::DUALSHOCK3, text::XBOX_SERIES, text::XBOX_ONE, text::XBOX_360, text::NINTENDO, text::PLAYSTATION, text::XBOX] },
     Entry { setting: Setting::CameraSensitivity, label: text::CAMERA_SENSITIVITY, values: &[text::SLOW, text::NORMAL, text::HIGH] },
@@ -500,7 +514,7 @@ fn description(setting: Setting, lang: u32) -> &'static [u8] {
         (4, Setting::FpsLimit) => b"Frecuencia maxima de imagen", (4, Setting::Language) => b"Idioma de texto y voces",
         (4, Setting::Performance) => b"FPS y tiempo por imagen",
         (4, Setting::Dlss5) => b"Efecto neural opcional (complemento externo)",
-        (4, Setting::Dlss5Preset) => b"Reconstruccion temporal del complemento",
+        (4, Setting::Dlss5Preset) => b"Escala interna y reconstrucci\x9cn temporal",
         (4, Setting::CameraSensitivity) => b"Velocidad del giro de camara", (4, Setting::StickDeadzone) => b"Filtrar movimientos peque\xa9os",
         (4, Setting::SubtitleSize) => b"Aumentar tama\xa9o de subtitulos", (4, Setting::SubtitleContrast) => b"Mejorar lectura de subtitulos",
         (4, Setting::CameraShake) => b"Reducir movimiento de camara",
@@ -543,7 +557,7 @@ fn description_english(setting: Setting) -> &'static [u8] {
         Setting::FpsLimit => b"Maximum render rate",
         Setting::Performance => b"FPS and frame time overlay",
         Setting::Dlss5 => b"Optional neural effect (external add-on)",
-        Setting::Dlss5Preset => b"External add-on temporal reconstruction preset",
+        Setting::Dlss5Preset => b"Internal render scale and temporal reconstruction",
         Setting::Language => b"Text and voice language",
         Setting::CameraSensitivity => b"Camera turn speed",
         Setting::StickDeadzone => b"Ignore small stick movements",
@@ -551,6 +565,34 @@ fn description_english(setting: Setting) -> &'static [u8] {
         Setting::SubtitleContrast => b"Increase subtitle readability",
         Setting::CameraShake => b"Reduce camera shake",
         Setting::ButtonPrompts => b"Match the controller and remapped buttons",
+    }
+}
+
+fn dlss_profile_description(value: u8, lang: u32) -> &'static [u8] {
+    match (lang, value) {
+        (2, 0) => b"Garde l'echelle interne actuelle", (2, 1) => b"Qualite max: rendu natif, K",
+        (2, 2) => b"Haute qualite: rendu 3/4, J", (2, 3) => b"Equilibre details/IPS: rendu 2/3",
+        (2, 4) => b"Priorite IPS: rendu 1/2, CNN E", (2, 5) => b"Echelle ou profil modifie",
+        (2, _) => b"Activer DLSS 5 pour choisir",
+        (3, 0) => b"Aktuelle Rendergroesse behalten", (3, 1) => b"Maximale Qualitaet: nativ, K",
+        (3, 2) => b"Hohe Qualitaet: 3/4, J", (3, 3) => b"Details und FPS: 2/3",
+        (3, 4) => b"FPS priorisieren: 1/2, CNN E", (3, 5) => b"Rendergroesse oder Profil geaendert",
+        (3, _) => b"DLSS 5 fuer Profil aktivieren",
+        (4, 0) => b"Conserva la escala interna actual", (4, 1) => b"Calidad m\x84xima: render nativo, K",
+        (4, 2) => b"Alta calidad: render 3/4, J", (4, 3) => b"Detalle y FPS: render 2/3",
+        (4, 4) => b"M\x84s FPS: render 1/2, CNN E", (4, 5) => b"Escala o pista temporal modificada",
+        (4, _) => b"Activa DLSS 5 para elegir perfil",
+        (5, 0) => b"Mantiene la scala interna", (5, 1) => b"Qualita massima: resa nativa, K",
+        (5, 2) => b"Alta qualita: resa 3/4, J", (5, 3) => b"Equilibrio dettagli/FPS: 2/3",
+        (5, 4) => b"Priorita FPS: resa 1/2, CNN E", (5, 5) => b"Scala o profilo modificato",
+        (5, _) => b"Attiva DLSS 5 per scegliere",
+        (_, 0) => b"Keep the current internal render scale",
+        (_, 1) => b"Maximum quality: native render, K",
+        (_, 2) => b"High quality: 3/4 render, J",
+        (_, 3) => b"Balance detail and FPS: 2/3 render",
+        (_, 4) => b"Prioritize FPS: 1/2 render, CNN E",
+        (_, 5) => b"Internal scale or temporal hint changed",
+        _ => b"Enable DLSS 5 to select a profile",
     }
 }
 
@@ -755,7 +797,7 @@ pub fn update(m: &mut PageMenu, w: u32, inp: &MenuInput, out: &mut MenuOut) -> i
     }
     if inp.pressed_u & button::CROSS != 0 {
         let choices = p.choices.get(r).copied().unwrap_or(u32::MAX);
-        if ENTRIES.get(r).is_some_and(|e| e.setting == Setting::Dlss5Preset) && choices == 0b10_0001 {
+        if ENTRIES.get(r).is_some_and(|e| e.setting == Setting::Dlss5Preset) && choices == 0b100_0001 {
             return 0;
         }
         if let (Some(e), Some(v)) = (ENTRIES.get(r), p.values.get_mut(r)) {
@@ -799,7 +841,9 @@ pub fn draw(m: &mut PageMenu, w: u32, a: &MenuAssets, out: &mut Vec<MenuDraw>) -
         let hint = format!("X {}  Triangle {}  {seconds}s", labels.0, labels.1);
         print(out, Font::Small, 0xc, wh - 0x10, YELLOW, hint.as_bytes());
     } else if let Some(entry) = ENTRIES.get(p.cursor as usize) {
-        let help = description(entry.setting, a.lang);
+        let help = if entry.setting == Setting::Dlss5Preset {
+            dlss_profile_description(p.values.get(p.cursor as usize).copied().unwrap_or(6), a.lang)
+        } else { description(entry.setting, a.lang) };
         let mut end = help.len();
         while end > 0 && a.width(Font::Small, &help[..end]) > ww - 24 { end -= 1; }
         print(out, Font::Small, 0xc, wh - 0x10, LIGHT_BLUE, &help[..end]);
@@ -851,6 +895,7 @@ mod tests {
         assert_eq!(super::text::get_localized(super::text::TITLE, 2), Some(&b"Options avancees"[..]));
         assert_eq!(super::text::get_localized(super::text::TITLE, 0), Some(&b"Advanced Options"[..]));
         assert_eq!(super::text::get_localized(super::text::SPANISH, 4), Some(&b"Espa\xa9ol"[..]));
+        assert_eq!(super::text::get_localized(super::text::CINEMATIC, 4), Some(&b"Cinem\x84tico"[..]));
         assert_eq!(super::text::get_localized(super::text::SUBTITLE_SIZE, 4), Some(&b"Tama\xa9o subtitulos"[..]));
     }
 }
