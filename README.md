@@ -6,6 +6,8 @@
 
 <p align="center">Código fuente y compilación personal para Windows.</p>
 
+> **Créditos:** este proyecto está basado en [ReRAC: The Ratchet & Clank Rewrite](https://github.com/re-rac/rerac), desarrollado por los colaboradores de ReRAC. Su trabajo es la base del motor, la lógica del juego y la extracción de datos. Esta variante añade un instalador propio para Windows, opciones de interfaz y gráficos, y otros cambios descritos abajo. Se conserva su aviso de copyright y la licencia ISC en [LICENSE](LICENSE). Este repositorio no es una publicación oficial del equipo ReRAC.
+
 ## Instalar desde tu ISO
 
 Descarga **Instalar-Ratchet-Clank.exe** desde [la última versión](https://github.com/MarcPique/Ratchet-and-Clank-Recomp/releases/latest). Elige tu ISO de *Ratchet & Clank* USA (SCUS_971.99) y una carpeta de destino nueva o vacía. El instalador verifica la ISO, extrae los datos, instala el juego y crea un acceso directo en el escritorio. La ventana del instalador usa el logo **Recomp**; el ejecutable del juego usa el logo original.
