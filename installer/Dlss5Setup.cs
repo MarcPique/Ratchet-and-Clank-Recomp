@@ -70,19 +70,25 @@ internal static class Dlss5Setup
         string outputText = await stdout;
         string errorText = await stderr;
         string details = (outputText + "\n" + errorText).Trim();
-        if (process.ExitCode != 0)
-            throw new InvalidOperationException($"El instalador oficial del feeder devolvió {process.ExitCode}. {details[^Math.Min(400, details.Length)..]}");
-
         string folder = Path.GetDirectoryName(game)!;
-        foreach (string name in new[] { "dlss5-feed.addon64", "renodx-dlss5.addon64", "nvngx_dlssnr.dll", "nvngx_dlss.dll", "dlss5-feed.cfg", "ReShade.ini", "ReShadePreset.ini" })
+        if (process.ExitCode != 0)
+        {
+            File.WriteAllText(Path.Combine(folder, "dlss5-install.log"), details);
+            throw new InvalidOperationException($"El instalador oficial del feeder devolvió {process.ExitCode}. {details[^Math.Min(400, details.Length)..]}");
+        }
+
+        foreach (string name in new[] { "dlss5-feed.addon64", "renodx-dlss5.addon64", "nvngx_dlssnr.dll", "nvngx_dlss.dll", "ReShade.ini", "ReShadePreset.ini" })
             if (!File.Exists(Path.Combine(folder, name)))
                 throw new InvalidOperationException("La instalación de DLSS 5 no produjo " + name + ".");
 
-        // The Vulkan hook must be present at device creation; the native menu owns mode 0/2.
+        // The upstream installer does not create this file until first launch. Our game
+        // needs it before Bevy chooses Vulkan and discovers the native menu switch.
         string cfg = Path.Combine(folder, "dlss5-feed.cfg");
+        if (!File.Exists(cfg)) File.WriteAllText(cfg, "enabled=1\nmode=0\npreset=0\nrc_profile=0\n");
         SetSetting(cfg, null, "enabled", "1");
         SetSetting(cfg, null, "mode", "0");
         SetSetting(cfg, null, "rc_profile", "0");
+        SetSetting(cfg, null, "preset", "0");
         string ini = Path.Combine(folder, "ReShade.ini");
         SetSetting(ini, "OVERLAY", "TutorialProgress", "4");
         SetSetting(ini, "OVERLAY", "ShowFPS", "0");

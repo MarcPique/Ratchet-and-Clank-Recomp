@@ -12,11 +12,15 @@
 
 Descarga **Instalar-Ratchet-Clank.exe** desde [la última versión](https://github.com/MarcPique/Ratchet-and-Clank-Recomp/releases/latest). Elige tu ISO de *Ratchet & Clank* USA (SCUS_971.99) y una carpeta de destino nueva o vacía. El instalador verifica la ISO, extrae los datos, instala el juego y crea un acceso directo en el escritorio. La ventana del instalador usa el logo **Recomp**; el ejecutable del juego usa el logo original.
 
+Al abrir el instalador puedes elegir **English, Français, Deutsch, Español o Italiano**. La interfaz cambia al instante y el juego arranca en ese idioma tras instalarse. Si ya existe un idioma guardado, el instalador lo muestra inicialmente. La instalación silenciosa acepta `--lang en|fr|de|es|it`.
+
 La descarga **no contiene la ISO ni datos del juego**. Todo el contenido del juego se extrae localmente de tu propia ISO. Se necesitan aproximadamente 6 GB libres durante la instalación. El repositorio es privado para conservación personal.
 
 El instalador es **un único EXE** con el logo y los archivos necesarios integrados. Su interfaz se adapta al tamaño de la ventana y a pantallas 4K con escala alta.
 
 ![Instalador renovado](screenshots/instalador-ventana.png)
+
+![Selector de idioma del instalador](screenshots/instalador-idiomas.png)
 
 [Ver el instalador maximizado a 4K](screenshots/instalador-4k.png).
 
@@ -59,6 +63,8 @@ Capturas del juego a 3840 × 2160, tomadas en segundo plano. La [galería comple
 ### DLSS 5 opcional
 
 El instalador personal ofrece **Instalar DLSS 5 (RTX)**. Incluye las tres bibliotecas de la configuración que ya funciona en una RTX 4090, verificadas por SHA-256, y descarga los demás componentes del [instalador de DLSS5-Feeder 1.19.0](https://github.com/jlrouzies-fr/DLSS5-Feeder/releases). La instalación requiere Internet y puede pedir permiso de administrador para registrar la capa Vulkan de ReShade. El juego arranca con el feeder preparado y permite encenderlo desde **Opciones avanzadas**. El panel interactivo de ReShade queda desactivado; su aviso inicial de carga aún puede aparecer unos segundos. **DLSS 5: Sí/No** cambia el `mode` del feeder entre 2 y 0 durante la partida, sin abrir el panel. El runtime se ha comprobado en una RTX 4090; no se ha verificado en cada modelo RTX.
+
+La revisión del instalador 1.3.0 crea `dlss5-feed.cfg` durante la instalación. El instalador del feeder dejaba ese archivo para el primer arranque, mientras que el menú nativo necesita encontrarlo antes de iniciar el renderizador. Con esto desaparece el aviso de error al terminar la instalación y DLSS 5 puede activarse desde el juego.
 
 Al activar DLSS 5, **Perfil DLSS 5** recorre **Cinemático → Calidad → Equilibrado → Rendimiento → Cinemático**. **Cinemático** da prioridad a la calidad: renderiza el juego al **100 %** de la resolución configurada y usa la pista temporal Transformer K. **Calidad** usa 75 % y Transformer J; **Equilibrado**, 67 % y la pista predeterminada; **Rendimiento**, 50 % y CNN E. El menú puede mostrar **Automático** o **Personalizado** al leer una configuración existente; al cambiar el perfil desde el juego se entra en el ciclo de cuatro modos. Los cambios se aplican durante la partida; la fila queda bloqueada cuando DLSS 5 está apagado o no está instalado.
 

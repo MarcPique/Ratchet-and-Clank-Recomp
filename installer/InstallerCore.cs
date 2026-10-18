@@ -13,8 +13,17 @@ internal static class InstallerCore
     internal const string GameName = "Ratchet & Clank.exe";
     private const string ExtractorName = "Extraer datos.exe";
 
+    private static string L(GameLanguage language, string es, string en, string fr, string de, string it) => language.Code switch
+    {
+        "en" => en,
+        "fr" => fr,
+        "de" => de,
+        "it" => it,
+        _ => es,
+    };
+
     internal static async Task<InstallResult> InstallAsync(
-        string isoInput, string destinationInput, bool desktopShortcut, bool installDlss5,
+        string isoInput, string destinationInput, bool desktopShortcut, bool installDlss5, GameLanguage language,
         IProgress<InstallProgress>? progress, CancellationToken token)
     {
         if (string.IsNullOrWhiteSpace(isoInput) || string.IsNullOrWhiteSpace(destinationInput))
@@ -42,7 +51,7 @@ internal static class InstallerCore
         try
         {
             token.ThrowIfCancellationRequested();
-            progress?.Report(new("Preparando los archivos del juego…", 1));
+            progress?.Report(new(L(language, "Preparando los archivos del juego…", "Preparing game files…", "Préparation des fichiers du jeu…", "Spieldateien werden vorbereitet…", "Preparazione dei file di gioco…"), 1));
             Directory.CreateDirectory(package);
             using (Stream bundle = Assembly.GetExecutingAssembly().GetManifestResourceStream("GameBundle.zip")
                 ?? throw new InvalidOperationException("El instalador no contiene los archivos del juego."))
@@ -56,14 +65,14 @@ internal static class InstallerCore
             if (!File.Exists(extractor) || !Directory.Exists(Path.Combine(packageRoot, "assets", "shaders")))
                 throw new InvalidOperationException("Faltan el extractor o los shaders del juego.");
 
-            progress?.Report(new("Comprobando la ISO…", 3));
-            await RunExtractor(extractor, ["identify", "--iso", iso, "--json"], progress, 3, 5, token);
-            progress?.Report(new("Extrayendo y comprobando los datos…", 8));
-            await RunExtractor(extractor, ["extract", "--iso", iso, "--out", data, "--json"], progress, 8, 87, token);
+            progress?.Report(new(L(language, "Comprobando la ISO…", "Checking the ISO…", "Vérification de l'ISO…", "ISO wird geprüft…", "Verifica della ISO…"), 3));
+            await RunExtractor(extractor, ["identify", "--iso", iso, "--json"], progress, 3, 5, language, token);
+            progress?.Report(new(L(language, "Extrayendo y comprobando los datos…", "Extracting and checking game data…", "Extraction et vérification des données…", "Spieldaten werden extrahiert und geprüft…", "Estrazione e verifica dei dati…"), 8));
+            await RunExtractor(extractor, ["extract", "--iso", iso, "--out", data, "--json"], progress, 8, 87, language, token);
             if (!File.Exists(Path.Combine(data, "extract-info.json")) || !File.Exists(Path.Combine(data, "toc.bin")))
                 throw new InvalidOperationException("La extracción no produjo todos los archivos necesarios.");
-            progress?.Report(new("Verificando la instalación…", 90));
-            await RunExtractor(extractor, ["verify", "--out", data, "--json"], progress, 90, 98, token);
+            progress?.Report(new(L(language, "Verificando la instalación…", "Verifying installation…", "Vérification de l'installation…", "Installation wird überprüft…", "Verifica dell'installazione…"), 90));
+            await RunExtractor(extractor, ["verify", "--out", data, "--json"], progress, 90, 98, language, token);
             token.ThrowIfCancellationRequested();
 
             // The chosen directory was checked as empty. Move verified data only after extraction
@@ -86,22 +95,23 @@ internal static class InstallerCore
             {
                 try
                 {
-                    progress?.Report(new("Instalando DLSS 5 y sus componentes…", 99));
+                    progress?.Report(new(L(language, "Instalando DLSS 5 y sus componentes…", "Installing DLSS 5 and its components…", "Installation de DLSS 5 et de ses composants…", "DLSS 5 und Komponenten werden installiert…", "Installazione di DLSS 5 e dei suoi componenti…"), 99));
                     await Dlss5Setup.InstallAsync(game, stage, token);
                 }
                 catch (OperationCanceledException) { throw; }
                 catch (Exception error)
                 {
-                    dlss5Warning = "El juego se instaló, pero DLSS 5 no pudo completarse: " + error.Message;
+                    dlss5Warning = L(language, "El juego se instaló, pero DLSS 5 no pudo completarse: ", "The game was installed, but DLSS 5 could not be completed: ", "Le jeu est installé, mais DLSS 5 n'a pas pu être terminé : ", "Das Spiel wurde installiert, aber DLSS 5 konnte nicht abgeschlossen werden: ", "Il gioco è installato, ma DLSS 5 non è stato completato: ") + error.Message;
                 }
             }
 
             if (desktopShortcut)
             {
                 try { CreateShortcut(game, destination); }
-                catch (Exception e) { progress?.Report(new("Juego instalado; no se pudo crear el acceso directo: " + e.Message, 99)); }
+                catch (Exception e) { progress?.Report(new(L(language, "Juego instalado; no se pudo crear el acceso directo: ", "Game installed; desktop shortcut could not be created: ", "Jeu installé ; impossible de créer le raccourci : ", "Spiel installiert; Desktopverknüpfung konnte nicht erstellt werden: ", "Gioco installato; impossibile creare il collegamento: ") + e.Message, 99)); }
             }
-            progress?.Report(new(dlss5Warning ?? "Instalación terminada. Ya puedes abrir Ratchet & Clank.exe.", 100));
+            language.SaveStartupLanguage();
+            progress?.Report(new(dlss5Warning ?? L(language, "Instalación terminada. Ya puedes abrir Ratchet & Clank.exe.", "Installation complete. You can now open Ratchet & Clank.exe.", "Installation terminée. Tu peux ouvrir Ratchet & Clank.exe.", "Installation abgeschlossen. Ratchet & Clank.exe kann jetzt gestartet werden.", "Installazione completata. Ora puoi aprire Ratchet & Clank.exe."), 100));
             return new InstallResult(game, dlss5Warning);
         }
         catch
@@ -127,7 +137,7 @@ internal static class InstallerCore
 
     private static async Task RunExtractor(
         string extractor, IReadOnlyList<string> arguments, IProgress<InstallProgress>? progress,
-        int from, int to, CancellationToken token)
+        int from, int to, GameLanguage language, CancellationToken token)
     {
         using var process = new Process();
         process.StartInfo = new ProcessStartInfo(extractor)
@@ -159,11 +169,11 @@ internal static class InstallerCore
                 int percent = total > 0 ? from + (int)Math.Round((to - from) * Math.Clamp((double)done / total, 0, 1)) : from;
                 string label = stage switch
                 {
-                    "identify" => "Comprobando la ISO…",
-                    "copy" => "Extrayendo los datos del juego…",
-                    "prepare" => "Preparando los datos del juego…",
-                    "verify" => "Verificando los datos del juego…",
-                    _ => "Instalando…",
+                    "identify" => L(language, "Comprobando la ISO…", "Checking the ISO…", "Vérification de l'ISO…", "ISO wird geprüft…", "Verifica della ISO…"),
+                    "copy" => L(language, "Extrayendo los datos del juego…", "Extracting game data…", "Extraction des données du jeu…", "Spieldaten werden extrahiert…", "Estrazione dei dati del gioco…"),
+                    "prepare" => L(language, "Preparando los datos del juego…", "Preparing game data…", "Préparation des données du jeu…", "Spieldaten werden vorbereitet…", "Preparazione dei dati del gioco…"),
+                    "verify" => L(language, "Verificando los datos del juego…", "Verifying game data…", "Vérification des données du jeu…", "Spieldaten werden überprüft…", "Verifica dei dati del gioco…"),
+                    _ => L(language, "Instalando…", "Installing…", "Installation…", "Installation läuft…", "Installazione…"),
                 };
                 progress?.Report(new(label, percent));
             }

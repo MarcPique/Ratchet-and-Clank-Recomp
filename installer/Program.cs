@@ -20,7 +20,9 @@ internal static class Program
             {
                 InstallResult result = InstallerCore.InstallAsync(Value("--iso") ?? "", Value("--out") ?? "",
                     !args.Contains("--no-shortcut", StringComparer.OrdinalIgnoreCase),
-                    args.Contains("--dlss5", StringComparer.OrdinalIgnoreCase), null, CancellationToken.None)
+                    args.Contains("--dlss5", StringComparer.OrdinalIgnoreCase),
+                    GameLanguage.FromCode(Value("--lang") ?? GameLanguage.SystemDefault().Code),
+                    null, CancellationToken.None)
                     .GetAwaiter().GetResult();
                 if (log is not null) File.WriteAllText(log, "OK: " + result.Game + (result.Dlss5Warning is null ? "" : "\n" + result.Dlss5Warning));
                 return result.Dlss5Warning is null ? 0 : 2;

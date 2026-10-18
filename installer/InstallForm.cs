@@ -21,6 +21,8 @@ internal sealed class InstallForm : Form
     private readonly Label subtitle = new();
     private readonly Label isoLabel = new();
     private readonly Label destinationLabel = new();
+    private readonly Label languageLabel = new();
+    private readonly ComboBox language = new();
     private readonly TextBox iso = new();
     private readonly TextBox destination = new();
     private readonly Button browseIso = new();
@@ -84,8 +86,19 @@ internal sealed class InstallForm : Form
         ConfigureLabel(subtitle, "Selecciona el disco del juego y dónde quieres instalarlo.", 10, Muted);
         ConfigureLabel(isoLabel, "01   ISO DEL JUEGO", 10, White, true);
         ConfigureLabel(destinationLabel, "02   CARPETA DE DESTINO", 10, White, true);
+        ConfigureLabel(languageLabel, "IDIOMA", 9, Muted, true);
         ConfigureLabel(status, "Selecciona una ISO y una carpeta nueva o vacía.", 10, Muted);
-        foreach (var label in new[] { eyebrow, heading, subtitle, isoLabel, destinationLabel, status }) content.Controls.Add(label);
+        foreach (var label in new[] { eyebrow, heading, subtitle, isoLabel, destinationLabel, languageLabel, status }) content.Controls.Add(label);
+
+        language.DropDownStyle = ComboBoxStyle.DropDownList;
+        language.FlatStyle = FlatStyle.Flat;
+        language.BackColor = Field;
+        language.ForeColor = White;
+        language.Font = new Font("Segoe UI", 10);
+        language.Items.AddRange(GameLanguage.All.Cast<object>().ToArray());
+        language.SelectedItem = GameLanguage.SystemDefault();
+        language.SelectedIndexChanged += (_, _) => ApplyLanguage();
+        content.Controls.Add(language);
 
         divider.BackColor = Color.FromArgb(55, 70, 88);
         content.Controls.Add(divider);
@@ -153,6 +166,7 @@ internal sealed class InstallForm : Form
         };
         Resize += (_, _) => LayoutUi();
         DpiChanged += (_, _) => BeginInvoke(LayoutUi);
+        ApplyLanguage();
         LayoutUi();
     }
 
@@ -198,6 +212,41 @@ internal sealed class InstallForm : Form
         button.Cursor = Cursors.Hand;
     }
 
+    private GameLanguage SelectedLanguage => (GameLanguage)(language.SelectedItem ?? GameLanguage.SystemDefault());
+
+    private string T(string es, string en, string fr, string de, string it) => SelectedLanguage.Code switch
+    {
+        "en" => en,
+        "fr" => fr,
+        "de" => de,
+        "it" => it,
+        _ => es,
+    };
+
+    private void ApplyLanguage()
+    {
+        Text = T("Instalar Ratchet & Clank", "Install Ratchet & Clank", "Installer Ratchet & Clank", "Ratchet & Clank installieren", "Installa Ratchet & Clank");
+        brandHeading.Text = T("TU AVENTURA\nEMPIEZA AQUÍ", "YOUR ADVENTURE\nSTARTS HERE", "L'AVENTURE\nCOMMENCE ICI", "DEIN ABENTEUER\nBEGINNT HIER", "LA TUA AVVENTURA\nINIZIA QUI");
+        brandCopy.Text = T("Elige tu ISO original. Nosotros preparamos el resto.", "Choose your original ISO. We'll prepare the rest.", "Choisis ton ISO d'origine. Nous préparons le reste.", "Wähle deine Original-ISO. Wir erledigen den Rest.", "Scegli la tua ISO originale. Al resto pensiamo noi.");
+        brandFooter.Text = T("BASADO EN ReRAC  ·  USO PERSONAL", "BASED ON ReRAC  ·  PERSONAL USE", "BASÉ SUR ReRAC  ·  USAGE PERSONNEL", "BASIERT AUF ReRAC  ·  PRIVATGEBRAUCH", "BASATO SU ReRAC  ·  USO PERSONALE");
+        eyebrow.Text = T("INSTALACIÓN EN 2 PASOS", "INSTALL IN 2 STEPS", "INSTALLATION EN 2 ÉTAPES", "INSTALLATION IN 2 SCHRITTEN", "INSTALLAZIONE IN 2 PASSAGGI");
+        heading.Text = T("Prepara tu aventura", "Prepare your adventure", "Prépare ton aventure", "Bereite dein Abenteuer vor", "Prepara la tua avventura");
+        subtitle.Text = T("Selecciona el disco del juego y dónde quieres instalarlo.", "Select the game disc and where to install it.", "Sélectionne le disque du jeu et le dossier d'installation.", "Wähle die Spiel-ISO und den Installationsordner.", "Seleziona il disco del gioco e la cartella di installazione.");
+        languageLabel.Text = T("IDIOMA", "LANGUAGE", "LANGUE", "SPRACHE", "LINGUA");
+        isoLabel.Text = T("01   ISO DEL JUEGO", "01   GAME ISO", "01   ISO DU JEU", "01   SPIEL-ISO", "01   ISO DEL GIOCO");
+        destinationLabel.Text = T("02   CARPETA DE DESTINO", "02   DESTINATION FOLDER", "02   DOSSIER DE DESTINATION", "02   ZIELORDNER", "02   CARTELLA DI DESTINAZIONE");
+        iso.PlaceholderText = T("Ruta a tu archivo .iso", "Path to your .iso file", "Chemin du fichier .iso", "Pfad zur .iso-Datei", "Percorso del file .iso");
+        destination.PlaceholderText = T("Carpeta nueva o vacía", "New or empty folder", "Dossier nouveau ou vide", "Neuer oder leerer Ordner", "Cartella nuova o vuota");
+        browseIso.Text = T("Elegir ISO", "Choose ISO", "Choisir ISO", "ISO wählen", "Scegli ISO");
+        browseDestination.Text = T("Elegir carpeta", "Choose folder", "Choisir dossier", "Ordner wählen", "Scegli cartella");
+        shortcut.Text = T("Crear acceso directo en el escritorio", "Create desktop shortcut", "Créer un raccourci sur le bureau", "Desktopverknüpfung erstellen", "Crea collegamento sul desktop");
+        dlss5.Text = T("Instalar DLSS 5 (RTX · requiere Internet)", "Install DLSS 5 (RTX · Internet required)", "Installer DLSS 5 (RTX · Internet requis)", "DLSS 5 installieren (RTX · Internet nötig)", "Installa DLSS 5 (RTX · Internet richiesto)");
+        install.Text = T("Instalar juego", "Install game", "Installer le jeu", "Spiel installieren", "Installa gioco");
+        cancel.Text = T("Cerrar", "Close", "Fermer", "Schließen", "Chiudi");
+        play.Text = T("Jugar", "Play", "Jouer", "Spielen", "Gioca");
+        status.Text = T("Selecciona una ISO y una carpeta nueva o vacía.", "Select an ISO and a new or empty folder.", "Sélectionne une ISO et un dossier nouveau ou vide.", "Wähle eine ISO und einen neuen oder leeren Ordner.", "Seleziona una ISO e una cartella nuova o vuota.");
+    }
+
     private void LayoutUi()
     {
         int margin = U(26);
@@ -221,16 +270,18 @@ internal sealed class InstallForm : Form
         eyebrow.SetBounds(pad, U(40), usable, U(24));
         heading.SetBounds(pad, U(69), usable, U(50));
         subtitle.SetBounds(pad, U(123), usable, U(44));
-        divider.SetBounds(pad, U(180), usable, U(1));
-        isoLabel.SetBounds(pad, U(210), usable, U(29));
-        destinationLabel.SetBounds(pad, U(326), usable, U(29));
+        languageLabel.SetBounds(pad, U(184), U(105), U(27));
+        language.SetBounds(right - U(190), U(178), U(190), U(34));
+        divider.SetBounds(pad, U(220), usable, U(1));
+        isoLabel.SetBounds(pad, U(236), usable, U(29));
+        destinationLabel.SetBounds(pad, U(333), usable, U(29));
         int browseWidth = U(126);
         int gap = U(12);
         int fieldWidth = Math.Max(U(150), usable - browseWidth - gap);
-        iso.SetBounds(pad, U(246), fieldWidth, U(40));
-        browseIso.SetBounds(pad + fieldWidth + gap, U(244), browseWidth, U(44));
-        destination.SetBounds(pad, U(362), fieldWidth, U(40));
-        browseDestination.SetBounds(pad + fieldWidth + gap, U(360), browseWidth, U(44));
+        iso.SetBounds(pad, U(269), fieldWidth, U(40));
+        browseIso.SetBounds(pad + fieldWidth + gap, U(267), browseWidth, U(44));
+        destination.SetBounds(pad, U(367), fieldWidth, U(40));
+        browseDestination.SetBounds(pad + fieldWidth + gap, U(365), browseWidth, U(44));
         int footerY = content.Height - U(116);
         int meterY = footerY - U(48);
         shortcut.SetBounds(pad, meterY - U(82), usable, U(32));
@@ -256,7 +307,7 @@ internal sealed class InstallForm : Form
     {
         using var picker = new OpenFileDialog
         {
-            Title = "Selecciona tu ISO de Ratchet & Clank (USA)",
+            Title = T("Selecciona tu ISO de Ratchet & Clank (USA)", "Select your Ratchet & Clank (USA) ISO", "Sélectionne ton ISO de Ratchet & Clank (USA)", "Wähle deine Ratchet & Clank (USA) ISO", "Seleziona la tua ISO di Ratchet & Clank (USA)"),
             Filter = "Imagen de disco (*.iso)|*.iso",
             CheckFileExists = true,
         };
@@ -267,7 +318,7 @@ internal sealed class InstallForm : Form
     {
         using var picker = new FolderBrowserDialog
         {
-            Description = "Selecciona una carpeta nueva o vacía para el juego",
+            Description = T("Selecciona una carpeta nueva o vacía para el juego", "Choose a new or empty game folder", "Choisis un dossier nouveau ou vide pour le jeu", "Wähle einen neuen oder leeren Spielordner", "Scegli una cartella nuova o vuota per il gioco"),
             ShowNewFolderButton = true,
             UseDescriptionForTitle = true,
         };
@@ -279,8 +330,8 @@ internal sealed class InstallForm : Form
     {
         if (running is not null) return;
         running = new CancellationTokenSource();
-        iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = dlss5.Enabled = install.Enabled = false;
-        cancel.Text = "Cancelar";
+        iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = dlss5.Enabled = language.Enabled = install.Enabled = false;
+        cancel.Text = T("Cancelar", "Cancel", "Annuler", "Abbrechen", "Annulla");
         var progress = new Progress<InstallProgress>(p =>
         {
             meter.Percent = p.Percent;
@@ -288,29 +339,29 @@ internal sealed class InstallForm : Form
         });
         try
         {
-            InstallResult result = await InstallerCore.InstallAsync(iso.Text, destination.Text, shortcut.Checked, dlss5.Checked, progress, running.Token);
+            InstallResult result = await InstallerCore.InstallAsync(iso.Text, destination.Text, shortcut.Checked, dlss5.Checked, SelectedLanguage, progress, running.Token);
             installedGame = result.Game;
             play.Enabled = true;
-            MessageBox.Show(this, result.Dlss5Warning ?? "El juego está instalado y listo para abrir.",
-                "Instalación terminada", MessageBoxButtons.OK,
+            MessageBox.Show(this, result.Dlss5Warning ?? T("El juego está instalado y listo para abrir.", "The game is installed and ready to launch.", "Le jeu est installé et prêt à démarrer.", "Das Spiel ist installiert und startbereit.", "Il gioco è installato e pronto per l'avvio."),
+                T("Instalación terminada", "Installation complete", "Installation terminée", "Installation abgeschlossen", "Installazione completata"), MessageBoxButtons.OK,
                 result.Dlss5Warning is null ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
         }
         catch (OperationCanceledException)
         {
-            status.Text = "Instalación cancelada.";
+            status.Text = T("Instalación cancelada.", "Installation cancelled.", "Installation annulée.", "Installation abgebrochen.", "Installazione annullata.");
         }
         catch (Exception error)
         {
-            status.Text = "No se pudo completar la instalación.";
-            MessageBox.Show(this, error.Message, "Error de instalación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            status.Text = T("No se pudo completar la instalación.", "Installation could not be completed.", "L'installation n'a pas pu être terminée.", "Die Installation konnte nicht abgeschlossen werden.", "Impossibile completare l'installazione.");
+            MessageBox.Show(this, error.Message, T("Error de instalación", "Installation error", "Erreur d'installation", "Installationsfehler", "Errore di installazione"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
         {
             running.Dispose();
             running = null;
-            iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = install.Enabled = true;
+            iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = language.Enabled = install.Enabled = true;
             dlss5.Enabled = Dlss5Setup.IsBundled;
-            cancel.Text = "Cerrar";
+            cancel.Text = T("Cerrar", "Close", "Fermer", "Schließen", "Chiudi");
         }
     }
 
