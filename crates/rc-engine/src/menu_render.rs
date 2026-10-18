@@ -842,6 +842,10 @@ fn menu_frame(
                 let mut out = menu.tick(&inp, gs, &env);
                 if out.desktop_exit {
                     println!("menus: frame {frame}: exit to desktop from pause menu");
+                    // The optional neural add-on has crashed inside D3D12Core while Bevy
+                    // destroys the Vulkan device after an engaged session. The OS reclaims
+                    // both devices on process exit; menu changes and saves are synchronous.
+                    if rt.dlss5.requires_vulkan() { std::process::exit(0); }
                     app_exit.write(AppExit::Success);
                     return;
                 }
@@ -1566,6 +1570,8 @@ fn front_end_frame(
                 let mut o = menu.tick(&inp, gs, &env);
                 if o.desktop_exit {
                     println!("menus: frame {frame}: exit to desktop from main menu");
+                    // See the pause-menu path: skip unsafe third-party device teardown.
+                    if rt.dlss5.requires_vulkan() { std::process::exit(0); }
                     app_exit.write(AppExit::Success);
                     return;
                 }

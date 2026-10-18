@@ -35,6 +35,10 @@ cuando existe una carpeta Data, creada por el instalador, junto a él.
 
 Se necesita una ISO propia de Ratchet & Clank USA, serial SCUS_971.99.
 El juego es una compilación personal y no oficial.
+
+Basado en ReRAC: The Ratchet & Clank Rewrite, creado por los colaboradores
+de ReRAC. Proyecto original: https://github.com/re-rac/rerac
+El aviso de copyright y los términos ISC están en LICENSE.
 '@ | Set-Content -LiteralPath (Join-Path $folder 'LEEME.txt') -Encoding UTF8
 
 [IO.Compression.ZipFile]::CreateFromDirectory($folder, $zip, [IO.Compression.CompressionLevel]::Optimal, $true)

@@ -76,7 +76,7 @@ internal sealed class InstallForm : Form
         ConfigureLabel(brandEyebrow, "RATCHET & CLANK  /  PC", 9, Orange, true);
         ConfigureLabel(brandHeading, "TU AVENTURA\nEMPIEZA AQUÍ", 19, White, true);
         ConfigureLabel(brandCopy, "Elige tu ISO original. Nosotros preparamos el resto.", 11, Color.FromArgb(224, 230, 238));
-        ConfigureLabel(brandFooter, "INSTALADOR PARA WINDOWS  ·  USO PERSONAL", 8, Color.FromArgb(220, 227, 237));
+        ConfigureLabel(brandFooter, "BASADO EN ReRAC  ·  USO PERSONAL", 8, Color.FromArgb(220, 227, 237));
         foreach (var label in new[] { brandEyebrow, brandHeading, brandCopy, brandFooter }) brand.Controls.Add(label);
 
         ConfigureLabel(eyebrow, "INSTALACIÓN EN 2 PASOS", 9, Orange, true);
