@@ -34,6 +34,7 @@ pub mod media;
 pub mod model_anim;
 mod options;
 pub mod pages;
+pub mod desktop_exit;
 pub mod planet_select;
 pub mod port;
 pub mod saves;
@@ -420,6 +421,8 @@ pub struct MenuOut {
     pub exit: Option<PostAction>,
     /// Quit Game ○: `0x13d384 = 0, 0x15f5c0 = −1, 0x15f5d8 = 1, 0x15f570 = 1`.
     pub quit: bool,
+    /// The added root-menu command asks the host application to close cleanly.
+    pub desktop_exit: bool,
     /// `mode_freezeInit(3, page)` requested (Save / Load actions 4 / 5); not ported.
     pub freeze: Option<u32>,
     /// `PageMenuClose`: the item requests `0x141408 + 4·slot` of the slots whose menu copy changed (hand, feet,
@@ -486,6 +489,8 @@ pub struct PageMenu {
     /// 0x1ba248 Goodies unlocked, 0x1ba294 close keys off (kind 0x21).
     pub goodies: bool,
     pub no_close: bool,
+    /// A root-menu desktop exit is awaiting explicit confirmation (false selects No).
+    pub desktop_exit_confirm: Option<bool>,
     /// 0x1ba254 post-action argument, 0x1ba260 / 0x1ba264 return page and kind.
     pub arg: u32,
     pub return_page: u32,
@@ -565,6 +570,7 @@ impl PageMenu {
             prev: 0,
             goodies: false,
             no_close: false,
+            desktop_exit_confirm: None,
             arg: 0,
             return_page: 0,
             return_kind: 0,
@@ -643,6 +649,8 @@ impl PageMenu {
         let (weapons, options) = (ad.weapons, ad.options);
         if let Some(Data::List(l)) = self.wm(weapons).map(|w| &mut w.data) { l.above = a; }
         if let Some(Data::List(l)) = self.wm(options).map(|w| &mut w.data) { l.below = b; }
+        desktop_exit::wire_pause(self);
+        self.desktop_exit_confirm = None;
         self.kind = kind;
         // 0x1ba24c = (kind == 0x23): the kind-0x23 page's scroller closes the menu at its end.
         self.media.kind23 = kind == 0x23;
@@ -724,6 +732,21 @@ impl PageMenu {
             return out;
         }
         if matches!(self.kind, 0 | 10 | 0xe | 0x11 | 0x21 | 0x2d | 0x23) { self.first_tick(gs); }
+        if let Some(yes) = self.desktop_exit_confirm {
+            if inp.pressed_u & (button::TRIANGLE | button::CIRCLE) != 0 {
+                self.desktop_exit_confirm = None;
+                out.sounds.push(MenuSound::Confirm);
+            } else if inp.pressed_u & (button::UP | button::DOWN | button::LEFT | button::RIGHT) != 0 {
+                self.desktop_exit_confirm = Some(!yes);
+                out.sounds.push(MenuSound::Cursor);
+            } else if inp.pressed_u & button::CROSS != 0 {
+                self.desktop_exit_confirm = None;
+                out.desktop_exit = yes;
+                out.sounds.push(MenuSound::Confirm);
+            }
+            if let Some(f) = self.frames.as_mut() { f.update(); }
+            return out;
+        }
         // A changed memory card (0x15eeb4 & 1) holds the menu in the card dialog (`mode_freezeInit(3, page)`).
         if self.saves.card.flags & 1 != 0 {
             out.freeze = Some(self.current);
@@ -1045,6 +1068,11 @@ impl PageMenu {
                         out.language = Some(it.arg);
                         return 0;
                     }
+                    desktop_exit::ACTION => {
+                        self.desktop_exit_confirm = Some(false);
+                        out.sounds.push(MenuSound::Confirm);
+                        return 0;
+                    }
                     _ => {}
                 }
             }
@@ -1149,6 +1177,8 @@ impl PageMenu {
             if let Some(f) = self.frames.as_mut() { f.panel_static(i, env.pal, vignette, rng, &mut fx); }
         }
         out.extend(fx.into_iter().map(MenuDraw::Static));
+        desktop_exit::draw(self, a, out);
+        desktop_exit::draw_confirm(self, a, out);
     }
 
     fn call_draw(&mut self, w: u32, a: &MenuAssets, gs: &GameState, env: &MenuEnv, out: &mut Vec<MenuDraw>) -> u32 {

@@ -14,6 +14,10 @@ Las capturas de los menús y mandos son fotogramas reales del juego. Salvo la in
 - [Opciones avanzadas desde el inicio](opciones-avanzadas-inicio-4k.png)
 - [Opciones avanzadas durante la partida](opciones-avanzadas-4k.png)
 - [Opciones avanzadas a 720p](opciones-avanzadas-720p.png)
+- [Salir al escritorio desde el menú principal a 4K](salir-principal-4k.png)
+- [Salir al escritorio desde el menú de pausa a 4K](salir-pausa-4k.png)
+- [Confirmar salida desde el menú principal a 4K](confirmar-salida-principal-4k.png)
+- [Confirmar salida desde el menú de pausa a 4K](confirmar-salida-pausa-4k.png)
 
 ## Ajustes gráficos y accesibilidad
 

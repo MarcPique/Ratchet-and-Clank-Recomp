@@ -29,6 +29,7 @@ internal sealed class InstallForm : Form
     private readonly Button cancel = new();
     private readonly Button play = new();
     private readonly CheckBox shortcut = new();
+    private readonly CheckBox dlss5 = new();
     private readonly ProgressMeter meter = new();
     private readonly Label status = new();
     private readonly Panel divider = new();
@@ -108,6 +109,15 @@ internal sealed class InstallForm : Form
         shortcut.FlatStyle = FlatStyle.Flat;
         shortcut.Font = new Font("Segoe UI", 10);
         content.Controls.Add(shortcut);
+
+        dlss5.Text = "Instalar DLSS 5 (RTX · requiere Internet)";
+        dlss5.Checked = Dlss5Setup.IsBundled;
+        dlss5.Enabled = Dlss5Setup.IsBundled;
+        dlss5.ForeColor = White;
+        dlss5.BackColor = PanelColor;
+        dlss5.FlatStyle = FlatStyle.Flat;
+        dlss5.Font = new Font("Segoe UI", 10);
+        content.Controls.Add(dlss5);
 
         content.Controls.Add(meter);
         ConfigureButton(install, "Instalar juego", true);
@@ -221,9 +231,11 @@ internal sealed class InstallForm : Form
         browseIso.SetBounds(pad + fieldWidth + gap, U(244), browseWidth, U(44));
         destination.SetBounds(pad, U(362), fieldWidth, U(40));
         browseDestination.SetBounds(pad + fieldWidth + gap, U(360), browseWidth, U(44));
-        shortcut.SetBounds(pad, U(427), usable, U(32));
         int footerY = content.Height - U(116);
-        meter.SetBounds(pad, footerY - U(48), usable, U(8));
+        int meterY = footerY - U(48);
+        shortcut.SetBounds(pad, meterY - U(82), usable, U(32));
+        dlss5.SetBounds(pad, meterY - U(47), usable, U(32));
+        meter.SetBounds(pad, meterY, usable, U(8));
         status.SetBounds(pad, footerY - U(31), usable, U(39));
         int buttonY = content.Height - U(71);
         install.SetBounds(pad, buttonY, U(150), U(45));
@@ -267,7 +279,7 @@ internal sealed class InstallForm : Form
     {
         if (running is not null) return;
         running = new CancellationTokenSource();
-        iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = install.Enabled = false;
+        iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = dlss5.Enabled = install.Enabled = false;
         cancel.Text = "Cancelar";
         var progress = new Progress<InstallProgress>(p =>
         {
@@ -276,9 +288,12 @@ internal sealed class InstallForm : Form
         });
         try
         {
-            installedGame = await InstallerCore.InstallAsync(iso.Text, destination.Text, shortcut.Checked, progress, running.Token);
+            InstallResult result = await InstallerCore.InstallAsync(iso.Text, destination.Text, shortcut.Checked, dlss5.Checked, progress, running.Token);
+            installedGame = result.Game;
             play.Enabled = true;
-            MessageBox.Show(this, "El juego está instalado y listo para abrir.", "Instalación terminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, result.Dlss5Warning ?? "El juego está instalado y listo para abrir.",
+                "Instalación terminada", MessageBoxButtons.OK,
+                result.Dlss5Warning is null ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
         }
         catch (OperationCanceledException)
         {
@@ -294,6 +309,7 @@ internal sealed class InstallForm : Form
             running.Dispose();
             running = null;
             iso.Enabled = destination.Enabled = browseIso.Enabled = browseDestination.Enabled = shortcut.Enabled = install.Enabled = true;
+            dlss5.Enabled = Dlss5Setup.IsBundled;
             cancel.Text = "Cerrar";
         }
     }

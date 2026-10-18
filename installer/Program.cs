@@ -18,11 +18,12 @@ internal static class Program
             string? log = Value("--log");
             try
             {
-                string game = InstallerCore.InstallAsync(Value("--iso") ?? "", Value("--out") ?? "",
-                    !args.Contains("--no-shortcut", StringComparer.OrdinalIgnoreCase), null, CancellationToken.None)
+                InstallResult result = InstallerCore.InstallAsync(Value("--iso") ?? "", Value("--out") ?? "",
+                    !args.Contains("--no-shortcut", StringComparer.OrdinalIgnoreCase),
+                    args.Contains("--dlss5", StringComparer.OrdinalIgnoreCase), null, CancellationToken.None)
                     .GetAwaiter().GetResult();
-                if (log is not null) File.WriteAllText(log, "OK: " + game);
-                return 0;
+                if (log is not null) File.WriteAllText(log, "OK: " + result.Game + (result.Dlss5Warning is null ? "" : "\n" + result.Dlss5Warning));
+                return result.Dlss5Warning is null ? 0 : 2;
             }
             catch (Exception error)
             {

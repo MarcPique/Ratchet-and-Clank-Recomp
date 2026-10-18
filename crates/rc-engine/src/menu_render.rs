@@ -355,6 +355,9 @@ fn setup(
     if let Some(m) = menu.as_mut().filter(|_| std::env::var("RC_SETTINGS_PAGE").map_or(true, |v| v.trim() != "0")) {
         if !m.install_port_page(&overlay) { eprintln!("menus: Port Options page not installed (Options page records missing)"); }
     }
+    if let Some(m) = menu.as_mut() {
+        if !rc_game::menus::pause::desktop_exit::install(m) { eprintln!("menus: desktop exit button not installed (root menu records missing)"); }
+    }
     println!(
         "menus: quick select {} (neighbour table {:#x}), page menu {} ({} pages, {} widgets); RC_MENU_TRACE=1 logs events",
         if qs.is_some() { "ready" } else { "missing" },
@@ -645,7 +648,7 @@ fn menu_frame(
         ResMut<crate::input_map::PromptSettings>,
     ),
     mut widgets3d: ResMut<crate::menu_models::GadgetsPreview>,
-    (mut fer, movies): (ResMut<crate::saves::FrontEndRt>, Option<Res<crate::movie_render::MovieState>>),
+    (mut fer, movies, mut app_exit): (ResMut<crate::saves::FrontEndRt>, Option<Res<crate::movie_render::MovieState>>, MessageWriter<AppExit>),
 ) {
     let (Some(mut rt), Some(mut play), Some(mut gs), Some(mut sess)) = (rt, play, gs, sess) else { return };
     let rt = &mut *rt;
@@ -667,7 +670,7 @@ fn menu_frame(
         });
         front_end_frame(rt, &mut mm, &mut play, gs, fer, &pad, &source, busy, audio.as_deref_mut(),
             std::mem::take(&mut wheel.pending), shadows.as_deref_mut(), &mut display, &mut gfx,
-            &mut pending_display, &mut input_settings, &mut access, &mut prompts, &supported.as_deref().cloned().unwrap_or_default(), monitor_count, refresh_choices);
+            &mut pending_display, &mut input_settings, &mut access, &mut prompts, &supported.as_deref().cloned().unwrap_or_default(), monitor_count, refresh_choices, &mut app_exit);
         mm.state.end_frame();
         mm.loop_frame += 1;
         return;
@@ -837,6 +840,11 @@ fn menu_frame(
                 // 0x15172a as the widgets read it (the Helpdesk girl).
                 menu.media.voice_state = play.svc.help.voice.state;
                 let mut out = menu.tick(&inp, gs, &env);
+                if out.desktop_exit {
+                    println!("menus: frame {frame}: exit to desktop from pause menu");
+                    app_exit.write(AppExit::Success);
+                    return;
+                }
                 if wheel_moved { out.sounds.push(MenuSound::Cursor); }
                 if let (Some(v), Some(s)) = (menu.port_value(Setting::Shadows), shadows.as_mut()) {
                     if s.enabled != (v == 0) {
@@ -1464,6 +1472,7 @@ fn front_end_frame(
     supported: &SupportedMsaa,
     monitor_count: usize,
     refresh_choices: u32,
+    app_exit: &mut MessageWriter<AppExit>,
 ) {
     let frame = mm.loop_frame;
     let vsync = frame as u32;
@@ -1555,6 +1564,11 @@ fn front_end_frame(
                 saves_in(menu, play);
                 menu.saves.card.front_end = true;
                 let mut o = menu.tick(&inp, gs, &env);
+                if o.desktop_exit {
+                    println!("menus: frame {frame}: exit to desktop from main menu");
+                    app_exit.write(AppExit::Success);
+                    return;
+                }
                 if wheel_moved { o.sounds.push(MenuSound::Cursor); }
                 if let (Some(v), Some(s)) = (menu.port_value(Setting::Shadows), shadows.as_deref_mut()) {
                     if s.enabled != (v == 0) { s.enabled = v == 0; s.save(); }

@@ -41,6 +41,7 @@ fn menu() -> PageMenu {
         prev: 0,
         goodies: false,
         no_close: false,
+        desktop_exit_confirm: None,
         arg: 0,
         return_page: 0,
         return_kind: 0,
@@ -237,6 +238,64 @@ fn goodies_wiring_both_ways() {
     g.global.completes = 1;
     m.enter(0, &g);
     assert!(m.goodies, "challenge mode counts too");
+}
+
+#[test]
+fn desktop_exit_is_reachable_from_both_root_menus() {
+    let (mut m, mut g) = (menu(), gs());
+    let front = [0x7e00_1000, 0x7e00_1004, 0x7e00_1008];
+    for (index, &addr) in front.iter().enumerate() {
+        let above = front[(index + 2) % 3];
+        let below = front[(index + 1) % 3];
+        m.widgets.insert(addr, list(addr, lf::LARGE, vec![item(20264, 3, OPTIONS)], above, below, 0, func::LIST_DRAW));
+    }
+    m.pages.insert(page::KIND2D, pg(page::KIND2D, 2, 0, front[0], &[(2, front[0]), (3, front[1]), (4, front[2])], 32));
+    assert!(desktop_exit::install(&mut m));
+    assert!(desktop_exit::install(&mut m), "installation is idempotent");
+    let pause_exit = m.pages[&page::ROOT].widgets[7];
+    let front_exit = m.pages[&page::KIND2D].widgets[5];
+
+    open(&mut m, &mut g, 0);
+    m.pages.get_mut(&page::ROOT).unwrap().focus = wiring::OPTIONS;
+    m.tick(&press(button::DOWN), &mut g, &MenuEnv::default());
+    assert_eq!(m.pages[&page::ROOT].focus, pause_exit);
+    assert!(!m.tick(&press(button::CROSS), &mut g, &MenuEnv::default()).desktop_exit);
+    assert_eq!(m.desktop_exit_confirm, Some(false));
+    assert!(!m.tick(&press(button::CROSS), &mut g, &MenuEnv::default()).desktop_exit, "No cancels");
+    assert_eq!(m.desktop_exit_confirm, None);
+    m.tick(&press(button::CROSS), &mut g, &MenuEnv::default());
+    m.tick(&press(button::DOWN), &mut g, &MenuEnv::default());
+    assert!(m.tick(&press(button::CROSS), &mut g, &MenuEnv::default()).desktop_exit, "Yes confirms");
+
+    g.global.game_beaten = 1;
+    open(&mut m, &mut g, 0);
+    m.pages.get_mut(&page::ROOT).unwrap().focus = wiring::OPTIONS;
+    m.tick(&press(button::DOWN), &mut g, &MenuEnv::default());
+    assert_eq!(m.pages[&page::ROOT].focus, wiring::GOODIES);
+    m.tick(&press(button::DOWN), &mut g, &MenuEnv::default());
+    assert_eq!(m.pages[&page::ROOT].focus, pause_exit);
+
+    open(&mut m, &mut g, 0x2d);
+    m.tick(&press(button::UP), &mut g, &MenuEnv::default());
+    assert_eq!(m.pages[&page::KIND2D].focus, front_exit);
+    assert!(!m.tick(&press(button::CROSS), &mut g, &MenuEnv::default()).desktop_exit);
+    assert_eq!(m.desktop_exit_confirm, Some(false));
+    assert!(!m.tick(&press(button::TRIANGLE), &mut g, &MenuEnv::default()).desktop_exit, "Triangle cancels");
+    m.tick(&press(button::CROSS), &mut g, &MenuEnv::default());
+    m.tick(&press(button::DOWN), &mut g, &MenuEnv::default());
+    assert!(m.tick(&press(button::CROSS), &mut g, &MenuEnv::default()).desktop_exit);
+}
+
+#[test]
+fn desktop_exit_installs_in_extracted_menu_tree() {
+    let path = rc_formats::test_data::root().join("levels/01/overlay.bin");
+    let Ok(bytes) = std::fs::read(&path) else { eprintln!("skipped: no {}", path.display()); return };
+    let mut menu = PageMenu::load(&Overlay::parse(&bytes).unwrap()).unwrap();
+    assert!(desktop_exit::install(&mut menu));
+    let pause = &menu.pages[&menu.addrs.root];
+    let front = &menu.pages[&menu.addrs.kind2d];
+    assert!(matches!(&menu.widgets[&pause.widgets[7]].data, Data::List(list) if list.items[0].action == desktop_exit::ACTION));
+    assert!(matches!(&menu.widgets[&front.widgets[5]].data, Data::List(list) if list.items[0].action == desktop_exit::ACTION));
 }
 
 #[test]

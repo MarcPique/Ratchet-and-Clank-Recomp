@@ -30,7 +30,7 @@ impl Bridge {
         let cfg = std::env::current_exe().ok().and_then(|exe| {
             let dir = exe.parent()?;
             // A partial injector installation must never advertise a working switch.
-            ["dxgi.dll", "dlss5-feed.addon64", "renodx-dlss5.addon64", "nvngx_dlssnr.dll", "dlss5-feed.cfg"]
+            ["dlss5-feed.addon64", "renodx-dlss5.addon64", "nvngx_dlssnr.dll", "nvngx_dlss.dll", "dlss5-feed.cfg", "ReShadePreset.ini"]
                 .iter().all(|name| dir.join(name).is_file())
                 .then(|| dir.join("dlss5-feed.cfg"))
         });
@@ -44,7 +44,7 @@ impl Bridge {
         menu.set_port_choices(Setting::Dlss5, if mode.is_some() { 0b011 } else { 0b100 });
         menu.set_port_value(Setting::Dlss5, match mode { Some(2) => 1, Some(_) => 0, None => 2 });
         let active = mode == Some(2);
-        menu.set_port_choices(Setting::Dlss5Preset, if active { 0b11_1111 } else { 0b100_0000 });
+        menu.set_port_choices(Setting::Dlss5Preset, if active { 0b001_1110 } else { 0b100_0000 });
         let profile = self.cfg.as_deref().and_then(read_profile).unwrap_or(CUSTOM);
         let scale = PROFILES.get(profile as usize).and_then(|p| p.1);
         menu.set_port_value(Setting::Dlss5Preset, if !active { DISABLED }

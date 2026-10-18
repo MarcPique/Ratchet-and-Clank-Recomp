@@ -6,7 +6,7 @@ members = ["crates/rc-formats", "crates/rc-engine", "crates/rc-game", "crates/rc
 [workspace.package]
 # The one Ratchet & Clank Recomp version (every crate: `version.workspace = true`). Release tags are `v<version>[-pre]`
 # (docs/workflows/release.md); the manifest and `ratchet_clank --version-json` carry this version.
-version = "1.2.0"
+version = "1.3.0"
 edition = "2021"
 license = "ISC"
 publish = false

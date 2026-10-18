@@ -21,6 +21,7 @@ El instalador es **un único EXE** con el logo y los archivos necesarios integra
 ## Mejoras incluidas
 
 - Menú nativo de **Opciones avanzadas** en el menú de inicio y en las opciones durante la partida.
+- Botón **Salir al escritorio** directamente en el menú principal y en el menú de pausa, con confirmación **¿Seguro que quieres salir?** antes del cierre normal de Windows.
 - Desplazamiento del menú con mando o rueda del ratón; cuadro y tipografía adaptados a distintas resoluciones.
 - Perfiles de imagen **Original**, **Mejorado** y **Personalizado**; cambios aplicados desde el propio juego.
 - Resolución interna hasta 2160p, escala de renderizado, relación de aspecto, monitor, frecuencia de actualización y modo ventana/pantalla completa.
@@ -41,19 +42,27 @@ Capturas del juego a 3840 × 2160, tomadas en segundo plano. La [galería comple
 | --- | --- |
 | ![Menú principal a 4K](screenshots/menu-principal-4k.png) | ![Opciones avanzadas a 4K](screenshots/graficos-perfil-4k.png) |
 
+| Salir al escritorio desde el menú principal | Salir al escritorio desde pausa |
+| --- | --- |
+| ![Salir al escritorio en el menú principal a 4K](screenshots/salir-principal-4k.png) | ![Salir al escritorio en el menú de pausa a 4K](screenshots/salir-pausa-4k.png) |
+
+| Confirmar salida desde el menú principal | Confirmar salida desde pausa |
+| --- | --- |
+| ![Confirmación de salida en el menú principal a 4K](screenshots/confirmar-salida-principal-4k.png) | ![Confirmación de salida en pausa a 4K](screenshots/confirmar-salida-pausa-4k.png) |
+
 | Resolución y formato | Iconos DualSense |
 | --- | --- |
 | ![Resolución a 4K](screenshots/graficos-resolucion-4k.png) | ![Iconos DualSense a 4K](screenshots/iconos-dualsense-4k.png) |
 
 ### DLSS 5 opcional
 
-El ajuste nativo aparece como **No disponible** hasta que el usuario instala junto al juego `dxgi.dll`, `dlss5-feed.addon64`, `renodx-dlss5.addon64`, `nvngx_dlssnr.dll` y `dlss5-feed.cfg` de una configuración compatible. El instalador de este proyecto no incluye esos componentes. Con `enabled=1` en el archivo del feeder, **DLSS 5: Sí/No** cambia su `mode` entre 2 y 0 durante la partida; no hace falta abrir la interfaz de ReShade. La primera activación tras iniciar con `enabled=0` exige reiniciar el juego porque Vulkan prepara su enlace al crear el dispositivo. Cuando detecta la instalación opcional, el motor utiliza Vulkan para evitar el fallo observado al enumerar DirectX 12 a través del proxy de ReShade.
+El instalador personal ofrece **Instalar DLSS 5 (RTX)**. Incluye las tres bibliotecas de la configuración que ya funciona en una RTX 4090, verificadas por SHA-256, y descarga los demás componentes del [instalador de DLSS5-Feeder 1.19.0](https://github.com/jlrouzies-fr/DLSS5-Feeder/releases). La instalación requiere Internet y puede pedir permiso de administrador para registrar la capa Vulkan de ReShade. El juego arranca con el feeder preparado y permite encenderlo desde **Opciones avanzadas**. El panel interactivo de ReShade queda desactivado; su aviso inicial de carga aún puede aparecer unos segundos. **DLSS 5: Sí/No** cambia el `mode` del feeder entre 2 y 0 durante la partida, sin abrir el panel. El runtime se ha comprobado en una RTX 4090; no se ha verificado en cada modelo RTX.
 
-Al activar DLSS 5, **Perfil DLSS 5** ofrece cinco opciones claras. **Cinemático** da prioridad a la calidad: renderiza el juego al **100 %** de la resolución configurada y usa la pista temporal Transformer K. **Calidad** usa 75 % y Transformer J; **Equilibrado**, 67 % y la pista predeterminada; **Rendimiento**, 50 % y CNN E. **Automático** conserva la escala interna que hayas elegido y usa la pista predeterminada. El menú también muestra **Personalizado** si encuentra valores modificados fuera de estos perfiles. Los cambios se aplican durante la partida; la fila queda bloqueada cuando DLSS 5 está apagado o no está instalado.
+Al activar DLSS 5, **Perfil DLSS 5** recorre **Cinemático → Calidad → Equilibrado → Rendimiento → Cinemático**. **Cinemático** da prioridad a la calidad: renderiza el juego al **100 %** de la resolución configurada y usa la pista temporal Transformer K. **Calidad** usa 75 % y Transformer J; **Equilibrado**, 67 % y la pista predeterminada; **Rendimiento**, 50 % y CNN E. El menú puede mostrar **Automático** o **Personalizado** al leer una configuración existente; al cambiar el perfil desde el juego se entra en el ciclo de cuatro modos. Los cambios se aplican durante la partida; la fila queda bloqueada cuando DLSS 5 está apagado o no está instalado.
 
 Estos nombres describen perfiles de este port: las reducciones de resolución se hacen en el renderizador del juego antes de entregar la imagen al complemento. No son los modos oficiales DLSS Super Resolution, que el feeder no ofrece en Vulkan. Cinemático evita reducir la resolución interna, por lo que es la opción de mayor fidelidad y también la más exigente. Los ajustes manuales siguen disponibles en el menú.
 
-Esta integración se ha comprobado con [DLSS5-Feeder 1.19.0](https://github.com/jlrouzies-fr/DLSS5-Feeder/releases) y un complemento RenoDX instalado por el usuario. El resultado depende de la versión del complemento, el controlador y la GPU; el interruptor controla el feeder y no garantiza que el modelo neural acepte cada configuración. Para verificarlo, `ReShade.log` debe mostrar `state=ENGAGED` y evaluaciones correctas.
+El resultado depende del controlador y la GPU; el interruptor controla el feeder y no garantiza que el modelo neural acepte cada configuración. Para verificarlo, `ReShade.log` debe mostrar `state=ENGAGED` y evaluaciones correctas.
 
 ![DLSS 5 activado desde Opciones avanzadas a 4K](screenshots/dlss5-4k.png)
 
@@ -75,6 +84,6 @@ Para recompilar en Windows:
 1. Instala Rust y .NET 8 SDK.
 2. Ejecuta `cargo build --release -p rc-engine -p rc-extract`.
 3. Ejecuta `scripts/Build-GameBundle.ps1` con `-GameExe`, `-ExtractorExe`, `-ShadersDirectory`, `-LicenseFile` y `-OutputDirectory`.
-4. Ejecuta `scripts/Build-Installer.ps1` con `-BundleZip` y `-OutputDirectory`.
+4. Ejecuta `scripts/Build-Installer.ps1` con `-BundleZip`, `-OutputDirectory` y, para una compilación personal con DLSS 5, `-Dlss5SourceDirectory` apuntando a una instalación propia que ya funcione.
 
-El ZIP de compilación que se incrusta en el instalador se genera localmente y está excluido de Git. El juego necesita los datos de tu ISO para iniciarse. Los avisos obligatorios de autoría y licencia están en [LICENSE](LICENSE); *Ratchet & Clank* pertenece a sus respectivos titulares.
+Los ZIP de compilación incrustados en el instalador se generan localmente y están excluidos de Git. El juego necesita los datos de tu ISO para iniciarse. Los avisos obligatorios de autoría y licencia están en [LICENSE](LICENSE); *Ratchet & Clank* pertenece a sus respectivos titulares.

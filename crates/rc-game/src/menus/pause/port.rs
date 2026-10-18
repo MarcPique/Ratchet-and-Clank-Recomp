@@ -185,6 +185,8 @@ pub mod text {
     pub const QUALITY: i32 = -0x1de;
     pub const BALANCED: i32 = -0x1df;
     pub const PERFORMANCE_MODE: i32 = -0x1e0;
+    pub const EXIT_DESKTOP: i32 = -0x1e1;
+    pub const EXIT_CONFIRM: i32 = -0x1e2;
     /// The game's own "on" / "off" (20314 / 20315, the Subtitles / HelpDesk toggle values).
     pub const ON: i32 = 20314;
     pub const OFF: i32 = 20315;
@@ -268,6 +270,8 @@ pub mod text {
             ENABLE_DLSS5 => b"Enable DLSS 5",
             CINEMATIC => b"Cinematic", QUALITY => b"Quality",
             BALANCED => b"Balanced", PERFORMANCE_MODE => b"Performance",
+            EXIT_DESKTOP => b"Exit to Desktop",
+            EXIT_CONFIRM => b"Are you sure you want to exit?",
             _ => return None,
         })
     }
@@ -284,6 +288,8 @@ pub mod text {
             (2, DLSS5_PRESET) => b"Profil DLSS 5", (2, ENABLE_DLSS5) => b"Activer DLSS 5",
             (2, CINEMATIC) => b"Cinema", (2, QUALITY) => b"Qualite",
             (2, BALANCED) => b"Equilibre", (2, PERFORMANCE_MODE) => b"Performance",
+            (2, EXIT_DESKTOP) => b"Quitter vers le bureau",
+            (2, EXIT_CONFIRM) => b"Voulez-vous quitter le jeu ?",
             (2, RES_WINDOW) => b"Fenetre", (2, FULLSCREEN) => b"Plein ecran", (2, VSYNC) => b"Synchro V",
             (2, RENDER_SCALE) => b"Echelle de rendu",
             (2, MONITOR) => b"Moniteur", (2, SCREEN_CURRENT) => b"Actuel", (2, WINDOWED) => b"Fenetre",
@@ -306,6 +312,8 @@ pub mod text {
             (3, DLSS5_PRESET) => b"DLSS 5 Profil", (3, ENABLE_DLSS5) => b"DLSS 5 aktivieren",
             (3, CINEMATIC) => b"Kino", (3, QUALITY) => b"Qualitaet",
             (3, BALANCED) => b"Ausgewogen", (3, PERFORMANCE_MODE) => b"Leistung",
+            (3, EXIT_DESKTOP) => b"Zum Desktop beenden",
+            (3, EXIT_CONFIRM) => b"Spiel wirklich beenden?",
             (3, PRESET) => b"Profil", (3, ORIGINAL) => b"Original", (3, ENHANCED) => b"Verbessert", (3, CUSTOM) => b"Benutzerdef.",
             (3, ANTI_ALIASING) => b"Kantenglaettung", (3, SHADOWS) => b"Schatten", (3, RESOLUTION) => b"Aufloesung",
             (3, RES_WINDOW) => b"Fenster", (3, FULLSCREEN) => b"Vollbild", (3, VSYNC) => b"V-Sync",
@@ -355,11 +363,15 @@ pub mod text {
             (4, ENABLE_DLSS5) => b"Activa DLSS 5",
             (4, CINEMATIC) => b"Cinem\x84tico", (4, QUALITY) => b"Calidad",
             (4, BALANCED) => b"Equilibrado", (4, PERFORMANCE_MODE) => b"Rendimiento",
+            (4, EXIT_DESKTOP) => b"Salir al escritorio",
+            (4, EXIT_CONFIRM) => b"Seguro que quieres salir al escritorio?",
             (5, ENTRY) => b"Opz. avanzate", (5, TITLE) => b"Opzioni avanzate",
             (5, BUTTON_PROMPTS) => b"Icone controller",
             (5, DLSS5_PRESET) => b"Profilo DLSS 5", (5, ENABLE_DLSS5) => b"Attiva DLSS 5",
             (5, CINEMATIC) => b"Cinema", (5, QUALITY) => b"Qualita",
             (5, BALANCED) => b"Bilanciato", (5, PERFORMANCE_MODE) => b"Prestazioni",
+            (5, EXIT_DESKTOP) => b"Esci al desktop",
+            (5, EXIT_CONFIRM) => b"Vuoi davvero uscire dal gioco?",
             (5, DESCRIPTION) => b"Impostazioni aggiuntive del port PC",
             (5, PRESET) => b"Profilo", (5, ORIGINAL) => b"Originale", (5, ENHANCED) => b"Migliorato", (5, CUSTOM) => b"Personalizzato",
             (5, ANTI_ALIASING) => b"Antialiasing", (5, SHADOWS) => b"Ombre", (5, RESOLUTION) => b"Risoluzione",
@@ -750,7 +762,9 @@ impl PageMenu {
         let Some(r) = row_of(s) else { return };
         if let Some(p) = list_mut(self, LIST_W) {
             if p.choices.len() < ENTRIES.len() { p.choices.resize(ENTRIES.len(), u32::MAX); }
-            p.choices[r] = mask | 1;
+            // The DLSS profile row has a separate Automatic state. Its four named
+            // presets form their own cycle, so Performance wraps to Cinematic.
+            p.choices[r] = if s == Setting::Dlss5Preset { mask } else { mask | 1 };
         }
     }
 
@@ -797,7 +811,7 @@ pub fn update(m: &mut PageMenu, w: u32, inp: &MenuInput, out: &mut MenuOut) -> i
     }
     if inp.pressed_u & button::CROSS != 0 {
         let choices = p.choices.get(r).copied().unwrap_or(u32::MAX);
-        if ENTRIES.get(r).is_some_and(|e| e.setting == Setting::Dlss5Preset) && choices == 0b100_0001 {
+        if ENTRIES.get(r).is_some_and(|e| e.setting == Setting::Dlss5Preset) && choices == 0b100_0000 {
             return 0;
         }
         if let (Some(e), Some(v)) = (ENTRIES.get(r), p.values.get_mut(r)) {
@@ -878,6 +892,11 @@ mod tests {
         // All allowed: plain wrap; nothing else allowed: stays.
         assert_eq!(next_choice(3, 4, u32::MAX), 0);
         assert_eq!(next_choice(0, 4, 0b0001), 0);
+        // The four named DLSS profiles loop without visiting Automatic or Custom.
+        let profiles = 0b001_1110;
+        assert_eq!(next_choice(1, 7, profiles), 2);
+        assert_eq!(next_choice(4, 7, profiles), 1);
+        assert_eq!(next_choice(5, 7, profiles), 1);
     }
 
     #[test]

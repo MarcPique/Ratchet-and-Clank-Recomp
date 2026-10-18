@@ -26,6 +26,10 @@ BASE_MENU = (
 # label, kind, prompt family, number of DOWN presses after opening Advanced
 # Options. The custom resolution height row is hidden at 2160p.
 CASES = (
+    ("salir-pausa-4k", "exit_pause", "dualsense", 0),
+    ("salir-principal-4k", "exit_front", "dualsense", 0),
+    ("confirmar-salida-pausa-4k", "confirm_pause", "dualsense", 0),
+    ("confirmar-salida-principal-4k", "confirm_front", "dualsense", 0),
     ("graficos-perfil-4k", "menu", "dualsense", 0),
     ("graficos-antialiasing-4k", "menu", "dualsense", 1),
     ("graficos-texturas-4k", "menu", "dualsense", 6),
@@ -93,7 +97,20 @@ def capture(exe: Path, output: Path, case: tuple[str, str, str, int]) -> None:
     })
     for key in ("RC_HUD_TEXT", "RC_HUD_TEXT_WINDOW", "RC_PLAY_SCRIPT", "RC_SCREENSHOT_DELAY"):
         env.pop(key, None)
-    if kind == "menu":
+    if kind in ("exit_pause", "confirm_pause"):
+        env["RC_PLAY_SCRIPT"] = "60:press START,100:press UP"
+        if kind == "confirm_pause":
+            env["RC_PLAY_SCRIPT"] += ",120:press X"
+        env["RC_SCREENSHOT_FRAME"] = "155" if kind == "confirm_pause" else "115"
+    elif kind in ("exit_front", "confirm_front"):
+        env["RC_FRONTEND"] = "1"
+        env["RC_SKIP_LOGOS"] = "1"
+        env["RC_CAPTURE_WINDOW"] = "1"
+        env["RC_PLAY_SCRIPT"] = "60:press X,400:press START,480:press UP"
+        if kind == "confirm_front":
+            env["RC_PLAY_SCRIPT"] += ",510:press X"
+        env["RC_SCREENSHOT_FRAME"] = "600"
+    elif kind == "menu":
         steps = BASE_MENU + [f"{420 + 18 * i}:press DOWN" for i in range(row)]
         if name == "dlss5-4k":
             steps.append("790:press X")

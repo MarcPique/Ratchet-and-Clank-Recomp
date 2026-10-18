@@ -6,14 +6,15 @@ using System.Text.Json;
 namespace RatchetClankInstaller;
 
 internal sealed record InstallProgress(string Message, int Percent);
+internal sealed record InstallResult(string Game, string? Dlss5Warning);
 
 internal static class InstallerCore
 {
     internal const string GameName = "Ratchet & Clank.exe";
     private const string ExtractorName = "Extraer datos.exe";
 
-    internal static async Task<string> InstallAsync(
-        string isoInput, string destinationInput, bool desktopShortcut,
+    internal static async Task<InstallResult> InstallAsync(
+        string isoInput, string destinationInput, bool desktopShortcut, bool installDlss5,
         IProgress<InstallProgress>? progress, CancellationToken token)
     {
         if (string.IsNullOrWhiteSpace(isoInput) || string.IsNullOrWhiteSpace(destinationInput))
@@ -80,14 +81,28 @@ internal static class InstallerCore
             Directory.Move(data, dataTarget);
             committed.Add(dataTarget);
             string game = Path.Combine(destination, GameName);
+            string? dlss5Warning = null;
+            if (installDlss5)
+            {
+                try
+                {
+                    progress?.Report(new("Instalando DLSS 5 y sus componentes…", 99));
+                    await Dlss5Setup.InstallAsync(game, stage, token);
+                }
+                catch (OperationCanceledException) { throw; }
+                catch (Exception error)
+                {
+                    dlss5Warning = "El juego se instaló, pero DLSS 5 no pudo completarse: " + error.Message;
+                }
+            }
 
             if (desktopShortcut)
             {
                 try { CreateShortcut(game, destination); }
                 catch (Exception e) { progress?.Report(new("Juego instalado; no se pudo crear el acceso directo: " + e.Message, 99)); }
             }
-            progress?.Report(new("Instalación terminada. Ya puedes abrir Ratchet & Clank.exe.", 100));
-            return game;
+            progress?.Report(new(dlss5Warning ?? "Instalación terminada. Ya puedes abrir Ratchet & Clank.exe.", 100));
+            return new InstallResult(game, dlss5Warning);
         }
         catch
         {
